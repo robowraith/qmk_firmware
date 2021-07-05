@@ -170,20 +170,19 @@ void default_color_scheme(void) {
 
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
-    rgb_matrix_set_color_all(RGB_WHITE);
     switch (layer) {
         case 0: // Default layer (QWERTZ)
-            // rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color_all(RGB_WHITE);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_GREEN );
             break;
         case 1: // Bone (Linux)
-            // rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color_all(RGB_WHITE);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_BLUE );
             break;
         case 2: // Bone (Mac)
-            // rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color_all(RGB_WHITE);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_RED );
             break;
@@ -206,7 +205,6 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(logoKey, RGB_ORANGE );
             break;
         case 5: // Utility
-            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(1, RGB_BLUE );
             rgb_matrix_set_color(2, RGB_RED );
             set_key_color(NavkeysSize, keysNavkeys, RGB_BLUE);

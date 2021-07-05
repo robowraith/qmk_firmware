@@ -207,6 +207,7 @@ void rgb_matrix_indicators_user(void) {
         case 5: // Utility
             rgb_matrix_set_color(1, RGB_BLUE );
             rgb_matrix_set_color(2, RGB_RED );
+            set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
             set_key_color(NavkeysSize, keysNavkeys, RGB_BLUE);
             set_key_color(QMKkeysSize, keysQMKkeys, RGB_MAGENTA);
             rgb_matrix_set_color(46, RGB_YELLOW );

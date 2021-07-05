@@ -143,43 +143,33 @@ void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
     }
 };
 
+void default_color_scheme(void) {
+    set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
+    set_key_color(FkeysSize, keysFkeys, RGB_WHITE);
+    set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
+    set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
+    set_key_color(ForwardkeysSize, keysForwardkeys, RGB_GREEN);
+    set_key_color(BackkeysSize, keysBackkeys, RGB_RED);
+    set_key_color(ShiftkeysSize, keysShiftkeys, RGB_YELLOW);
+    set_key_color(ArrowkeysSize, keysArrowkeys, RGB_BLUE);
+};
+
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
         case 0: // Default layer (QWERTZ)
             rgb_matrix_set_color_all(RGB_BLACK);
-            set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
-            set_key_color(FkeysSize, keysFkeys, RGB_WHITE);
-            set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
-            set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
-            set_key_color(ForwardkeysSize, keysForwardkeys, RGB_GREEN);
-            set_key_color(BackkeysSize, keysBackkeys, RGB_RED);
-            set_key_color(ShiftkeysSize, keysShiftkeys, RGB_YELLOW);
-            set_key_color(ArrowkeysSize, keysArrowkeys, RGB_BLUE);
+            default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_GREEN );
             break;
         case 1: // Bone (Linux)
             rgb_matrix_set_color_all(RGB_BLACK);
-            set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
-            set_key_color(FkeysSize, keysFkeys, RGB_WHITE);
-            set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
-            set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
-            set_key_color(ForwardkeysSize, keysForwardkeys, RGB_GREEN);
-            set_key_color(BackkeysSize, keysBackkeys, RGB_RED);
-            set_key_color(ShiftkeysSize, keysShiftkeys, RGB_YELLOW);
-            set_key_color(ArrowkeysSize, keysArrowkeys, RGB_BLUE);
+            default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_BLUE );
             break;
         case 2: // Bone (Mac)
             rgb_matrix_set_color_all(RGB_BLACK);
-            set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
-            set_key_color(FkeysSize, keysFkeys, RGB_WHITE);
-            set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
-            set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
-            set_key_color(ForwardkeysSize, keysForwardkeys, RGB_GREEN);
-            set_key_color(BackkeysSize, keysBackkeys, RGB_RED);
-            set_key_color(ShiftkeysSize, keysShiftkeys, RGB_YELLOW);
-            set_key_color(ArrowkeysSize, keysArrowkeys, RGB_BLUE);
+            default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_RED );
             break;
         case 3: // Shifted (Linux)

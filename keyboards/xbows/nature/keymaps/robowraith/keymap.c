@@ -136,6 +136,20 @@ int ShiftkeysSize = 5;
 int keysShiftkeys[] = { 0, 14, 51, 60, 72 };
 int ArrowkeysSize = 4;
 int keysArrowkeys[] = { 73, 84, 85, 86};
+int NavkeysSize = 4;
+int keysNavkeys[] = { 33, 47, 48, 49 };
+int NumpadkeysSize = 11;
+int keysNumpadkeys[] = { 38, 39, 40, 53, 54, 55, 68, 69, 70, 80, 81 };
+int NumpadoperatorkeysSize = 4;
+int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
+int QMKkeysSize = 9;
+int keysQMKkeys[] = { 0, 7, 8, 9, 10, 11, 13, 14, 30 };
+int CutkeysSize = 2;
+int keysCutkeys[] = { 76, 81 };
+int CopykeysSize = 2;
+int keysCopykeys[] = { 77, 80 };
+int PastekeysSize = 2;
+int keysPastekeys[] = { 78, 79 };
 
 void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
     for( int i = 0; i < size; i++) {
@@ -156,19 +170,20 @@ void default_color_scheme(void) {
 
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
+    rgb_matrix_set_color_all(RGB_WHITE);
     switch (layer) {
         case 0: // Default layer (QWERTZ)
-            rgb_matrix_set_color_all(RGB_BLACK);
+            // rgb_matrix_set_color_all(RGB_BLACK);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_GREEN );
             break;
         case 1: // Bone (Linux)
-            rgb_matrix_set_color_all(RGB_BLACK);
+            // rgb_matrix_set_color_all(RGB_BLACK);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_BLUE );
             break;
         case 2: // Bone (Mac)
-            rgb_matrix_set_color_all(RGB_BLACK);
+            // rgb_matrix_set_color_all(RGB_BLACK);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_RED );
             break;
@@ -176,16 +191,31 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(RGB_BLACK);
             set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
             set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
+            set_key_color(CutkeysSize, keysCutkeys, RGB_RED);
+            set_key_color(CopykeysSize, keysCopykeys, RGB_GREEN);
+            set_key_color(PastekeysSize, keysPastekeys, RGB_YELLOW);
             rgb_matrix_set_color(logoKey, RGB_CYAN );
             break;
         case 4: // Shifted (Mac)
             rgb_matrix_set_color_all(RGB_BLACK);
             set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
             set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
+            set_key_color(CutkeysSize, keysCutkeys, RGB_RED);
+            set_key_color(CopykeysSize, keysCopykeys, RGB_GREEN);
+            set_key_color(PastekeysSize, keysPastekeys, RGB_YELLOW);
             rgb_matrix_set_color(logoKey, RGB_ORANGE );
             break;
         case 5: // Utility
-            // rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color(1, RGB_BLUE );
+            rgb_matrix_set_color(2, RGB_RED );
+            set_key_color(NavkeysSize, keysNavkeys, RGB_BLUE);
+            set_key_color(QMKkeysSize, keysQMKkeys, RGB_MAGENTA);
+            rgb_matrix_set_color(46, RGB_YELLOW );
+            rgb_matrix_set_color(51, RGB_WHITE );
+            set_key_color(NumpadkeysSize, keysNumpadkeys, RGB_BLUE);
+            set_key_color(NumpadoperatorkeysSize, keysNumpadoperatorkeys, RGB_YELLOW);
+            rgb_matrix_set_color(58, RGB_GREEN);
             rgb_matrix_set_color(logoKey, RGB_WHITE );
            break;
     }

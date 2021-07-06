@@ -150,6 +150,10 @@ int CopykeysSize = 2;
 int keysCopykeys[] = { 77, 80 };
 int PastekeysSize = 2;
 int keysPastekeys[] = { 78, 79 };
+int MMPluskeysSize = 4;
+int keysMMPluskeys[] = { 36, 73, 83, 86 };
+int MMMinuskeysSize = 4;
+int keysMMMinuskeys[] = { 59, 72, 84, 85 };
 
 void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
     for( int i = 0; i < size; i++) {
@@ -215,6 +219,8 @@ void rgb_matrix_indicators_user(void) {
             set_key_color(NumpadkeysSize, keysNumpadkeys, RGB_BLUE);
             set_key_color(NumpadoperatorkeysSize, keysNumpadoperatorkeys, RGB_YELLOW);
             rgb_matrix_set_color(58, RGB_GREEN);
+            set_key_color(MMPluskeysSize, keysMMPluskeys, RGB_GREEN);
+            set_key_color(MMMinuskeysSize, keysMMMinuskeys, RGB_RED);
             rgb_matrix_set_color(logoKey, RGB_WHITE );
            break;
     }

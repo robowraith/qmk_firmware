@@ -38,14 +38,14 @@
 // Modifier-keys for QWERTZ and Bone
 #define QZ_MO3L LT(3, DE_G)
 #define QZ_MO3R LT(3, DE_H)
-#define QZ_MO5L LT(5, DE_B)
-#define QZ_MO5R LT(5, DE_N)
+#define QZ_MO5L LT(5, DE_V)
+#define QZ_MO5R LT(5, DE_M)
 #define BO_MO3L LT(3, DE_O)
 #define BO_MO3R LT(3, DE_B)
 #define BO_MO4L LT(4, DE_O)
 #define BO_MO4R LT(4, DE_B)
-#define BO_MO5L LT(5, DE_ODIA)
-#define BO_MO5R LT(5, DE_Y)
+#define BO_MO5L LT(5, DE_ADIA)
+#define BO_MO5R LT(5, DE_Z)
 
 
 /* Taps to toggle
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_SS,     DE_ACUT,    KC_BSPC,
       KC_TAB,     DE_Q,       DE_W,       DE_E,       DE_R,       DE_T,                   DE_Z,       DE_U,       DE_I,       DE_O,       DE_P,        DE_UDIA,   DE_PLUS,    DE_HASH,    KC_PGUP,
       MO(5),      QZ_A,       QZ_S,       QZ_D,       QZ_F,       QZ_MO3L,    KC_ESC,     QZ_MO3R,    QZ_J,       QZ_K,       QZ_L,       QZ_OE,       DE_ADIA,   KC_ENT,                 KC_PGDN,
-      KC_LSFT,    DE_Y,       DE_X,       DE_C,       DE_V,       QZ_MO5L,    KC_TAB,     QZ_MO5R,    DE_M,       DE_COMM,    DE_DOT,     DE_MINS,     KC_RSFT,               KC_UP,
+      KC_LSFT,    DE_Y,       DE_X,       DE_C,       QZ_MO5L,    DE_B,       KC_TAB,     DE_N,       QZ_MO5R,    DE_COMM,    DE_DOT,     DE_MINS,     KC_RSFT,               KC_UP,
       KC_LCTL,    KC_LGUI,    KC_LALT,    KC_SPC,                 KC_BSPC,                KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
   [1] = LAYOUT(
       // Bone Linux
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    DE_MINS,    DE_PLUS,    KC_TRNS,
       KC_TRNS,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,       DE_SS,      KC_TRNS,    KC_TRNS,    KC_TRNS,
       KC_TRNS,    BO_C,       BO_T,       BO_I,       BO_E,       BO_MO3L,    KC_TRNS,    BO_MO3R,    BO_N,       BO_R,       BO_S,       BO_G,       DE_Q,       KC_TRNS,                KC_TRNS,
-      KC_TRNS,    DE_F,       DE_V,       DE_UDIA,    DE_ADIA,    BO_MO5L,    KC_TRNS,    BO_MO5R,    DE_Z,       KC_TRNS,    KC_TRNS,    DE_K,       KC_TRNS,                KC_TRNS,
+      KC_TRNS,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TRNS,    DE_Y,       BO_MO5R,    KC_TRNS,    KC_TRNS,    DE_K,       KC_TRNS,                KC_TRNS,
       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,                KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS),
   [2] = LAYOUT(
       // Bone Mac
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    DE_MINS,    DE_PLUS,    KC_TRNS,
       KC_TRNS,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,       DE_SS,      KC_TRNS,    KC_TRNS,    KC_TRNS,
       KC_TRNS,    BO_C,       BO_T,       BO_I,       BO_E,       BO_MO4L,    KC_TRNS,    BO_MO4R,    BO_N,       BO_R,       BO_S,       BO_G,       DE_Q,       KC_TRNS,                KC_TRNS,
-      KC_TRNS,    DE_F,       DE_V,       DE_UDIA,    DE_ADIA,    BO_MO5L,    KC_TRNS,    BO_MO5R,    DE_Z,       KC_TRNS,    KC_TRNS,    DE_K,       KC_TRNS,                KC_TRNS,
+      KC_TRNS,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TRNS,    DE_Y,       BO_MO5R,    KC_TRNS,    KC_TRNS,    DE_K,       KC_TRNS,                KC_TRNS,
       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,                KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS),
   [3] = LAYOUT(
       // Shifted Layer Linux
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       RGB_TOG,    KC_NO,      DE_Q,       KC_UP,      DE_E,       KC_NO,                  KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_KP_ASTERISK,      KC_NO,      KC_NO,      KC_HOME,
       KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_KP_SLASH,KC_ENTER,               KC_END,
       KC_NO,      KC_LCTL,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_KP_1,    KC_KP_2,    KC_KP_3,    KC_NO,      KC_MUTE,                KC_VOLU,
-      KC_NO,      KC_NO,      KC_NO,                  KC_NO,      KC_NO,                  KC_NO,                  KC_KP_0,    DE_COMM,    KC_TRNS,    KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
+      KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_NO,                  KC_KP_0,    DE_COMM,    KC_TRNS,    KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
       };
 
 const int FkeysSize = 12;
@@ -209,6 +209,7 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(logoKey, RGB_ORANGE );
             break;
         case 5: // Utility
+            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(1, RGB_BLUE );
             rgb_matrix_set_color(2, RGB_RED );
             set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);

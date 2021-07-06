@@ -222,6 +222,8 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(58, RGB_GREEN);
             set_key_color(MMPluskeysSize, keysMMPluskeys, RGB_GREEN);
             set_key_color(MMMinuskeysSize, keysMMMinuskeys, RGB_RED);
+            rgb_matrix_set_color(77, RGB_YELLOW );
+            rgb_matrix_set_color(78, RGB_YELLOW );
             rgb_matrix_set_color(logoKey, RGB_WHITE );
            break;
     }

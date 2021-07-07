@@ -111,10 +111,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_NO,      KC_NO,      G(DE_X),    G(DE_C),                G(DE_V),                G(DE_V),                G(DE_C),    G(DE_X),    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO),
   [5] = LAYOUT(
       // Utillity
-      RESET,      TG(1),      TG(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_MOD,    RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI,    KC_NO,      NK_TOGG,    EEP_RST,
-      KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      KC_NO,
-      RGB_TOG,    KC_NO,      DE_Q,       KC_UP,      DE_E,       KC_NO,                  KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_KP_ASTERISK,      KC_NO,      KC_NO,      KC_HOME,
-      KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_KP_SLASH,KC_ENTER,               KC_END,
+      KC_ESC,     TG(1),      TG(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_MOD,    RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI,    KC_NO,      NK_TOGG,    EEP_RST,
+      KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      RESET,
+      RGB_TOG,    KC_NO,      DE_Q,       KC_UP,      DE_E,       KC_NO,                  KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
+      KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
       KC_NO,      KC_LCTL,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_KP_1,    KC_KP_2,    KC_KP_3,    KC_NO,      KC_MUTE,                KC_VOLU,
       KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_NO,                  KC_KP_0,    DE_COMM,    KC_TRNS,    KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
       };
@@ -143,7 +143,7 @@ int keysNumpadkeys[] = { 38, 39, 40, 53, 54, 55, 68, 69, 70, 80, 81 };
 int NumpadoperatorkeysSize = 4;
 int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
 int QMKkeysSize = 9;
-int keysQMKkeys[] = { 0, 7, 8, 9, 10, 11, 13, 14, 30 };
+int keysQMKkeys[] = { 7, 8, 9, 10, 11, 13, 14, 29, 30 };
 int CutkeysSize = 2;
 int keysCutkeys[] = { 76, 81 };
 int CopykeysSize = 2;
@@ -210,6 +210,7 @@ void rgb_matrix_indicators_user(void) {
             break;
         case 5: // Utility
             rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color(0, RGB_YELLOW );
             rgb_matrix_set_color(1, RGB_BLUE );
             rgb_matrix_set_color(2, RGB_RED );
             set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);

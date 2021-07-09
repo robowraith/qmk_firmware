@@ -48,10 +48,6 @@
 #define BO_MO5R LT(5, DE_Z)
 
 
-/* Taps to toggle
-#undef TAPPING_TOGGLE
-#define TAPPING_TOGGLE 2 */
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap VANILLA: (Base Layer) Default Layer
    *

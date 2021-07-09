@@ -66,6 +66,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
   [0] = LAYOUT(
+      // Bone Linux
+      KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
+      KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
+      KC_TAB,     DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
+      MO(5),      BO_C,       BO_T,       BO_I,       BO_E,       BO_MO3L,    KC_DEL,     BO_MO3R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
+      KC_LSFT,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TAB,     DE_Y,       BO_MO5R,    DE_COMM,    DE_DOT,     DE_K,        KC_RSFT,               KC_UP,
+      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_SPC,                 KC_BSPC,                KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
+  [1] = LAYOUT(
+      // Bone Mac
+      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    DE_MINS,    DE_PLUS,    KC_TRNS,
+      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    BO_MO4L,    KC_TRNS,    BO_MO4R,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,
+      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,
+      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,                KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS),
+  [2] = LAYOUT(
       // QWERTZ
       KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
       KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_SS,     DE_ACUT,    KC_BSPC,
@@ -73,22 +89,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       MO(5),      QZ_A,       QZ_S,       QZ_D,       QZ_F,       QZ_MO3L,    KC_ESC,     QZ_MO3R,    QZ_J,       QZ_K,       QZ_L,       QZ_OE,       DE_ADIA,   KC_ENT,                 KC_PGDN,
       KC_LSFT,    DE_Y,       DE_X,       DE_C,       QZ_MO5L,    DE_B,       KC_TAB,     DE_N,       QZ_MO5R,    DE_COMM,    DE_DOT,     DE_MINS,     KC_RSFT,               KC_UP,
       KC_LCTL,    KC_LGUI,    KC_LALT,    KC_SPC,                 KC_BSPC,                KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
-  [1] = LAYOUT(
-      // Bone Linux
-      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    DE_MINS,    DE_PLUS,    KC_TRNS,
-      KC_TRNS,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,       DE_SS,      KC_TRNS,    KC_TRNS,    KC_TRNS,
-      KC_TRNS,    BO_C,       BO_T,       BO_I,       BO_E,       BO_MO3L,    KC_TRNS,    BO_MO3R,    BO_N,       BO_R,       BO_S,       BO_G,       DE_Q,       KC_TRNS,                KC_TRNS,
-      KC_TRNS,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TRNS,    DE_Y,       BO_MO5R,    KC_TRNS,    KC_TRNS,    DE_K,       KC_TRNS,                KC_TRNS,
-      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,                KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS),
-  [2] = LAYOUT(
-      // Bone Mac
-      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    DE_MINS,    DE_PLUS,    KC_TRNS,
-      KC_TRNS,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,       DE_SS,      KC_TRNS,    KC_TRNS,    KC_TRNS,
-      KC_TRNS,    BO_C,       BO_T,       BO_I,       BO_E,       BO_MO4L,    KC_TRNS,    BO_MO4R,    BO_N,       BO_R,       BO_S,       BO_G,       DE_Q,       KC_TRNS,                KC_TRNS,
-      KC_TRNS,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TRNS,    DE_Y,       BO_MO5R,    KC_TRNS,    KC_TRNS,    DE_K,       KC_TRNS,                KC_TRNS,
-      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,                KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS),
   [3] = LAYOUT(
       // Shifted Layer Linux
       KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -107,10 +107,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_NO,      KC_NO,      G(DE_X),    G(DE_C),                G(DE_V),                G(DE_V),                G(DE_C),    G(DE_X),    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO),
   [5] = LAYOUT(
       // Utillity
-      RESET,      TG(1),      TG(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_MOD,    RGB_HUI,    RGB_SAI,    RGB_VAI,    RGB_SPI,    KC_NO,      NK_TOGG,    EEP_RST,
-      KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      KC_NO,
-      RGB_TOG,    KC_NO,      DE_Q,       KC_UP,      DE_E,       KC_NO,                  KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_KP_ASTERISK,      KC_NO,      KC_NO,      KC_HOME,
-      KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_KP_SLASH,KC_ENTER,               KC_END,
+      KC_ESC,     TG(1),      TG(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_TOG,    NK_TOGG,    EEP_RST,
+      KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      RESET,
+      KC_TAB,     KC_NO,      DE_Q,       KC_UP,      DE_E,       KC_NO,                  KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
+      KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
       KC_NO,      KC_LCTL,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_KP_1,    KC_KP_2,    KC_KP_3,    KC_NO,      KC_MUTE,                KC_VOLU,
       KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_NO,                  KC_KP_0,    DE_COMM,    KC_TRNS,    KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
       };
@@ -138,8 +138,8 @@ int NumpadkeysSize = 11;
 int keysNumpadkeys[] = { 38, 39, 40, 53, 54, 55, 68, 69, 70, 80, 81 };
 int NumpadoperatorkeysSize = 4;
 int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
-int QMKkeysSize = 9;
-int keysQMKkeys[] = { 0, 7, 8, 9, 10, 11, 13, 14, 30 };
+int QMKkeysSize = 4;
+int keysQMKkeys[] = { 12, 13, 14, 29 };
 int CutkeysSize = 2;
 int keysCutkeys[] = { 76, 81 };
 int CopykeysSize = 2;
@@ -171,20 +171,20 @@ void default_color_scheme(void) {
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
-        case 0: // Default layer (QWERTZ)
-            rgb_matrix_set_color_all(RGB_WHITE);
-            default_color_scheme();
-            rgb_matrix_set_color(logoKey, RGB_GREEN );
-            break;
-        case 1: // Bone (Linux)
+       case 0: // Bone (Linux)
             rgb_matrix_set_color_all(RGB_WHITE);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_BLUE );
             break;
-        case 2: // Bone (Mac)
+        case 1: // Bone (Mac)
             rgb_matrix_set_color_all(RGB_WHITE);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_RED );
+            break;
+        case 2: // QWERTZ
+            rgb_matrix_set_color_all(RGB_WHITE);
+            default_color_scheme();
+            rgb_matrix_set_color(logoKey, RGB_GREEN );
             break;
         case 3: // Shifted (Linux)
             rgb_matrix_set_color_all(RGB_BLACK);
@@ -206,11 +206,15 @@ void rgb_matrix_indicators_user(void) {
             break;
         case 5: // Utility
             rgb_matrix_set_color_all(RGB_BLACK);
-            rgb_matrix_set_color(1, RGB_BLUE );
-            rgb_matrix_set_color(2, RGB_RED );
+            rgb_matrix_set_color(0, RGB_YELLOW );
+            rgb_matrix_set_color(1, RGB_RED );
+            rgb_matrix_set_color(2, RGB_GREEN );
             set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
             set_key_color(NavkeysSize, keysNavkeys, RGB_BLUE);
             set_key_color(QMKkeysSize, keysQMKkeys, RGB_MAGENTA);
+            rgb_matrix_set_color(30, RGB_YELLOW );
+            rgb_matrix_set_color(32, RGB_GREEN );
+            rgb_matrix_set_color(34, RGB_GREEN );
             rgb_matrix_set_color(46, RGB_YELLOW );
             rgb_matrix_set_color(51, RGB_WHITE );
             set_key_color(NumpadkeysSize, keysNumpadkeys, RGB_BLUE);
@@ -218,6 +222,8 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(58, RGB_GREEN);
             set_key_color(MMPluskeysSize, keysMMPluskeys, RGB_GREEN);
             set_key_color(MMMinuskeysSize, keysMMMinuskeys, RGB_RED);
+            rgb_matrix_set_color(77, RGB_YELLOW );
+            rgb_matrix_set_color(78, RGB_YELLOW );
             rgb_matrix_set_color(logoKey, RGB_WHITE );
            break;
     }

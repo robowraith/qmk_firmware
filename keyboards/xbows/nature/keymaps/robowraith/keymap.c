@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
       KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
       KC_TAB,     DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
-      MO(5),      BO_C,       BO_T,       BO_I,       BO_E,       BO_MO3L,    KC_DEL,     BO_MO3R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
+      MO(5),      BO_C,       BO_T,       BO_I,       BO_E,       BO_MO3L,    KC_ESC,     BO_MO3R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
       KC_LSFT,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TAB,     DE_Y,       BO_MO5R,    DE_COMM,    DE_DOT,     DE_K,        KC_RSFT,               KC_UP,
       KC_LCTL,    KC_LGUI,    KC_LALT,    KC_SPC,                 KC_BSPC,                KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
   [1] = LAYOUT(

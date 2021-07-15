@@ -109,8 +109,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       // Utillity
       KC_ESC,     TG(1),      TG(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_TOG,    NK_TOGG,    EEP_RST,
       KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      RESET,
-      KC_TAB,     KC_NO,      DE_Q,       KC_UP,      DE_E,       KC_NO,                  KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
-      KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
+      KC_TAB,     KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_PGUP,                KC_NO,      KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
+      KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
       KC_NO,      KC_LCTL,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_KP_1,    KC_KP_2,    KC_KP_3,    KC_NO,      KC_MUTE,                KC_VOLU,
       KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_NO,                  KC_KP_0,    DE_COMM,    KC_TRNS,    KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
       };
@@ -146,10 +146,10 @@ int CopykeysSize = 2;
 int keysCopykeys[] = { 77, 80 };
 int PastekeysSize = 2;
 int keysPastekeys[] = { 78, 79 };
-int MMPluskeysSize = 4;
-int keysMMPluskeys[] = { 36, 73, 83, 86 };
-int MMMinuskeysSize = 4;
-int keysMMMinuskeys[] = { 59, 72, 84, 85 };
+int MMPluskeysSize = 6;
+int keysMMPluskeys[] = { 34, 35, 36, 73, 83, 86 };
+int MMMinuskeysSize = 6;
+int keysMMMinuskeys[] = { 32, 50, 59, 72, 84, 85 };
 
 void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
     for( int i = 0; i < size; i++) {

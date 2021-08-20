@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,     DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
       MO(5),      BO_C,       BO_T,       BO_I,       BO_E,       BO_MO3L,    KC_ESC,     BO_MO3R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
       KC_LSFT,    DE_F,       DE_V,       DE_UDIA,    BO_MO5L,    DE_ODIA,    KC_TAB,     DE_Y,       BO_MO5R,    DE_COMM,    DE_DOT,     DE_K,        KC_RSFT,               KC_UP,
-      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_SPC,                 KC_BSPC,                KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
+      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_BSPC,                KC_DEL,                 KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
   [1] = LAYOUT(
       // Bone Mac
       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,     DE_Q,       DE_W,       DE_E,       DE_R,       DE_T,                   DE_Z,       DE_U,       DE_I,       DE_O,       DE_P,        DE_UDIA,   DE_PLUS,    DE_HASH,    KC_PGUP,
       MO(5),      QZ_A,       QZ_S,       QZ_D,       QZ_F,       QZ_MO3L,    KC_ESC,     QZ_MO3R,    QZ_J,       QZ_K,       QZ_L,       QZ_OE,       DE_ADIA,   KC_ENT,                 KC_PGDN,
       KC_LSFT,    DE_Y,       DE_X,       DE_C,       QZ_MO5L,    DE_B,       KC_TAB,     DE_N,       QZ_MO5R,    DE_COMM,    DE_DOT,     DE_MINS,     KC_RSFT,               KC_UP,
-      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_SPC,                 KC_BSPC,                KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
+      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_BSPC,                KC_DEL,                 KC_ENT,                 KC_SPC,     KC_RALT,    TT(5),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
   [3] = LAYOUT(
       // Shifted Layer Linux
       KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,

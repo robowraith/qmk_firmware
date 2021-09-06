@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       // Shifted Layer Linux
       KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
       KC_NO,      KC_NO,      DE_SUP2,    DE_SUP3,    KC_NO,      KC_NO,                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-      KC_NO,      DE_DEG,     DE_UNDS,    DE_LBRC,    DE_RBRC,    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     DE_AMPR,    KC_NO,      KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      DE_DEG,     DE_UNDS,    DE_LBRC,    DE_RBRC,    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     DE_AMPR,    DE_EURO,    KC_NO,      KC_NO,      KC_NO,
       KC_NO,      DE_BSLS,    DE_SLSH,    DE_LCBR,    DE_RCBR,    DE_ASTR,    KC_NO,      DE_QUES,    DE_LPRN,    DE_RPRN,    DE_MINS,    DE_COLN,    DE_AT,      KC_NO,                  KC_NO,
       KC_NO,      DE_HASH,    DE_DLR,     DE_PIPE,    DE_TILD,    DE_GRV,     KC_NO,      DE_PLUS,    DE_PERC,    DE_DQUO,    DE_QUOT,    DE_SCLN,    KC_NO,                  KC_NO,
       KC_NO,      KC_NO,      C(DE_X),    C(DE_C),                S(KC_INS),              S(KC_INS),              C(DE_C),    C(DE_X),    MO(5),      KC_NO,      KC_NO,      KC_NO,      KC_NO),
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       // Shifted Layer Mac
       KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
       KC_NO,      KC_NO,      DE_SUP2,    DE_SUP3,    KC_NO,      KC_NO,                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-      KC_NO,      DE_DEG,     DE_UNDS,    A(DE_5),    A(DE_6),    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     DE_AMPR,    KC_NO,      KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      DE_DEG,     DE_UNDS,    A(DE_5),    A(DE_6),    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     DE_AMPR,    DE_EURO,    KC_NO,      KC_NO,      KC_NO,
       KC_NO,      LSA(DE_7),  DE_SLSH,    A(DE_8),    A(DE_9),    DE_ASTR,    KC_NO,      DE_QUES,    DE_LPRN,    DE_RPRN,    DE_MINS,    DE_COLN,    DE_AT,      KC_NO,                  KC_NO,
       KC_NO,      DE_HASH,    DE_DLR,     A(DE_7),    A(DE_N),    DE_GRV,     KC_NO,      DE_PLUS,    DE_PERC,    DE_DQUO,    DE_QUOT,    DE_SCLN,    KC_NO,                  KC_NO,
       KC_NO,      KC_NO,      G(DE_X),    G(DE_C),                G(DE_V),                G(DE_V),                G(DE_C),    G(DE_X),    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO),

@@ -49,6 +49,7 @@
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _BONEL,
+    _BONEM,
     _SLL,
     _SLM,
     _UTIL
@@ -77,14 +78,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                       C(DE_C), C(DE_V),  KC_END,     KC_PGDN, C(DE_V),  C(DE_C)
 
     ),
-    [_UTIL] = LAYOUT(
+    [_BONEM] = LAYOUT(
+        KC_ESC,   DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                           DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    KC_BSPC,
+        KC_TAB,   DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
+        KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    BO_MO3L,                                        BO_MO3R, BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
+        KC_LSFT,  DE_F,    DE_V,    DE_UDIA, BO_MO5L, DE_ODIA,                                        DE_Y,    BO_MO5R, DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
+        TT(_UTIL),KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(_UTIL),
+                                                               KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
+                                                                        KC_HOME,    KC_PGUP,
+                                                      KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
+    ),
+    [_SLM] = LAYOUT(
         KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                                          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
-        _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        _______, KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
-        _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        _______, KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
-        RESET,    _______, _______, _______, _______, _______,                                        _______, KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
+        KC_NO,    DE_DEG,  DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC,                                        DE_EXLM, DE_LABK, DE_RABK,  DE_EQL,  DE_AMPR, DE_EURO,
+        KC_NO,    DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR,                                        DE_QUES, DE_LPRN, DE_RPRN,  DE_MINS, DE_COLN, DE_AT,
+        KC_NO,    DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_GRV,                                         DE_PLUS, DE_PERC, DE_DQUO,  DE_QUOT, DE_SCLN, KC_NO,
+        KC_NO,    KC_NO,   KC_NO,   KC_NO,   C(DE_X),                                                          C(DE_X), KC_NO,    KC_NO,   KC_NO,   KC_NO,
+                                                               KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
+                                                                        KC_HOME,    KC_PGUP,
+                                                      C(DE_C), C(DE_V),  KC_END,     KC_PGDN, C(DE_V),  C(DE_C)
+
+    ),  [_UTIL] = LAYOUT(
+        KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                                          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
+        _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        TG(_BONEL), KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
+        _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        TG(_BONEM), KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
+        RESET,    _______, _______, _______, _______, _______,                                        TG(_UTIL), KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
         _______,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          RGB_VAI, RGB_VAD,  RGB_SAI, RGB_SAD, KC_TRNS,
                                                                _______, _______,    RGB_MOD, RGB_TOG,
                                                                         _______,    RGB_HUI,
-                                                      _______, _______, _______,    RGB_HUD, _______, KC_KP_0
+                                                      KC_LGUI, KC_LCTL, _______,    RGB_HUD, _______, KC_KP_0
     )
-};
+}

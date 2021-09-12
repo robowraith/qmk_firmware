@@ -17,14 +17,6 @@
 #include "keymap_german.h"
 
 // Home-Row-Mod-Keys for QWERTZ and Bone
-#define QZ_A LGUI_T(DE_A)
-#define QZ_S LALT_T(DE_S)
-#define QZ_D LCTL_T(DE_D)
-#define QZ_F LSFT_T(DE_F)
-#define QZ_J RSFT_T(DE_J)
-#define QZ_K RCTL_T(DE_K)
-#define QZ_L RALT_T(DE_L)
-#define QZ_OE RGUI_T(DE_ODIA)
 #define BO_C LGUI_T(DE_C)
 #define BO_T LALT_T(DE_T)
 #define BO_I LCTL_T(DE_I)
@@ -35,18 +27,15 @@
 #define BO_G RGUI_T(DE_G)
 
 // Modifier-keys for QWERTZ and Bone
-#define QZ_MO3L LT(_SLL, DE_G)
-#define QZ_MO3R LT(_SLL, DE_H)
-#define QZ_MO5L LT(_UTIL, DE_V)
-#define QZ_MO5R LT(_UTIL, DE_M)
-#define BO_MO3L LT(_SLL, DE_O)
-#define BO_MO3R LT(_SLL, DE_B)
-#define BO_MO4L LT(_SLM, DE_O)
-#define BO_MO4R LT(_SLM, DE_B)
-#define BO_MO5L LT(_UTIL, DE_ADIA)
-#define BO_MO5R LT(_UTIL, DE_Z)
+#define BO_MO1L LT(1, KC_BSPC)
+#define BO_MO1R LT(1, KC_SPC)
+#define BO_MO3L LT(3, DE_O)
+#define BO_MO3R LT(3, DE_B)
+#define BO_MO5L LT(5, KC_DEL)
+#define BO_MO5R LT(5, KC_ENT)
 
 // Defines names for use in layer keycodes and the keymap
+/*
 enum layer_names {
     _BONEL,
     _BONEM,
@@ -54,20 +43,22 @@ enum layer_names {
     _SLM,
     _UTIL
 };
+*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Base */
-    [_BONEL] = LAYOUT(
+    /* Bone for Linux */
+    [0] = LAYOUT(
         KC_ESC,   DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                           DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    KC_BSPC,
         KC_TAB,   DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
-        KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    BO_MO3L,                                        BO_MO3R, BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
-        KC_LSFT,  DE_F,    DE_V,    DE_UDIA, BO_MO5L, DE_ODIA,                                        DE_Y,    BO_MO5R, DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
-        TT(_UTIL),KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(_UTIL),
+        KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    DE_O,                                           DE_B,    BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
+        KC_LSFT,  DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA,                                        DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
+        TT(5),    KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(5),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
+                                                      BO_MO1L, BO_MO5L, KC_END,     KC_PGDN, BO_MO5R,  BO_MO1R
     ),
-    [_SLL] = LAYOUT(
+    /* Shifted Layer for Linux */
+    [1] = LAYOUT(
         KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                                          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
         KC_NO,    DE_DEG,  DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC,                                        DE_EXLM, DE_LABK, DE_RABK,  DE_EQL,  DE_AMPR, DE_EURO,
         KC_NO,    DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR,                                        DE_QUES, DE_LPRN, DE_RPRN,  DE_MINS, DE_COLN, DE_AT,
@@ -75,37 +66,84 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    KC_NO,   KC_NO,   KC_NO,   C(DE_X),                                                          C(DE_X), KC_NO,    KC_NO,   KC_NO,   KC_NO,
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      C(DE_C), C(DE_V),  KC_END,     KC_PGDN, C(DE_V),  C(DE_C)
+                                                      C(DE_C), C(DE_V), KC_END,     KC_PGDN, C(DE_V),  C(DE_C)
 
     ),
-    [_BONEM] = LAYOUT(
+    /* Bone for Mac */
+    [2] = LAYOUT(
         KC_ESC,   DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                           DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    KC_BSPC,
         KC_TAB,   DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
-        KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    BO_MO3L,                                        BO_MO3R, BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
-        KC_LSFT,  DE_F,    DE_V,    DE_UDIA, BO_MO5L, DE_ODIA,                                        DE_Y,    BO_MO5R, DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
-        TT(_UTIL),KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(_UTIL),
+        KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    DE_O,                                           DE_B,    BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
+        KC_LSFT,  DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA,                                        DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
+        TT(5),    KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(5),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
+                                                      BO_MO3L, BO_MO5L, KC_END,     KC_PGDN, BO_MO5R,  BO_MO3R
     ),
-    [_SLM] = LAYOUT(
+    /* Shifted Layer for Mac */
+    [3] = LAYOUT(
         KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                                          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
-        KC_NO,    DE_DEG,  DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC,                                        DE_EXLM, DE_LABK, DE_RABK,  DE_EQL,  DE_AMPR, DE_EURO,
-        KC_NO,    DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR,                                        DE_QUES, DE_LPRN, DE_RPRN,  DE_MINS, DE_COLN, DE_AT,
-        KC_NO,    DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_GRV,                                         DE_PLUS, DE_PERC, DE_DQUO,  DE_QUOT, DE_SCLN, KC_NO,
+        KC_NO,    DE_DEG,  DE_UNDS, A(DE_5), A(DE_6), DE_CIRC,                                        DE_EXLM, DE_LABK, DE_RABK,  DE_EQL,  DE_AMPR, DE_EURO,
+        KC_NO,    LSA(DE_7),DE_SLSH,A(DE_8), A(DE_9), DE_ASTR,                                        DE_QUES, DE_LPRN, DE_RPRN,  DE_MINS, DE_COLN, DE_AT,
+        KC_NO,    DE_HASH, DE_DLR,  A(DE_7), A(DE_N), DE_GRV,                                         DE_PLUS, DE_PERC, DE_DQUO,  DE_QUOT, DE_SCLN, KC_NO,
         KC_NO,    KC_NO,   KC_NO,   KC_NO,   C(DE_X),                                                          C(DE_X), KC_NO,    KC_NO,   KC_NO,   KC_NO,
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
                                                       C(DE_C), C(DE_V),  KC_END,     KC_PGDN, C(DE_V),  C(DE_C)
-
-    ),  [_UTIL] = LAYOUT(
+    ),
+    /* Gaming */
+    [4] = LAYOUT(
+        KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+        KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+        KC_CAPS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                           KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                           KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        MO(5),    KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, MO(5),
+                                                               KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
+                                                                        KC_HOME,    KC_PGUP,
+                                                      KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
+    ),
+    /* Utility */
+    [5] = LAYOUT(
         KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                                          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
-        _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        TG(_BONEL), KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
-        _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        TG(_BONEM), KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
-        RESET,    _______, _______, _______, _______, _______,                                        TG(_UTIL), KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
-        _______,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          RGB_VAI, RGB_VAD,  RGB_SAI, RGB_SAD, KC_TRNS,
+        _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        TG(0),   KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
+        _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        TG(2),   KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
+        RESET,    _______, _______, _______, _______, _______,                                        TG(4),   KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
+        _______,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          KC_KP_0, RGB_VAD,  RGB_SAI, RGB_SAD, KC_TRNS,
                                                                _______, _______,    RGB_MOD, RGB_TOG,
                                                                         _______,    RGB_HUI,
-                                                      KC_LGUI, KC_LCTL, _______,    RGB_HUD, _______, KC_KP_0
+                                                      KC_LGUI, KC_LCTL, _______,    RGB_HUD, KC_ENT,  KC_SPC
     )
-}
+};
+
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    uint8_t layer = biton32(state);
+    switch (layer) {
+        case 0: // Bone (Linux)
+            rgblight_sethsv(HSV_GREEN);
+            rgblight_mode(1);
+            break;
+        case 1: // Shifted Layer (Linux)
+            rgblight_sethsv(HSV_CYAN);
+            rgblight_mode(1);
+            break;
+        case 2: // Bone (Mac)
+            rgblight_sethsv(HSV_RED);
+            rgblight_mode(1);
+            break;
+        case 3: // Shifted (Mac)
+            rgblight_sethsv(HSV_ORANGE);
+            rgblight_mode(1);
+            break;
+        case 4: // Gaming
+            rgblight_sethsv(HSV_BLUE);
+            rgblight_mode(14);
+            break;
+        case 5: // Utility
+            rgblight_sethsv(HSV_WHITE);
+            rgblight_mode(1);
+            break;
+    }
+
+    return state;
+};

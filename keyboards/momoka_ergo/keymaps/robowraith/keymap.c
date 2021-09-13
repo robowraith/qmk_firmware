@@ -75,10 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,   DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
         KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    DE_O,                                           DE_B,    BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
         KC_LSFT,  DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA,                                        DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
-        TT(5),    KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(5),
+        TT(5),    KC_GRV,  KC_EQL,  MO(5),   MO(3),                                                            MO(3),   MO(5),   KC_LBRC, KC_RBRC, TT(5),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      BO_MO3L, BO_MO5L, KC_END,     KC_PGDN, BO_MO5R,  BO_MO3R
+                                                      KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
     ),
     /* Shifted Layer for Mac */
     [3] = LAYOUT(

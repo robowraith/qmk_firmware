@@ -29,8 +29,8 @@
 // Modifier-keys for QWERTZ and Bone
 #define BO_MO1L LT(1, KC_BSPC)
 #define BO_MO1R LT(1, KC_SPC)
-#define BO_MO3L LT(3, DE_O)
-#define BO_MO3R LT(3, DE_B)
+#define BO_MO3L LT(3, KC_BSPC)
+#define BO_MO3R LT(3, KC_SPC)
 #define BO_MO5L LT(5, KC_DEL)
 #define BO_MO5R LT(5, KC_ENT)
 

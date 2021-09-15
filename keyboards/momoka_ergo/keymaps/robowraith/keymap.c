@@ -16,6 +16,14 @@
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 
+void keyboard_post_init_user(void)
+{
+    #ifdef RGBLIGHT_ENABLE
+        rgblight_sethsv(HSV_RED);
+        rgblight_mode(RGBLIGHT_MODE_KNIGHT + 2);
+    #endif
+}
+
 // Home-Row-Mod-Keys for QWERTZ and Bone
 #define BO_C LGUI_T(DE_C)
 #define BO_T LALT_T(DE_T)
@@ -123,27 +131,27 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     switch (layer) {
         case 0: // Bone (Linux)
             rgblight_sethsv(HSV_GREEN);
-            rgblight_mode(1);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 1: // Shifted Layer (Linux)
             rgblight_sethsv(HSV_CYAN);
-            rgblight_mode(1);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 2: // Bone (Mac)
             rgblight_sethsv(HSV_RED);
-            rgblight_mode(1);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 3: // Shifted (Mac)
             rgblight_sethsv(HSV_ORANGE);
-            rgblight_mode(1);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 4: // Gaming
             rgblight_sethsv(HSV_BLUE);
-            rgblight_mode(14);
+            rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL + 5);
             break;
         case 5: // Utility
             rgblight_sethsv(HSV_WHITE);
-            rgblight_mode(1);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
     }
 

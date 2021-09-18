@@ -114,10 +114,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     /* Utility */
     [5] = LAYOUT(
-        KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                                          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
+        LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),                            LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),LCA(KC_F12),
         _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        TG(0),   KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
         _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        TG(2),   KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
-        RESET,    _______, _______, _______, _______, _______,                                        TG(4),   KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
+        RESET,    _______, _______, KC_MPRV, KC_MNXT, KC_MPLY,                                        TG(4),   KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
         _______,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          KC_KP_0, RGB_VAD,  RGB_SAI, RGB_SAD, KC_TRNS,
                                                                _______, _______,    RGB_MOD, RGB_TOG,
                                                                         _______,    RGB_HUI,
@@ -156,4 +156,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
 
     return state;
+
+    if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+        rgblight_mode();
+    }
 };

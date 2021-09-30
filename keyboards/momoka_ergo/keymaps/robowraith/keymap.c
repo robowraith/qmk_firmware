@@ -96,10 +96,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    DE_DEG,  DE_UNDS, A(DE_5), A(DE_6), DE_CIRC,                                        DE_EXLM, DE_LABK, DE_RABK,  DE_EQL,  DE_AMPR, DE_EURO,
         KC_NO,    LSA(DE_7),DE_SLSH,A(DE_8), A(DE_9), DE_ASTR,                                        DE_QUES, DE_LPRN, DE_RPRN,  DE_MINS, DE_COLN, DE_AT,
         KC_NO,    DE_HASH, DE_DLR,  A(DE_7), A(DE_N), DE_GRV,                                         DE_PLUS, DE_PERC, DE_DQUO,  DE_QUOT, DE_SCLN, KC_NO,
-        KC_NO,    KC_NO,   KC_NO,   KC_NO,   C(DE_X),                                                          C(DE_X), KC_NO,    KC_NO,   KC_NO,   KC_NO,
+        KC_NO,    KC_NO,   KC_NO,   KC_NO,   G(DE_X),                                                          G(DE_X), KC_NO,    KC_NO,   KC_NO,   KC_NO,
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      C(DE_C), C(DE_V),  KC_END,     KC_PGDN, C(DE_V),  C(DE_C)
+                                                      G(DE_C), G(DE_V),  KC_END,     KC_PGDN, G(DE_V),  G(DE_C)
     ),
     /* Gaming */
     [4] = LAYOUT(

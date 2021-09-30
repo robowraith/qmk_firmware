@@ -157,7 +157,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     return state;
 
-    if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-        rgblight_mode();
+   };
+
+bool led_update_user(led_t led_state) {
+    if (led_state.caps_lock) {  //if caps lock is on
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING + 3);
+    } else {
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
     }
-};
+    return true;
+}

@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    KC_NO,   KC_NO,   KC_NO,   G(DE_X),                                                          G(DE_X), KC_NO,    KC_NO,   KC_NO,   KC_NO,
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      G(DE_C), G(DE_V),  KC_END,     KC_PGDN, G(DE_V),  G(DE_C)
+                                                      G(DE_C), G(DE_V), KC_END,     KC_PGDN, G(DE_V),  G(DE_C)
     ),
     /* Gaming */
     [4] = LAYOUT(
@@ -161,9 +161,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool led_update_user(led_t led_state) {
     if (led_state.caps_lock) {  //if caps lock is on
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING + 3);
+        rgblight_mode(RGBLIGHT_MODE_BREATHING + 3);
     } else {
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+        rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
     }
     return true;
 }

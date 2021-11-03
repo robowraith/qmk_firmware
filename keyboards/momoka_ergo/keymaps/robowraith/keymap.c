@@ -19,8 +19,8 @@
 void keyboard_post_init_user(void)
 {
     #ifdef RGBLIGHT_ENABLE
-        rgblight_sethsv(HSV_RED);
-        rgblight_mode(RGBLIGHT_MODE_KNIGHT + 2);
+        rgblight_sethsv_noeeprom(HSV_RED);
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_KNIGHT + 2);
     #endif
 }
 
@@ -130,28 +130,28 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
         case 0: // Bone (Linux)
-            rgblight_sethsv(HSV_GREEN);
-            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+            rgblight_sethsv_noeeprom(HSV_GREEN);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 1: // Shifted Layer (Linux)
-            rgblight_sethsv(HSV_CYAN);
-            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+            rgblight_sethsv_noeeprom(HSV_CYAN);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 2: // Bone (Mac)
-            rgblight_sethsv(HSV_RED);
-            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+            rgblight_sethsv_noeeprom(HSV_RED);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 3: // Shifted (Mac)
-            rgblight_sethsv(HSV_ORANGE);
-            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+            rgblight_sethsv_noeeprom(HSV_ORANGE);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case 4: // Gaming
-            rgblight_sethsv(HSV_BLUE);
-            rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL + 5);
+            rgblight_sethsv_noeeprom(HSV_BLUE);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 5);
             break;
         case 5: // Utility
-            rgblight_sethsv(HSV_WHITE);
-            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+            rgblight_sethsv_noeeprom(HSV_WHITE);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
     }
 
@@ -161,9 +161,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool led_update_user(led_t led_state) {
     if (led_state.caps_lock) {  //if caps lock is on
-        rgblight_mode(RGBLIGHT_MODE_BREATHING + 3);
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING + 3);
     } else {
-        rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
     }
     return true;
 }

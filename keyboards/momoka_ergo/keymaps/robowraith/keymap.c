@@ -115,13 +115,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Utility */
     [5] = LAYOUT(
         LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),                            LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),LCA(KC_F12),
-        _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        TG(0),   KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
-        _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        TG(2),   KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
-        RESET,    _______, _______, KC_MPRV, KC_MNXT, KC_MPLY,                                        TG(4),   KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
-        _______,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          KC_KP_0, RGB_VAD,  RGB_SAI, RGB_SAD, KC_TRNS,
-                                                               _______, _______,    RGB_MOD, RGB_TOG,
-                                                                        _______,    RGB_HUI,
-                                                      KC_LGUI, KC_LCTL, KC_PSCR,    RGB_HUD, KC_ENT,  KC_SPC
+        _______,  _______, _______, _______, _______, _______,                                        KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
+        _______,  KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                        KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+        RESET,    _______, _______, KC_MPRV, KC_MNXT, KC_MPLY,                                        KC_TAB, _______, _______, _______, _______, RESET,
+        KC_TRNS,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          _______, _______, _______, _______, KC_TRNS,
+                                                               _______, KC_PSCR,    TG(2),   RGB_TOG,
+                                                                        _______,    TG(4),
+                                                      KC_BSPC, KC_DEL,  KC_ESC,     KC_TAB,  KC_ENT,  KC_SPC
     )
 };
 

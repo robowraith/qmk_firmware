@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                       KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
     ),
     /* Utility */
-    [5] = LAYOUT(
+    [3] = LAYOUT(
         LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),                            LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),LCA(KC_F12),
         _______,  _______, _______, _______, _______, _______,                                        KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
         _______,  KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                        KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,

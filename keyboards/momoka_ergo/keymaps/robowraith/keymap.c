@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Bone for Linux */
     [0] = LAYOUT(
         KC_ESC,   DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                           DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    KC_BSPC,
-        KC_TAB,   DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
-        KC_CAPS,  BO_C,    BO_T,    BO_I,    BO_E,    DE_O,                                           DE_B,    BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
-        KC_LSFT,  DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA,                                        DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
+        S(C(DE_X)),  DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
+        S(C(DE_C)),  BO_C,    BO_T,    BO_I,    BO_E,    DE_O,                                           DE_B,    BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
+        S(C(DE_V)),  DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA,                                        DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
         TT(3),    KC_GRV,  KC_EQL,  MO(3),   MO(1),                                                            MO(1),   MO(3),   KC_LBRC, KC_RBRC, TT(3),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,

@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT(3),    KC_GRV,  KC_EQL,  MO(3),   MO(1),                                                            MO(1),   MO(3),   KC_LBRC, KC_RBRC, TT(3),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
-                                                      KC_BSPC, KC_DEL,  KC_END,     KC_PGDN, KC_ENT,  KC_SPC
+                                                      KC_BSPC, KC_DEL,  KC_ESC,     KC_TAB, KC_ENT,  KC_SPC
     ),
     /* Shifted Layer for Linux */
     [1] = LAYOUT(
@@ -71,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Gaming */
     [2] = LAYOUT(
         KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-        KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                           KC_Y,    KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
-        KC_CAPS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                           KC_H,    KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
-        KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                           KC_N,    KC_KP_1, KC_KP_2,  KC_KP_3, KC_SLSH, KC_RSFT,
+        KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                           KC_Y,    KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS, KC_PAST,
+        KC_CAPS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                           KC_H,    KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_MINUS,KC_PSLS,
+        KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                           KC_N,    KC_KP_1, KC_KP_2, KC_KP_3, KC_SLSH, KC_RSFT,
         MO(3),    KC_GRV,  KC_EQL,  KC_LEFT, KC_RGHT,                                                          KC_KP_0, KC_DOWN, KC_LBRC, KC_RBRC, MO(3),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
@@ -92,17 +92,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
- /* Utility */
-    [5] = LAYOUT(
-        LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),                            LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),LCA(KC_F12),
-        _______,  _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                                        TG(0),   KC_KP_7, KC_KP_8,  KC_KP_9, KC_KP_PLUS, KC_PAST,
-        _______,  KC_LSFT, KC_LEFT, KC_DOWN, KC_RIGHT,KC_PGDN,                                        TG(2),   KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,KC_PSLS,
-        RESET,    _______, _______, KC_MPRV, KC_MNXT, KC_MPLY,                                        TG(4),   KC_KP_1, KC_KP_2,  KC_KP_3, RGB_TOG, RESET,
-        _______,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          KC_KP_0, RGB_VAD,  RGB_SAI, RGB_SAD, KC_TRNS,
-                                                               _______, _______,    RGB_MOD, RGB_TOG,
-                                                                        _______,    RGB_HUI,
-                                                      KC_LGUI, KC_LCTL, KC_PSCR,    RGB_HUD, KC_ENT,  KC_SPC
-    )
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {

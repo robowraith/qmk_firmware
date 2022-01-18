@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CUT,  DE_J,    DE_D,    DE_U,    DE_A,    DE_X,                                           DE_P,    DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
         KC_COPY,  BO_C,    BO_T,    BO_I,    BO_E,    DE_O,                                           DE_B,    BO_N,    BO_R,    BO_S,    BO_G,    DE_Q,
         KC_PASTE,  DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA,                                        DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    KC_RSFT,
-        TT(3),    KC_GRV,  KC_EQL,  MO(3),   MO(1),                                                            MO(1),   MO(3),   KC_LBRC, KC_RBRC, TT(3),
+        TT(2),    KC_GRV,  KC_EQL,  MO(3),   MO(1),                                                            MO(1),   MO(3),   KC_LBRC, KC_RBRC, TT(2),
                                                                KC_LCTL, KC_LALT,    KC_RGUI, KC_RCTL,
                                                                         KC_HOME,    KC_PGUP,
                                                       KC_BSPC, KC_DEL,  KC_ESC,     KC_TAB, KC_ENT,  KC_SPC
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                        KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
         RESET,    _______, _______, KC_MPRV, KC_MNXT, KC_MPLY,                                        KC_TAB, _______, _______, _______, _______, RESET,
         KC_TRNS,  _______, KC_MUTE, KC_VOLD, KC_VOLU,                                                          _______, _______, _______, _______, KC_TRNS,
-                                                               _______, KC_PSCR,    TG(2),   RGB_TOG,
+                                                               _______, KC_PSCR,    _______,   RGB_TOG,
                                                                         _______,    _______,
                                                       KC_BSPC, KC_DEL,  KC_ESC,     KC_TAB,  KC_ENT,  KC_SPC
     )

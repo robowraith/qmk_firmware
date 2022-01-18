@@ -34,16 +34,6 @@ void keyboard_post_init_user(void)
 #define BO_S RALT_T(DE_S)
 #define BO_G RGUI_T(DE_G)
 
-// Modifier-keys for QWERTZ and Bone
-/*
-#define BO_MO1L LT(1, KC_BSPC)
-#define BO_MO1R LT(1, KC_SPC)
-#define BO_MO3L LT(3, KC_BSPC)
-#define BO_MO3R LT(3, KC_SPC)
-#define BO_MO5L LT(5, KC_DEL)
-#define BO_MO5R LT(5, KC_ENT)
-*/
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Bone for Linux */
     [0] = LAYOUT(

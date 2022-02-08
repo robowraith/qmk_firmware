@@ -88,3 +88,8 @@ __pycache__
 user_song_list.h
 keyboards/momoka_ergo/keymaps/robowraith/ref_keymap
 .vscode/settings.json
+
+# clangd
+compile_commands.json
+.clangd/
+.cache/

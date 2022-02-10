@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CUT,   DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_COPY,  BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
         KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_RSFT,
-        TT(2),    KC_GRV,     KC_EQL,    MO(3),     MO(1),                      /**/         MO(1),     MO(3),     KC_LBRC,   KC_RBRC,    TT(2),
+        TT(2),    KC_GRV,     KC_EQL,    MO(3),     MO(1),                      /**/                    MO(1),     MO(3),     KC_LBRC,    KC_RBRC,    TT(2),
                                                                KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
                                                                         KC_HOME,/**/KC_PGUP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
         KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
         KC_NO,    DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    KC_NO,
-        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/         C(DE_X),   KC_NO,     KC_NO,     KC_NO,      KC_NO,
+        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    C(DE_X),   KC_NO,     KC_NO,      KC_NO,      KC_NO,
                                                                KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
                                                                         KC_HOME,/**/KC_PGUP,
                                                     C(DE_C),   C(DE_V), KC_END, /**/KC_PGDN, C(DE_V),   C(DE_C)
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,   KC_Q,       KC_W,      KC_E,      KC_R,      KC_T,            /**/         KC_Y,      KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_KP_PLUS, KC_PAST,
         KC_CAPS,  KC_A,       KC_S,      KC_D,      KC_F,      KC_G,            /**/         KC_H,      KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_KP_MINUS,KC_PSLS,
         KC_LSFT,  KC_Z,       KC_X,      KC_C,      KC_V,      KC_B,            /**/         KC_N,      KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_SLSH,    KC_RSFT,
-        MO(3),    KC_GRV,     KC_EQL,    KC_LEFT,   KC_RGHT,                    /**/         KC_KP_0,   KC_DOWN,   KC_LBRC,   KC_RBRC,    MO(3),
+        MO(3),    KC_GRV,     KC_EQL,    KC_LEFT,   KC_RGHT,                    /**/                    KC_KP_0,   KC_DOWN,   KC_LBRC,    KC_RBRC,    MO(3),
                                                                KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
                                                                         KC_HOME,/**/KC_PGUP,
                                                     KC_BSPC,   KC_DEL,  KC_END, /**/KC_PGDN, KC_ENT,    KC_SPC
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_PGUP,   KC_HOME,   KC_UP,     KC_END,     KC_NO,      KC_NO,
         KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_PGDN,   KC_LEFT,   KC_DOWN,   KC_RGHT,    KC_NO,      KC_NO,
         RESET,     KC_NO,     KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         KC_TAB,    KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-        KC_TRNS,   KC_NO,     KC_MUTE,   KC_VOLD,   KC_VOLU,                    /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_TRNS,
+        KC_TRNS,   KC_NO,     KC_MUTE,   KC_VOLD,   KC_VOLU,                    /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_TRNS,
                                                                KC_NO,   KC_PSCR,/**/KC_NO,   RGB_TOG,
                                                                         KC_NO,  /**/KC_NO,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC

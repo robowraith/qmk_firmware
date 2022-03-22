@@ -71,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     /* Utility */
     [3] = LAYOUT(
-        LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),      /**/         LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),LCA(KC_F12),
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_PGUP,   KC_HOME,   KC_UP,     KC_END,     KC_NO,      KC_NO,
-        KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_PGDN,   KC_LEFT,   KC_DOWN,   KC_RGHT,    KC_NO,      KC_NO,
+        LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),      /**/         LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),KC_MPLY,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_PGUP,   KC_HOME,   KC_UP,     KC_END,     KC_NO,      KC_MNXT,
+        KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_PGDN,   KC_LEFT,   KC_DOWN,   KC_RGHT,    KC_NO,      KC_MPRV,
         RESET,     KC_NO,     KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         KC_TAB,    KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
         KC_TRNS,   KC_NO,     KC_MUTE,   KC_VOLD,   KC_VOLU,                    /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_TRNS,
                                                                KC_NO,   KC_PSCR,/**/KC_NO,   RGB_TOG,

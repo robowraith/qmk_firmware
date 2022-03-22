@@ -76,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_PGDN,   KC_LEFT,   KC_DOWN,   KC_RGHT,    KC_NO,      KC_MPRV,
         RESET,     KC_NO,     KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         KC_TAB,    KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
         KC_TRNS,   KC_NO,     KC_MUTE,   KC_VOLD,   KC_VOLU,                    /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_TRNS,
-                                                               KC_NO,   KC_PSCR,/**/KC_NO,   RGB_TOG,
-                                                                        KC_NO,  /**/KC_NO,
-                                                    KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
+                                                               KC_NO,   DT_PRNT,/**/KC_NO,   RGB_TOG,
+                                                                        DT_UP,  /**/KC_NO,
+                                                    KC_BSPC,   KC_DEL,  DT_DOWN,/**/KC_TAB,  KC_ENT,    KC_SPC
     )
 };
 

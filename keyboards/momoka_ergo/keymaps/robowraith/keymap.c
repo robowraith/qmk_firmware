@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
         TT(2),    KC_NO,      KC_NO,     MO(3),     MO(1),                      /**/                    MO(1),     MO(3),     KC_NO,      KC_NO,     TT(2),
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,
-                                                                        KC_NO,  /**/KC_NO,
+                                                                        KC_NO,  /**/KC_APP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
     /* Shifted Layer for Linux */

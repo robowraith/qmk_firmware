@@ -15,7 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
-#include "rgblight_list.h"
+//#include "rgblight_list.h"
 
 // Home-Row-Mod-Keys for QWERTZ and Bone
 #define BO_C LGUI_T(DE_C)
@@ -54,8 +54,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT(
       // Bone Linux
       KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
+      KC_CUT,     DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
+      KC_COPY,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
       KC_PASTE,   BO_C,       BO_T,       BO_I,       BO_E,       BO_MO1L,    KC_ESC,     BO_MO1R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
       KC_CAPS,    DE_F,       DE_V,       DE_UDIA,    BO_MO2L,    DE_ODIA,    KC_TAB,     DE_Y,       BO_MO2R,    DE_COMM,    DE_DOT,     DE_K,        KC_RSFT,               KC_UP,
+      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_BSPC,                KC_DEL,                 KC_ENT,                 KC_SPC,     KC_RALT,    TT(3),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
   [1] = LAYOUT(
       // Shifted Layer Linux
       KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -66,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_NO,      KC_NO,      C(DE_X),    C(DE_C),                S(KC_INS),              S(KC_INS),              C(DE_C),    C(DE_X),    MO(5),      KC_NO,      KC_NO,      KC_NO,      KC_NO),
   [2] = LAYOUT(
       // Utillity
-      KC_ESC,     TG(1),      TG(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_TOG,    NK_TOGG,    EEP_RST,
+      KC_ESC,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_TOG,    NK_TOGG,    EEP_RST,
       KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      RESET,
       KC_TAB,     KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_PGUP,                KC_NLCK,    KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
       KC_NO,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
@@ -130,7 +133,7 @@ void default_color_scheme(void) {
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
-       case 0: // Bone (Linux)
+        case 0: // Bone (Linux)
             rgb_matrix_set_color_all(RGB_WHITE);
             default_color_scheme();
             rgb_matrix_set_color(logoKey, RGB_BLUE );

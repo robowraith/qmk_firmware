@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      KC_NO,
         KC_CUT,   DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_COPY,  BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
-        KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_CAPS,
-        TT(2),    KC_BRID,    KC_BRIU,   MO(3),     MO(1),                      /**/                    MO(1),     MO(3),     KC_VOLD,    KC_VOLU,   TT(2),
+        KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
+        KC_CAPS,  KC_BRID,    KC_BRIU,   MO(2),     MO(1),                      /**/                    MO(1),     MO(3),     KC_VOLD,    KC_VOLU,  KC_CAPS,
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,
                                                                         KC_NO,  /**/KC_APP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
@@ -58,27 +58,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_NO,     KC_NO,   KC_NO,  /**/KC_PGDN, C(DE_V),   C(DE_C)
 
     ),
-    /* Gaming */
+    /* Utility right */
     [2] = LAYOUT(
-        KC_ESC,   KC_1,       KC_2,      KC_3,      KC_4,      KC_5,            /**/         KC_6,      KC_7,      KC_8,      KC_9,       KC_0,       KC_NO,
-        KC_TAB,   KC_Q,       KC_W,      KC_E,      KC_R,      KC_T,            /**/         KC_Y,      KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_KP_PLUS, KC_NO,
-        KC_CAPS,  KC_A,       KC_S,      KC_D,      KC_F,      KC_G,            /**/         KC_H,      KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_KP_MINUS,KC_NO,
-        KC_LSFT,  KC_Z,       KC_X,      KC_C,      KC_V,      KC_B,            /**/         KC_N,      KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_NO,      KC_NO,
-        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_KP_0,   KC_DOWN,   KC_NO,      KC_NO,      TO(0),
-                                                               KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
-                                                                        KC_HOME,/**/KC_PGUP,
-                                                    KC_BSPC,   KC_DEL,  KC_END, /**/KC_PGDN, KC_ENT,    KC_SPC
+        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_MPLY,         /**/         LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),KC_MPLY,
+        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_MNXT,         /**/         KC_NO,     KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_KP_PLUS, KC_MNXT,
+        KC_NO,    KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_MPRV,         /**/         KC_NO,     KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_KP_MINUS,KC_MPRV,
+        RESET,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_NO,      RESET,
+        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_KP_0,   KC_NO,     KC_NO,      KC_NO,      TO(0),
+                                                               KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
+                                                                        KC_NO,  /**/KC_NO,
+                                                    KC_BSPC,   KC_DEL,  KC_NO,  /**/KC_NO,   KC_ENT,    KC_SPC
     ),
-    /* Utility */
+    /* Utility left */
     [3] = LAYOUT(
-        LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),      /**/         LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),KC_MPLY,
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_PGUP,   KC_HOME,   KC_UP,     KC_END,     KC_NO,      KC_MNXT,
-        KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_PGDN,   KC_LEFT,   KC_DOWN,   KC_RGHT,    KC_NO,      KC_MPRV,
-        RESET,     KC_NO,     KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         KC_TAB,    KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-        KC_TRNS,   KC_NO,     KC_MUTE,   KC_VOLD,   KC_VOLU,                    /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_TRNS,
+        LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),      /**/         KC_MUTE,   KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_MUTE,
+        KC_NO,     KC_NO,     KC_HOME,   KC_UP,     KC_END,    KC_PGUP,         /**/         KC_VOLU,   KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_VOLU,
+        KC_NO,     KC_NO,     KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_VOLD,   KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    KC_VOLD,
+        RESET,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_TAB,    KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
+        TO(0),     KC_NO,     KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      TO(0),
                                                                KC_NO,   DT_PRNT,/**/KC_NO,   RGB_TOG,
                                                                         DT_UP,  /**/KC_NO,
-                                                    KC_BSPC,   KC_DEL,  DT_DOWN,/**/KC_TAB,  KC_ENT,    KC_SPC
+                                                    KC_BSPC,   KC_DEL,  DT_DOWN,/**/KC_NO,   KC_ENT,    KC_SPC
     )
 };
 

@@ -93,3 +93,6 @@ keyboards/momoka_ergo/keymaps/robowraith/ref_keymap
 compile_commands.json
 .clangd/
 .cache/
+
+# VIA(L) json files that don't belong in QMK repo
+via*.json

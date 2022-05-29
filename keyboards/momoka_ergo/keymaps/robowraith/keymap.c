@@ -56,7 +56,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Bone for Linux */
     [0] = LAYOUT(
-        KC_NO,    DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      KC_NO,
+        KC_NO,    DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      TO(5),
         KC_CUT,   DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_COPY,  BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
         KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
@@ -108,6 +108,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                KC_NO,   DT_PRNT,/**/KC_NO,   RGB_TOG,
                                                                         DT_UP,  /**/KC_NO,
                                                     KC_BSPC,   KC_DEL,  DT_DOWN,/**/KC_NO,   KC_ENT,    KC_SPC
+    ),
+    /* Ganing */
+    [5] = LAYOUT(
+        KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,            /**/         KC_F1,     KC_F2,     KC_F3,     KC_F4,      KC_F5,      KC_F6,
+        KC_T,      KC_Y,      KC_Q,      KC_W,      KC_E,      KC_R,            /**/         KC_DOT,    KC_KP_7,   KC_KP_8,   KC_KP_9,KC_KP_ASTERISK, KC_F7,
+        KC_G,      KC_H,      KC_A,      KC_S,      KC_D,      KC_F,            /**/         KC_COMMA,  KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_KP_SLASH,KC_F8,
+        KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,            /**/         KC_TAB,    KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_KP_MINUS,KC_F9,
+        KC_U,      KC_I,      KC_O,      KC_P,      KC_J,                       /**/                    KC_K,      KC_P,      KC_F12,     KC_F11,     KC_F10,
+                                                               KC_L,    KC_M,   /**/RGB_MOD, RGB_TOG,
+                                                                        TO(0),  /**/KC_VOLU,
+                                                    KC_SPC,    KC_ENT,  KC_ESC, /**/KC_VOLD, KC_MUTE,   KC_KP_0
     )
 };
 
@@ -133,6 +144,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         case 4: // Utility
             rgblight_sethsv_noeeprom(HSV_WHITE);
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            break;
+         case 5: // Gaming
+            rgblight_sethsv_noeeprom(HSV_RED);
             break;
     }
 

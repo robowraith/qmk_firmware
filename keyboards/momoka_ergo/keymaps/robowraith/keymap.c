@@ -15,7 +15,9 @@
  */
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
+extern rgblight_config_t rgblight_config;
 
+/*
 void keyboard_post_init_user(void)
 {
     #ifdef RGBLIGHT_ENABLE
@@ -23,7 +25,7 @@ void keyboard_post_init_user(void)
         rgblight_mode_noeeprom(RGBLIGHT_MODE_KNIGHT + 2);
     #endif
 }
-
+*/
 // Home-Row-Mod-Keys for QWERTZ and Bone
 #define BO_C LGUI_T(DE_C)
 #define BO_T LALT_T(DE_T)
@@ -122,44 +124,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+int RGB_current_mode;
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
         case 0: // Bone (Linux)
             rgblight_sethsv_noeeprom(HSV_BLUE);
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            RGB_current_mode = 1;
             break;
         case 1: // Shifted Layer (Linux)
             rgblight_sethsv_noeeprom(HSV_CYAN);
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            RGB_current_mode = 1;
             break;
         case 2: // Shifted Layer (Linux)
             rgblight_sethsv_noeeprom(HSV_CYAN);
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            RGB_current_mode = 1;
             break;
         case 3: // Utility
             rgblight_sethsv_noeeprom(HSV_WHITE);
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            RGB_current_mode = 1;
             break;
         case 4: // Utility
             rgblight_sethsv_noeeprom(HSV_WHITE);
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            RGB_current_mode = 1;
             break;
          case 5: // Gaming
-            rgblight_sethsv_noeeprom(HSV_RED);
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+            RGB_current_mode = 14;
             break;
     }
-
     return state;
-
    };
 
 bool led_update_user(led_t led_state) {
     if (led_state.caps_lock) {  //if caps lock is on
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING + 3);
+        RGB_current_mode = rgblight_config.mode;
+        rgblight_mode_noeeprom(5);
     } else {
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+        rgblight_mode_noeeprom(RGB_current_mode);
     }
     return true;
 }

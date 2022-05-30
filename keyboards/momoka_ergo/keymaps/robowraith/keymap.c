@@ -17,15 +17,6 @@
 #include "keymap_german.h"
 extern rgblight_config_t rgblight_config;
 
-/*
-void keyboard_post_init_user(void)
-{
-    #ifdef RGBLIGHT_ENABLE
-        rgblight_sethsv_noeeprom(HSV_RED);
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_KNIGHT + 2);
-    #endif
-}
-*/
 // Home-Row-Mod-Keys for QWERTZ and Bone
 #define BO_C LGUI_T(DE_C)
 #define BO_T LALT_T(DE_T)
@@ -55,9 +46,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+enum layer_names {
+    _BONE,
+    _SHIFTED_RIGHT,
+    _SHIFTED_LEFT,
+    _UTILITY_RIGHT,
+    _UTILITY_LEFT,
+    _GAMING,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Bone for Linux */
-    [0] = LAYOUT(
+    [_BONE] = LAYOUT(
         KC_NO,    DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      TO(5),
         KC_CUT,   DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_COPY,  BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
@@ -67,8 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         KC_NO,  /**/KC_APP,
                                                     BO_SR,      BO_UR,  KC_ESC, /**/KC_TAB,  BO_UL,     BO_SL
     ),
-    /* Shifted right layer for Linux */
-    [1] = LAYOUT(
+    [_SHIFTED_RIGHT] = LAYOUT(
         KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F11,     KC_F12,
         KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
         KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
@@ -79,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
     /* Shifted left layer for Linux */
-    [2] = LAYOUT(
+    [_SHIFTED_LEFT] = LAYOUT(
         KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      KC_NO,
         KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
@@ -90,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
     /* Utility right */
-    [3] = LAYOUT(
+    [_UTILITY_RIGHT] = LAYOUT(
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         LCA(KC_F7),LCA(KC_F8),LCA(KC_F9),LCA(KC_F10),LCA(KC_F11),KC_NO,
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NUM,    KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_KP_PLUS, KC_NO,
         KC_NO,    KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_NO,     KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_KP_MINUS,KC_NO,
@@ -101,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_BSPC,   KC_DEL,  KC_NO,  /**/KC_NO,   KC_ENT,    KC_KP_0
     ),
     /* Utility left */
-    [4] = LAYOUT(
+    [_UTILITY_LEFT] = LAYOUT(
         LCA(KC_F1),LCA(KC_F2),LCA(KC_F3),LCA(KC_F4),LCA(KC_F5),LCA(KC_F6),      /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
         KC_NO,     KC_NO,     KC_HOME,   KC_UP,     KC_END,    KC_PGUP,         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
         KC_NO,     KC_NO,     KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    KC_NO,
@@ -112,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_BSPC,   KC_DEL,  DT_DOWN,/**/KC_NO,   KC_ENT,    KC_SPC
     ),
     /* Ganing */
-    [5] = LAYOUT(
+    [_GAMING] = LAYOUT(
         KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,            /**/         KC_F1,     KC_F2,     KC_F3,     KC_F4,      KC_F5,      KC_F6,
         KC_TAB,    KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,            /**/         KC_Y,      KC_KP_7,   KC_KP_8,   KC_KP_9,KC_KP_ASTERISK, KC_F7,
         KC_CAPS,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,            /**/         KC_H,      KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_KP_SLASH,KC_F8,
@@ -124,32 +122,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+void keyboard_post_init_user(void)
+{
+    #ifdef RGBLIGHT_ENABLE
+        rgblight_sethsv(HSV_RED);
+        rgblight_mode(RGBLIGHT_MODE_KNIGHT + 2);
+    #endif
+}
+
 int RGB_current_mode;
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
-        case 0: // Bone (Linux)
+        case _BONE:
             rgblight_sethsv_noeeprom(HSV_BLUE);
             RGB_current_mode = 1;
             break;
-        case 1: // Shifted Layer (Linux)
+        case _SHIFTED_RIGHT:
             rgblight_sethsv_noeeprom(HSV_CYAN);
             RGB_current_mode = 1;
             break;
-        case 2: // Shifted Layer (Linux)
+        case _SHIFTED_LEFT:
             rgblight_sethsv_noeeprom(HSV_CYAN);
             RGB_current_mode = 1;
             break;
-        case 3: // Utility
+        case _UTILITY_RIGHT:
             rgblight_sethsv_noeeprom(HSV_WHITE);
             RGB_current_mode = 1;
             break;
-        case 4: // Utility
+        case _UTILITY_LEFT:
             rgblight_sethsv_noeeprom(HSV_WHITE);
             RGB_current_mode = 1;
             break;
-         case 5: // Gaming
+         case _GAMING:
             RGB_current_mode = 14;
             break;
     }
@@ -157,11 +163,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
    };
 
 bool led_update_user(led_t led_state) {
-    if (led_state.caps_lock) {  //if caps lock is on
+    if (led_state.caps_lock) {
         RGB_current_mode = rgblight_config.mode;
         rgblight_mode_noeeprom(5);
     } else {
         rgblight_mode_noeeprom(RGB_current_mode);
     }
     return true;
-}
+};

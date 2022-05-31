@@ -182,7 +182,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(4, layer_state_cmp(state, _UTILITY_RIGHT));
     rgblight_set_layer_state(5, layer_state_cmp(state, _UTILITY_LEFT));
     if (layer_state_cmp(state, _GAMING)) {
-        rgblight_set_layer_state(0, layer_state_cmp(state, _GAMING));
+        rgblight_set_layer_state(0, true);
         rgblight_mode_noeeprom(14);
     }
     return state;

@@ -167,7 +167,7 @@ void keyboard_post_init_user(void) {
 
 bool led_update_user(led_t led_state) {
     if (led_state.caps_lock) {  //if caps lock is on
-        rgblight_set_layer_state(0, );
+        rgblight_set_layer_state(0, true);
         rgblight_mode_noeeprom(5);
     } else {
         rgblight_mode_noeeprom(14);

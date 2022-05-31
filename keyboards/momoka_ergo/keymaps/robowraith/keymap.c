@@ -122,52 +122,68 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-void keyboard_post_init_user(void)
-{
-    #ifdef RGBLIGHT_ENABLE
-        rgblight_sethsv(HSV_RED);
-        rgblight_mode(RGBLIGHT_MODE_KNIGHT + 2);
-    #endif
-}
+const rgblight_segment_t PROGMEM my_utility_right[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0,11,HSV_BLUE},
+    {11,11,HSV_WHITE}
+);
 
-int RGB_current_mode;
+const rgblight_segment_t PROGMEM my_utility_left[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0,11,HSV_WHITE},
+    {11,11,HSV_BLUE}
+);
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    uint8_t layer = biton32(state);
-    switch (layer) {
-        case _BONE:
-            rgblight_sethsv_noeeprom(HSV_BLUE);
-            RGB_current_mode = 1;
-            break;
-        case _SHIFTED_RIGHT:
-            rgblight_sethsv_noeeprom(HSV_CYAN);
-            RGB_current_mode = 1;
-            break;
-        case _SHIFTED_LEFT:
-            rgblight_sethsv_noeeprom(HSV_CYAN);
-            RGB_current_mode = 1;
-            break;
-        case _UTILITY_RIGHT:
-            rgblight_sethsv_noeeprom(HSV_WHITE);
-            RGB_current_mode = 1;
-            break;
-        case _UTILITY_LEFT:
-            rgblight_sethsv_noeeprom(HSV_WHITE);
-            RGB_current_mode = 1;
-            break;
-         case _GAMING:
-            RGB_current_mode = 14;
-            break;
-    }
-    return state;
+const rgblight_segment_t PROGMEM my_shifted_right[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0,11,HSV_BLUE},
+    {11,11,HSV_CYAN}
+);
+
+const rgblight_segment_t PROGMEM my_shifted_left[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0,11,HSV_CYAN},
+    {11,11,HSV_BLUE}
+);
+
+const rgblight_segment_t PROGMEM my_default_both[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0,22,HSV_BLUE}
+);
+
+const rgblight_segment_t PROGMEM my_effect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_effect_layer,
+    my_default_both,
+    my_shifted_right,
+    my_shifted_left,
+    my_utility_right,
+    my_utility_left
+);
+
+void keyboard_post_init_user(void) {
+    rgblight_layers = my_rgb_layers;
+    rgblight_mode(22);
+    rgblight_sethsv(HSV_RED);
    };
 
 bool led_update_user(led_t led_state) {
-    if (led_state.caps_lock) {
-        RGB_current_mode = rgblight_config.mode;
+    if (led_state.caps_lock) {  //if caps lock is on
+        rgblight_set_layer_state(0, );
         rgblight_mode_noeeprom(5);
     } else {
-        rgblight_mode_noeeprom(RGB_current_mode);
+        rgblight_mode_noeeprom(14);
     }
     return true;
+};
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(1, layer_state_cmp(state, 0));
+    rgblight_set_layer_state(2, layer_state_cmp(state, 1));
+    rgblight_set_layer_state(3, layer_state_cmp(state, 2));
+    rgblight_set_layer_state(4, layer_state_cmp(state, 3));
+    rgblight_set_layer_state(5, layer_state_cmp(state, 4));
+    if (layer_state_cmp(state, 5)) {
+        rgblight_set_layer_state(0, layer_state_cmp(state, 5));
+        rgblight_mode_noeeprom(14);
+    }
+    return state;
 };

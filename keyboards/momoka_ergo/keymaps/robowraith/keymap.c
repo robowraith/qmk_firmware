@@ -67,11 +67,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     BO_SR,      BO_UR,  KC_ESC, /**/KC_TAB,  BO_UL,     BO_SL
     ),
     [_SHIFTED_RIGHT] = LAYOUT(
-        KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F11,     KC_F12,
-        KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
-        KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
-        KC_NO,    DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    KC_NO,
-        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/         C(DE_X),   KC_NO,     KC_NO,     KC_NO,      KC_NO,
+        KC_NO,    DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F11,     KC_F12,
+        KC_CUT,   DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
+        KC_COPY,  BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
+        KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    KC_NO,
+        KC_CAPS,  KC_BRID,    KC_BRIU,   MO(4),     MO(2),                      /**/         C(DE_X),   KC_NO,     KC_MPRV,   KC_MNXT,    KC_MPLY,
                                                                KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
                                                                         KC_HOME,/**/KC_PGUP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC

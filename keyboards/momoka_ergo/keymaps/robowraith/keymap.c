@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CUT,   DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
         KC_COPY,  BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
         KC_PASTE, DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    KC_NO,
-        KC_CAPS,  KC_BRID,    KC_BRIU,   MO(4),     MO(2),                      /**/         C(DE_X),   KC_NO,     KC_MPRV,   KC_MNXT,    KC_MPLY,
+        CAPS_WORD,  KC_BRID,    KC_BRIU,   MO(4),     MO(2),                      /**/         C(DE_X),   KC_NO,     KC_MPRV,   KC_MNXT,    KC_MPLY,
                                                                KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
                                                                         KC_HOME,/**/KC_PGUP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
@@ -166,7 +166,7 @@ void keyboard_post_init_user(void) {
    };
 
 bool led_update_user(led_t led_state) {
-    if (led_state.caps_lock) {  //if caps lock is on
+    if (led_state.caps_lock) {
         rgblight_set_layer_state(0, true);
         rgblight_mode_noeeprom(5);
     } else {

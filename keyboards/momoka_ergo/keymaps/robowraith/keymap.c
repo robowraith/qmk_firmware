@@ -15,21 +15,25 @@
  */
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
+#include "features/select_word.h"
 extern rgblight_config_t rgblight_config;
 
-// Home-Row-Mod-Keys for QWERTZ and Bone
-#define BO_C LGUI_T(DE_C)
-#define BO_T LALT_T(DE_T)
-#define BO_I LCTL_T(DE_I)
-#define BO_E LSFT_T(DE_E)
-#define BO_N RSFT_T(DE_N)
-#define BO_R RCTL_T(DE_R)
-#define BO_S RALT_T(DE_S)
-#define BO_G RGUI_T(DE_G)
-#define BO_SR LT(1, KC_BSPC)
-#define BO_SL LT(2, KC_SPC)
-#define BO_UR LT(3, KC_DEL)
-#define BO_UL LT(4, KC_ENT)
+// Home-Row-Mod-Keys for Bone
+enum custom_keycodes {
+    BO_C = LGUI_T(DE_C),
+    BO_T = LALT_T(DE_T),
+    BO_I = LCTL_T(DE_I),
+    BO_E = LSFT_T(DE_E),
+    BO_N = RSFT_T(DE_N),
+    BO_R = RCTL_T(DE_R),
+    BO_S = RALT_T(DE_S),
+    BO_G = RGUI_T(DE_G),
+    BO_SR = LT(1, KC_BSPC),
+    BO_SL = LT(2, KC_SPC),
+    BO_UR = LT(3, KC_DEL),
+    BO_UL = LT(4, KC_ENT),
+    SELWRD = SAFE_RANGE
+};
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -78,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SHIFTED_LEFT] = LAYOUT(
         KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      KC_NO,
-        KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
+        SELWRD,   DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
         KC_NO,    DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    MO(1),     MO(3),     KC_VOLD,    KC_VOLU,   KC_MUTE,
@@ -212,4 +216,10 @@ bool caps_word_press_user(uint16_t keycode) {
         default:
             return false;  // Deactivate Caps Word.
     }
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_select_word(keycode, record, SELWRD)) { return false; }
+
+  return true;
 };

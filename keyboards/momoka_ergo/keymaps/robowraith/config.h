@@ -53,7 +53,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN D1  // or D1, D2, D3, E6
 
 #define RGB_DI_PIN C7
-#define RGBLIGHT_ANIMATIONS
+//#define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#define RGBLIGHT_EFFECT_BREATHE
+#define RGBLIGHT_EFFECT_KNIGHT
 #define RGBLED_NUM 22
 #define RGBLED_SPLIT { 11, 11 }
 #define RGBLIGHT_HUE_STEP 8
@@ -70,13 +73,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // default but used in macros
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
-#define TAPPING_TERM_PER_KEY
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
 
 /* Enable lighting layers */
 #define RGBLIGHT_LAYERS
@@ -89,6 +86,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
+
+/* Combos */
+#define COMBO_TERM 25        // how quickly all combo keys must be pressed in succession to trigger
+#define COMBO_MUST_HOLD_MODS // if a combo triggers a modifier, only trigger when the combo is held
+#define COMBO_HOLD_TERM 175  // how long at least one of the combo keys must be held to trigger
 
 /* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
  * This is useful for the Windows task manager shortcut (ctrl+shift+esc).

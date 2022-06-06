@@ -17,22 +17,20 @@
 #include "keymap_german.h"
 extern rgblight_config_t rgblight_config;
 
-// Home-Row-Mod-Keys for Bone
-enum custom_keycodes {
-    BO_SR = LT(1, KC_BSPC),
-    BO_SL = LT(2, KC_SPC),
-    BO_UR = LT(3, KC_DEL),
-    BO_UL = LT(4, KC_ENT),
-    SELWRD = SAFE_RANGE
-};
-
 // define combo names
 enum combos {
     COMBO_LSFT,
     COMBO_LCTL,
     COMBO_LGUI,
     COMBO_LALT,
-    COMBO_LCTLGUI,
+    COMBO_RSFT,
+    COMBO_RCTL,
+    COMBO_RGUI,
+    COMBO_RALT,
+    COMBO_LSR,
+    COMBO_LSL,
+    COMBO_LUR,
+    COMBO_LUL,
     COMBO_LENGTH // nifty trick to avoid manually specifying how many combos you have
 };
 
@@ -43,6 +41,14 @@ const uint16_t PROGMEM oe_combo[] = {DE_O, DE_E, COMBO_END};
 const uint16_t PROGMEM ei_combo[] = {DE_E, DE_I, COMBO_END};
 const uint16_t PROGMEM it_combo[] = {DE_I, DE_T, COMBO_END};
 const uint16_t PROGMEM tc_combo[] = {DE_T, DE_C, COMBO_END};
+const uint16_t PROGMEM bn_combo[] = {DE_B, DE_N, COMBO_END};
+const uint16_t PROGMEM nr_combo[] = {DE_N, DE_R, COMBO_END};
+const uint16_t PROGMEM rs_combo[] = {DE_R, DE_S, COMBO_END};
+const uint16_t PROGMEM sg_combo[] = {DE_S, DE_G, COMBO_END};
+const uint16_t PROGMEM ebsp_combo[] = {DE_E, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM nspc_combo[] = {DE_N, KC_SPC, COMBO_END};
+const uint16_t PROGMEM edel_combo[] = {DE_E, KC_DEL, COMBO_END};
+const uint16_t PROGMEM nent_combo[] = {DE_N, KC_ENT, COMBO_END};
 
 // map combo names to their keys and the key they trigger
 combo_t key_combos[] = {
@@ -50,22 +56,15 @@ combo_t key_combos[] = {
     [COMBO_LCTL] = COMBO(ei_combo, KC_LCTL),
     [COMBO_LGUI] = COMBO(it_combo, KC_LALT),
     [COMBO_LALT] = COMBO(tc_combo, KC_LGUI),
+    [COMBO_RSFT] = COMBO(bn_combo, KC_RSFT),
+    [COMBO_RCTL] = COMBO(nr_combo, KC_RCTL),
+    [COMBO_RGUI] = COMBO(rs_combo, KC_RALT),
+    [COMBO_RALT] = COMBO(sg_combo, KC_RGUI),
+    [COMBO_LSR] = COMBO(ebsp_combo, MO(1)),
+    [COMBO_LSL] = COMBO(nspc_combo, MO(2)),
+    [COMBO_LUR] = COMBO(edel_combo, MO(3)),
+    [COMBO_LUL] = COMBO(nent_combo, MO(4)),
 };
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-   switch (keycode) {
-        case BO_SL:
-            return TAPPING_TERM + 50;
-        case BO_SR:
-            return TAPPING_TERM + 50;
-        case BO_UL:
-            return TAPPING_TERM + 50;
-        case BO_UR:
-            return TAPPING_TERM + 50;
-        default:
-            return TAPPING_TERM;
-    }
-}
 
 enum layer_names {
     _BONE,
@@ -82,27 +81,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_COPY,  DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_PASTE, DE_C,       DE_T,      DE_I,      DE_E,      DE_O,            /**/         DE_B,      DE_N,      DE_R,      DE_S,       DE_G,      DE_Q,
         CAPSWRD,  DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
-        KC_NO,    KC_BRID,    KC_BRIU,   MO(4),     MO(2),                      /**/                    MO(1),     MO(3),     KC_VOLD,    KC_VOLU,   KC_MUTE,
+        KC_NO,    KC_BRID,    KC_BRIU,   KC_NO,     LT(3,OSL(1)),               /**/                  LT(4,OSL(2)),KC_NO,     KC_VOLD,    KC_VOLU,   KC_MUTE,
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,
                                                                         KC_NO,  /**/KC_APP,
-                                                    BO_SR,      BO_UR,  KC_ESC, /**/KC_TAB,  BO_UL,     BO_SL
+                                                    KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
     [_SHIFTED_RIGHT] = LAYOUT(
         KC_CUT,   DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F11,     KC_F12,
         KC_COPY,  DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
         KC_PASTE, DE_C,       DE_T,      DE_I,      DE_E,      DE_O,            /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
         CAPSWRD,  DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    KC_NO,
-        KC_NO,    KC_BRID,    KC_BRIU,   MO(4),     MO(2),                      /**/                    C(DE_X),   KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
+        KC_NO,    KC_BRID,    KC_BRIU,   KC_NO,     LT(3,OSL(1)),                      /**/             KC_NO,     KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
                                                                KC_LCTL, KC_LALT,/**/KC_RGUI, KC_RCTL,
                                                                         KC_HOME,/**/KC_PGUP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
     [_SHIFTED_LEFT] = LAYOUT(
         KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      KC_NO,
-        SELWRD,   DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
+        KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_B,      DE_N,      DE_R,      DE_S,       DE_G,      DE_Q,
         KC_NO,    DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
-        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    MO(1),     MO(3),     KC_VOLD,    KC_VOLU,   KC_MUTE,
+        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                  LT(4,OSL(2)),T6cT6
                                                                KC_NO,   KC_NO,  /**/KC_RGUI, KC_NO,
                                                                         KC_NO,  /**/KC_APP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
@@ -205,12 +204,28 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 };
 
-void caps_word_set_user(bool active) {
-    if (active) {
-        rgblight_set_layer_state(0, true);
-        rgblight_mode_noeeprom(5);
-    } else {
-        rgblight_set_layer_state(1, true);
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(3,OSL(1)):
+            if (record->tap.count && record->event.pressed) {
+                if (IS_LAYER_ON(_SHIFTED_RIGHT)) {
+                    clear_oneshot_layer_state(ONESHOT_PRESSED);
+                } else {
+                    set_oneshot_layer(_SHIFTED_RIGHT, ONESHOT_START);
+                    return false;
+                }
+            }
+            break;
+        case LT(4,OSL(2)):
+            if (record->tap.count && record->event.pressed) {
+                if (IS_LAYER_ON(_SHIFTED_LEFT)) {
+                    clear_oneshot_layer_state(ONESHOT_PRESSED);
+                } else {
+                    set_oneshot_layer(_SHIFTED_LEFT, ONESHOT_START);
+                    return false;
+                }
+            }
+            break;
     }
-};
-
+    return true;
+}

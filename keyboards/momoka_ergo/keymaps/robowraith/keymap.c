@@ -30,12 +30,13 @@ enum combos {
     COMBO_LGUI,
     COMBO_LALT,
     COMBO_LSG,
+    COMBO_LSC,
     COMBO_RSFT,
     COMBO_RCTL,
     COMBO_RGUI,
     COMBO_RALT,
     COMBO_RSG,
-    COMBO_RSCU,
+    COMBO_RSC,
     COMBO_LENGTH // nifty trick to avoid manually specifying how many combos you have
 };
 
@@ -47,11 +48,13 @@ const uint16_t PROGMEM ei_combo[] = {DE_E, DE_I, COMBO_END};
 const uint16_t PROGMEM et_combo[] = {DE_E, DE_T, COMBO_END};
 const uint16_t PROGMEM tc_combo[] = {DE_T, DE_C, COMBO_END};
 const uint16_t PROGMEM ec_combo[] = {DE_E, DE_C, COMBO_END};
+const uint16_t PROGMEM oi_combo[] = {DE_O, DE_I, COMBO_END};
 const uint16_t PROGMEM bn_combo[] = {DE_B, DE_N, COMBO_END};
 const uint16_t PROGMEM nr_combo[] = {DE_N, DE_R, COMBO_END};
 const uint16_t PROGMEM ns_combo[] = {DE_N, DE_S, COMBO_END};
 const uint16_t PROGMEM sg_combo[] = {DE_S, DE_G, COMBO_END};
 const uint16_t PROGMEM ng_combo[] = {DE_N, DE_G, COMBO_END};
+const uint16_t PROGMEM br_combo[] = {DE_B, DE_R, COMBO_END};
 
 // map combo names to their keys and the key they trigger
 combo_t key_combos[] = {
@@ -60,11 +63,13 @@ combo_t key_combos[] = {
     [COMBO_LGUI] = COMBO(ei_combo, KC_LGUI),
     [COMBO_LALT] = COMBO(tc_combo, KC_LALT),
     [COMBO_LSG] = COMBO(ec_combo, LSFT(KC_LGUI)),
+    [COMBO_LSC] = COMBO(oi_combo, LSFT(KC_LCTL)),
     [COMBO_RSFT] = COMBO(bn_combo, KC_RSFT),
     [COMBO_RCTL] = COMBO(ns_combo, KC_RCTL),
     [COMBO_RGUI] = COMBO(nr_combo, KC_RGUI),
     [COMBO_RALT] = COMBO(sg_combo, KC_RALT),
     [COMBO_RSG] = COMBO(ng_combo, RSFT(KC_RGUI)),
+    [COMBO_RSC] = COMBO(br_combo, RSFT(KC_RCTL)),
 };
 
 #define LTOSL_MO_LAYER 2

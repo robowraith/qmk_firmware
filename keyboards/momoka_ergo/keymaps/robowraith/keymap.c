@@ -99,7 +99,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_SPC,    KC_ENT,  KC_ESC, /**/KC_VOLD, KC_MUTE,   KC_KP_0
     )
 };
-int RGB_current_mode;
+static uint8_t ltosl_state = 0;
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (keycode == LTOSL) {
+    static uint32_t tap_deadline = 0;
+    if (record->event.pressed) {  // On pressed.
+      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
+      layer_on(LTOSL_MO_LAYER);
+      ltosl_state = 1;  // Set undetermined state.
+    } else {  // On release.
+      layer_off(LTOSL_MO_LAYER);
+      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+        // LTOSL was released without pressing another key within 200 ms.
+        layer_on(LTOSL_OSL_LAYER);
+        ltosl_state = 2;  // Acting like OSL.
+      }
+    }
+    return false;
+  }
+
+  if (!process_select_word(keycode, record, SELWRD)) { return false; }
+
+  return true;
+}
+
+void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
+  // Turn off the layer if another key is pressed while acting like OSL. The
+  // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
+  if (keycode != LTOSL && (ltosl_state >>= 1)) {
+    layer_off(LTOSL_OSL_LAYER);
+  }
+}
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
@@ -151,10 +182,4 @@ bool caps_word_press_user(uint16_t keycode) {
         default:
             return false;  // Deactivate Caps Word.
     }
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (!process_select_word(keycode, record, SELWRD)) { return false; }
-
-  return true;
 };

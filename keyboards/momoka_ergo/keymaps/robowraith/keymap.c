@@ -105,8 +105,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RESET,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_NO,      RESET,
         TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_SPC,    KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
                                                                KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
-                                                                        KC_NO,  /**/KC_NO,
-                                                    KC_BSPC,   KC_DEL,  KC_NO,  /**/KC_NO,   KC_ENT,    KC_KP_0
+                                                                        TO(0),  /**/KC_NO,
+                                                    KC_SPC,    KC_ENT,  KC_NO,  /**/KC_NO,   KC_ENT,    KC_KP_0
     ),
     [_GAMING] = LAYOUT(
         KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,            /**/         KC_F1,     KC_F2,     KC_F3,     KC_F4,      KC_F5,      KC_F6,

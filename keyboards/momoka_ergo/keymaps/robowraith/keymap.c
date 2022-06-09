@@ -44,33 +44,27 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // nifty trick continued
 // define keys that make up combos
 const uint16_t PROGMEM oe_combo[] = {DE_O, DE_E, COMBO_END};
 const uint16_t PROGMEM ei_combo[] = {DE_E, DE_I, COMBO_END};
-const uint16_t PROGMEM it_combo[] = {DE_I, DE_T, COMBO_END};
+const uint16_t PROGMEM et_combo[] = {DE_E, DE_T, COMBO_END};
 const uint16_t PROGMEM tc_combo[] = {DE_T, DE_C, COMBO_END};
 const uint16_t PROGMEM ec_combo[] = {DE_E, DE_C, COMBO_END};
 const uint16_t PROGMEM bn_combo[] = {DE_B, DE_N, COMBO_END};
 const uint16_t PROGMEM nr_combo[] = {DE_N, DE_R, COMBO_END};
-const uint16_t PROGMEM rs_combo[] = {DE_R, DE_S, COMBO_END};
+const uint16_t PROGMEM ns_combo[] = {DE_N, DE_S, COMBO_END};
 const uint16_t PROGMEM sg_combo[] = {DE_S, DE_G, COMBO_END};
 const uint16_t PROGMEM ng_combo[] = {DE_N, DE_G, COMBO_END};
-const uint16_t PROGMEM nru_combo[] = {DE_N, DE_R, LTOSL, COMBO_END};
-const uint16_t PROGMEM ebsp_combo[] = {DE_E, KC_BSPC, COMBO_END};
-const uint16_t PROGMEM nspc_combo[] = {DE_N, KC_SPC, COMBO_END};
-const uint16_t PROGMEM edel_combo[] = {DE_E, KC_DEL, COMBO_END};
-const uint16_t PROGMEM nent_combo[] = {DE_N, KC_ENT, COMBO_END};
 
 // map combo names to their keys and the key they trigger
 combo_t key_combos[] = {
     [COMBO_LSFT] = COMBO(oe_combo, KC_LSFT),
-    [COMBO_LCTL] = COMBO(ei_combo, KC_LCTL),
-    [COMBO_LGUI] = COMBO(it_combo, KC_LALT),
-    [COMBO_LALT] = COMBO(tc_combo, KC_LGUI),
+    [COMBO_LCTL] = COMBO(et_combo, KC_LCTL),
+    [COMBO_LGUI] = COMBO(ei_combo, KC_LGUI),
+    [COMBO_LALT] = COMBO(tc_combo, KC_LALT),
     [COMBO_LSG] = COMBO(ec_combo, LSFT(KC_LGUI)),
     [COMBO_RSFT] = COMBO(bn_combo, KC_RSFT),
     [COMBO_RCTL] = COMBO(nr_combo, KC_RCTL),
-    [COMBO_RGUI] = COMBO(rs_combo, KC_RALT),
-    [COMBO_RALT] = COMBO(sg_combo, KC_RGUI),
+    [COMBO_RGUI] = COMBO(rs_combo, KC_RGUI),
+    [COMBO_RALT] = COMBO(sg_combo, KC_RALT),
     [COMBO_RSG] = COMBO(ng_combo, RSFT(KC_RGUI)),
-    [COMBO_RSCU] = COMBO(nru_combo, RCS(MO(2))),
 };
 
 #define LTOSL_MO_LAYER 2

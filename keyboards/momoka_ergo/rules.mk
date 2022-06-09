@@ -21,3 +21,4 @@ AUDIO_ENABLE = no           # Audio output
 SPLIT_KEYBOARD = yes
 DYNAMIC_TAPPING_TERM_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes

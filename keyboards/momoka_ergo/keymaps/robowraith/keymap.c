@@ -99,6 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_SPC,    KC_ENT,  KC_ESC, /**/KC_VOLD, KC_MUTE,   KC_KP_0
     )
 };
+
 static uint8_t ltosl_state = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
@@ -132,23 +133,28 @@ void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 }
 
+void keyboard_post_init_user(void) {
+    rgblight_mode(RGBLIGHT_MODE_KNIGHT + 2);
+    rgblight_sethsv(HSV_RED);
+   };
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
         case _BONE:
-            rgblight_sethsv_noeeprom(HSV_BLUE);
-            RGB_current_mode = 1;
+            rgblight_sethsv_noeeprom(HSV_WHITE);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case _SHIFTED:
-            rgblight_sethsv_noeeprom(HSV_CYAN);
-            RGB_current_mode = 1;
+            rgblight_sethsv_noeeprom(HSV_BLUE);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
         case _UTILITY:
-            rgblight_sethsv_noeeprom(HSV_WHITE);
-            RGB_current_mode = 1;
+            rgblight_sethsv_noeeprom(HSV_GREEN);
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
          case _GAMING:
-            RGB_current_mode = 14;
+            rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL + 5);
             break;
     }
     return state;
@@ -156,10 +162,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 void caps_word_set_user(bool active) {
     if (active) {
-        rgblight_set_layer_state(0, true);
-        rgblight_mode_noeeprom(5);
+        rgblight_sethsv_noeeprom(HSV_RED);
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHE + 2);
     } else {
-        rgblight_set_layer_state(1, true);
+        rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+        rgblight_sethsv_noeeprom(HSV_WHITE);
     }
 };
 

@@ -61,8 +61,8 @@ combo_t key_combos[] = {
     [COMBO_LALT] = COMBO(tc_combo, KC_LALT),
     [COMBO_LSG] = COMBO(ec_combo, LSFT(KC_LGUI)),
     [COMBO_RSFT] = COMBO(bn_combo, KC_RSFT),
-    [COMBO_RCTL] = COMBO(nr_combo, KC_RCTL),
-    [COMBO_RGUI] = COMBO(ns_combo, KC_RGUI),
+    [COMBO_RCTL] = COMBO(ns_combo, KC_RCTL),
+    [COMBO_RGUI] = COMBO(nr_combo, KC_RGUI),
     [COMBO_RALT] = COMBO(sg_combo, KC_RALT),
     [COMBO_RSG] = COMBO(ng_combo, RSFT(KC_RGUI)),
 };

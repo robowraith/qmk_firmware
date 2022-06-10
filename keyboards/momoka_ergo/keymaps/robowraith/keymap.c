@@ -28,27 +28,9 @@ enum custom_keycodes {
     BO_R = RCTL_T(DE_R),
     BO_S = RALT_T(DE_S),
     BO_G = RGUI_T(DE_G),
-    BO_SR = LT(1, KC_BSPC),
-    BO_SL = LT(1, KC_SPC),
-    BO_UR = LT(2, KC_DEL),
-    BO_UL = LT(2, KC_ENT),
-    SELWRD = SAFE_RANGE
+    SELWRD = SAFE_RANGE,
+    LTOSL
 };
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case BO_SL:
-            return TAPPING_TERM + 50;
-        case BO_SR:
-            return TAPPING_TERM + 50;
-        case BO_UL:
-            return TAPPING_TERM + 50;
-        case BO_UR:
-            return TAPPING_TERM + 50;
-        default:
-            return TAPPING_TERM;
-    }
-}
 
 enum layer_names {
     _BONE,
@@ -63,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_COPY,  DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
         KC_PASTE, BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
         CAPSWRD,  DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
-        SELWRD,   KC_BRID,    KC_BRIU,   MO(2),     MO(1),                      /**/                    MO(1),     MO(2),     KC_VOLD,    KC_VOLU,   KC_MUTE,
+        SELWRD,   KC_BRID,    KC_BRIU,   KC_NO,     LTOSL,                      /**/                    LTOSL,     KC_NO,     KC_VOLD,    KC_VOLU,   KC_MUTE,
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,
                                                                         KC_NO,  /**/KC_APP,
-                                                    BO_SR,      BO_UR,  KC_ESC, /**/KC_TAB,  BO_UL,     BO_SL
+                                                    KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
     [_SHIFTED] = LAYOUT(
         KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F11,     KC_F12,
@@ -101,7 +83,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 static uint8_t ltosl_state = 0;
-
+#define LTOSL_MO_LAYER 2   // Layer to activate when holding.
+#define LTOSL_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSL) {
     static uint32_t tap_deadline = 0;

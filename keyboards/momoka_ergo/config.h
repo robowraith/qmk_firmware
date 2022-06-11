@@ -53,9 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN D1  // or D1, D2, D3, E6
 
 #define RGB_DI_PIN C7
-#define RGBLIGHT_MODE_KNIGHT
-#define RGBLIGHT_MODE_BREATHE
-#define RGBLIGHT_MODE_RAINBOW_SWIRL
+#define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 22
 #define RGBLED_SPLIT { 11, 11 }
 #define RGBLIGHT_HUE_STEP 8

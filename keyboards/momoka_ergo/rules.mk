@@ -9,7 +9,7 @@ SRC += features/select_word.c
 # Build Options
 #   change yes to no to disable
 #
-LTO_ENABLE = yes
+#LTO_ENABLE = yes
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = no        # Mouse keys
 EXTRAKEY_ENABLE = yes        # Audio control and System control

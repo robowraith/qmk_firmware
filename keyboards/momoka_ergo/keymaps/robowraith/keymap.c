@@ -24,10 +24,10 @@ enum custom_keycodes {
     BO_A = LALT_T(DE_A),
     BO_E = LCTL_T(DE_E),
     BO_I = LSFT_T(DE_I),
-    BO_U = RSFT_T(DE_U),
-    BO_D = RCTL_T(DE_D),
-    BO_T = RALT_T(DE_T),
-    BO_N = RGUI_T(DE_N),
+    BO_T = RSFT_T(DE_T),
+    BO_R = RCTL_T(DE_R),
+    BO_N = RALT_T(DE_N),
+    BO_S = RGUI_T(DE_S),
     SELWRD = SAFE_RANGE,
     LTOSLR,
     LTOSLL
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_KOY] = LAYOUT(
         KC_CUT,   DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      TO(4),
         KC_COPY,  DE_K,       DE_DOT,    DE_O,      DE_COMM,   DE_Y,            /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_SS,     DE_Z,
-        KC_PASTE, BO_H,       BO_A,      BO_E,      BO_I       DE_U,            /**/         DE_D,      BO_T,      BO_R,      BO_N,       BO_S,      DE_F,
+        KC_PASTE, BO_H,       BO_A,      BO_E,      BO_I,      DE_U,            /**/         DE_D,      BO_T,      BO_R,      BO_N,       BO_S,      DE_F,
         CAPSWRD,  DE_X,       DE_Q,      DE_ADIA,   DE_UDIA,   DE_ODIA,         /**/         DE_B,      DE_P,      DE_W,      DE_M,       DE_J,      KC_NO,
         SELWRD,   KC_BRID,    KC_BRIU,   MO(3),     LTOSLR,                     /**/                    LTOSLL,    MO(2),     KC_VOLD,    KC_VOLU,   KC_MUTE,
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,

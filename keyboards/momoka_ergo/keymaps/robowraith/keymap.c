@@ -20,21 +20,21 @@ extern rgblight_config_t rgblight_config;
 
 // Home-Row-Mod-Keys for Bone
 enum custom_keycodes {
-    BO_C = LGUI_T(DE_C),
-    BO_T = LALT_T(DE_T),
-    BO_I = LCTL_T(DE_I),
-    BO_E = LSFT_T(DE_E),
-    BO_N = RSFT_T(DE_N),
-    BO_R = RCTL_T(DE_R),
-    BO_S = RALT_T(DE_S),
-    BO_G = RGUI_T(DE_G),
+    BO_H = LGUI_T(DE_H),
+    BO_A = LALT_T(DE_A),
+    BO_E = LCTL_T(DE_E),
+    BO_I = LSFT_T(DE_I),
+    BO_U = RSFT_T(DE_U),
+    BO_D = RCTL_T(DE_D),
+    BO_T = RALT_T(DE_T),
+    BO_N = RGUI_T(DE_N),
     SELWRD = SAFE_RANGE,
     LTOSLR,
     LTOSLL
 };
 
 enum layer_names {
-    _BONE,
+    _KOY,
     _SHIFTED,
     _UTILITY_RIGHT,
     _UTILITY_LEFT,
@@ -42,11 +42,11 @@ enum layer_names {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BONE] = LAYOUT(
+    [_KOY] = LAYOUT(
         KC_CUT,   DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      TO(4),
-        KC_COPY,  DE_J,       DE_D,      DE_U,      DE_A,      DE_X,            /**/         DE_P,      DE_H,      DE_L,      DE_M,       DE_W,      DE_SS,
-        KC_PASTE, BO_C,       BO_T,      BO_I,      BO_E,      DE_O,            /**/         DE_B,      BO_N,      BO_R,      BO_S,       BO_G,      DE_Q,
-        CAPSWRD,  DE_F,       DE_V,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_Y,      DE_Z,      DE_COMM,   DE_DOT,     DE_K,      KC_NO,
+        KC_COPY,  DE_K,       DE_DOT,    DE_O,      DE_COMM,   DE_Y,            /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_SS,     DE_Z,
+        KC_PASTE, BO_H,       BO_A,      BO_E,      BO_I       DE_U,            /**/         DE_D,      BO_T,      BO_R,      BO_N,       BO_S,      DE_F,
+        CAPSWRD,  DE_X,       DE_Q,      DE_ADIA,   DE_UDIA,   DE_ODIA,         /**/         DE_B,      DE_P,      DE_W,      DE_M,       DE_J,      KC_NO,
         SELWRD,   KC_BRID,    KC_BRIU,   MO(3),     LTOSLR,                     /**/                    LTOSLL,    MO(2),     KC_VOLD,    KC_VOLU,   KC_MUTE,
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,
                                                                         KC_NO,  /**/KC_APP,
@@ -157,7 +157,7 @@ void keyboard_post_init_user(void) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
-        case _BONE:
+        case _KOY:
             rgblight_sethsv_noeeprom(HSV_WHITE);
             rgblight_mode_noeeprom(1);
             break;

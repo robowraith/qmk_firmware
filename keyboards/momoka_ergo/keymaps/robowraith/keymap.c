@@ -67,10 +67,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NUM,    KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_PPLS,    KC_PAST,
         KC_NO,    KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_NO,     KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_PMNS,    KC_PSLS,
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_NO,      RESET,
-        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_SPC,    KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
+        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_KP_0,    KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
                                                                KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
                                                                         KC_NO,  /**/KC_NO,
-                                                    KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_ENT,    KC_KP_0
+                                                    KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_ENT,    KC_SPC
     ),
     [_UTILITY_LEFT] = LAYOUT(
         KC_NO,    LGUI(KC_1), LGUI(KC_2),LGUI(KC_3),LGUI(KC_4),LGUI(KC_5),      /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,

@@ -35,9 +35,9 @@ enum custom_keycodes {
 
 enum layer_names {
     _KOY,
-    _SHIFTED,
-    _UTILITY_RIGHT,
-    _UTILITY_LEFT,
+    _SYMBOLS,
+    _KEYPAD,
+    _NAVIGATION,
     _GAMING,
 };
 
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         KC_NO,  /**/KC_APP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
-    [_SHIFTED] = LAYOUT(
+    [_SYMBOLS] = LAYOUT(
         KC_F1,    KC_F2,      KC_F3,     KC_F4,     KC_F5,     KC_F6,           /**/         KC_F7,     KC_F8,     KC_F9,     KC_F10,     KC_F11,     KC_F12,
         KC_NO,    DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    DE_EURO,
         KC_NO,    DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    DE_AT,
@@ -62,8 +62,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         KC_HOME,/**/KC_PGUP,
                                                     KC_BSPC,   KC_DEL,  KC_ESC, /**/KC_TAB,  KC_ENT,    KC_SPC
     ),
-    [_UTILITY_RIGHT] = LAYOUT(
-        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         LGUI(KC_6),LGUI(KC_7),LGUI(KC_8),LGUI(KC_9), LGUI(KC_0), KC_NO,
+    [_KEYPAD] = LAYOUT(
+        KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NUM,    KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_PPLS,    KC_PAST,
         KC_NO,    KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_NO,     KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_PMNS,    KC_PSLS,
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_NO,      RESET,
@@ -72,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         KC_NO,  /**/KC_NO,
                                                     KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_ENT,    KC_SPC
     ),
-    [_UTILITY_LEFT] = LAYOUT(
-        KC_NO,    LGUI(KC_1), LGUI(KC_2),LGUI(KC_3),LGUI(KC_4),LGUI(KC_5),      /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
-        KC_NO,    KC_NO,      KC_HOME,   KC_UP,     KC_END,    KC_PGUP,         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
-        KC_CAPS,  KC_NO,      KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    KC_NO,
-        RESET,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+    [_NAVIGATION] = LAYOUT(
+        KC_NO,    KC_NO,      KC_NO,     KC_PGUP,   KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+        KC_NO,    KC_NO,      KC_UNDO,   KC_UP,     S(KC_UNDO),KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+        KC_CAPS,  KC_HOME,    KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_END,          /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    KC_NO,
+        RESET,    KC_NO,      KC_NO,     KC_PGDN,   KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
         TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
                                                                KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
                                                                         KC_NO,  /**/KC_NO,
@@ -161,15 +161,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv_noeeprom(HSV_WHITE);
             rgblight_mode_noeeprom(1);
             break;
-        case _SHIFTED:
+        case _SYMBOLS:
             rgblight_sethsv_noeeprom(HSV_BLUE);
             rgblight_mode_noeeprom(1);
             break;
-        case _UTILITY_RIGHT:
+        case _KEYPAD:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             rgblight_mode_noeeprom(1);
             break;
-        case _UTILITY_LEFT:
+        case _NAVIGATION:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             rgblight_mode_noeeprom(1);
             break;

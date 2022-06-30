@@ -21,6 +21,7 @@ extern rgblight_config_t rgblight_config;
 enum layer_names {
     _AEIOU,
     _SYMBOLS,
+    _SYMBOLS_2,
     _KEYPAD,
     _NAVIGATION,
     _GAMING,
@@ -40,7 +41,7 @@ enum custom_keycodes {
     JK_BSPC = LT(_SYMBOLS, KC_BSPC),
     JK_DEL = LT(_SYMBOLS, KC_DEL),
     JK_TAB = LT(_SYMBOLS, KC_TAB),
-    JK_ENT = LT(_SYMBOLS, KC_ENT),
+    JK_ENT = LT(_NAVIGATION, KC_ENT),
     JK_SPC = LT(_SYMBOLS, KC_SPC),
     SELWRD = SAFE_RANGE
 };
@@ -59,41 +60,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYMBOLS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_LPRN,   DE_RPRN,   DE_MINS,   DE_UNDS,    DE_PLUS,    XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_AT,     DE_DOT,    DE_COMM,   DE_EXLM,    DE_QUES,    XXXXXXX,
+        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_AT,     DE_DOT,    DE_COMM,   DE_EXLM,    DE_QUES,    XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_COLN,   DE_SCLN,   DE_DQUO,   DE_QUOT,    DE_GRV,     RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,                    /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,    KC_NO
+                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
+    ),
+    [_SYMBOLS_2] = LAYOUT(
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
+        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
+        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+                                                               XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
+                                                                        XXXXXXX,/**/XXXXXXX,
+                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     ),
     [_KEYPAD] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,                    /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,    KC_NO
+                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     ),
     [_NAVIGATION] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,                    /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  KC_NO,      KC_CUT,    KC_PASTE,  KC_COPY,   KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
+        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  CAPSWRD,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,     XXXXXXX,
+        XXXXXXX,  KC_HOME,    KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,    KC_NO
+                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     ),
     [_GAMING] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,                    /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,    KC_NO
+                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     )
 };

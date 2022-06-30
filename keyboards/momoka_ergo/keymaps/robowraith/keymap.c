@@ -38,15 +38,16 @@ enum layer_names {
     _SYMBOLS,
     _KEYPAD,
     _NAVIGATION,
+    _MOUSE,
     _GAMING,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_KOY] = LAYOUT(
-        KC_CUT,   DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      TO(4),
+        KC_CUT,   DE_1,       DE_2,      DE_3,      DE_4,      DE_5,            /**/         DE_6,      DE_7,      DE_8,      DE_9,       DE_0,      TO(5),
         KC_COPY,  DE_K,       DE_DOT,    DE_O,      DE_COMM,   DE_Y,            /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_SS,     DE_Z,
         KC_PASTE, BO_H,       BO_A,      BO_E,      BO_I,      DE_U,            /**/         DE_D,      BO_T,      BO_R,      BO_N,       BO_S,      DE_F,
-        CAPSWRD,  DE_X,       DE_Q,      DE_ADIA,   DE_UDIA,   DE_ODIA,         /**/         DE_B,      DE_P,      DE_W,      DE_M,       DE_J,      KC_NO,
+        CAPSWRD,  DE_X,       DE_Q,      DE_ADIA,   DE_UDIA,   DE_ODIA,         /**/         DE_B,      DE_P,      DE_W,      DE_M,       DE_J,      MO(4),
         SELWRD,   KC_BRID,    KC_BRIU,   MO(3),     LTOSLR,                     /**/                    LTOSLL,    MO(2),     KC_VOLD,    KC_VOLU,   KC_MUTE,
                                                                KC_NO,   KC_PSCR,/**/KC_RGUI, KC_NO,
                                                                         KC_NO,  /**/KC_APP,
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NUM,    KC_KP_7,   KC_KP_8,   KC_KP_9,    KC_PPLS,    KC_PAST,
         KC_NO,    KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_NO,     KC_KP_4,   KC_KP_5,   KC_KP_6,    KC_PMNS,    KC_PSLS,
         KC_NO,    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_KP_1,   KC_KP_2,   KC_KP_3,    KC_NO,      RESET,
-        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_KP_0,    KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
+        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_KP_0,   KC_NO,     KC_MPRV,    KC_MNXT,    KC_MPLY,
                                                                KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
                                                                         KC_NO,  /**/KC_NO,
                                                     KC_NO,     KC_NO,   KC_NO,  /**/KC_NO,   KC_ENT,    KC_SPC
@@ -81,6 +82,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
                                                                         KC_NO,  /**/KC_NO,
                                                     KC_BSPC,   KC_DEL,  KC_NO,  /**/KC_NO,   KC_NO,     KC_NO
+    ),
+    [_MOUSE] = LAYOUT(
+        KC_NO,    KC_NO,      KC_NO,     KC_PGUP,   KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+        KC_NO,    KC_NO,      KC_NO,     KC_MS_U,   KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+        KC_CAPS,  KC_HOME,    KC_MS_L,   KC_MS_D,   KC_MS_R,   KC_END,          /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    KC_NO,
+        RESET,    KC_WH_L,    KC_WH_U,   KC_WH_D,   KC_WH_R,   KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+        TO(0),    KC_NO,      KC_NO,     KC_NO,     KC_NO,                      /**/                    KC_NO,     KC_NO,     KC_NO,      KC_NO,      KC_NO,
+                                                               KC_NO,   KC_NO,  /**/KC_NO,   KC_NO,
+                                                                        KC_NO,  /**/KC_NO,
+                                                    KC_BTN1,   KC_BTN2, KC_BTN3,/**/KC_NO,   KC_NO,     KC_NO
     ),
     [_GAMING] = LAYOUT(
         KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,            /**/         KC_F1,     KC_F2,     KC_F3,     KC_F4,      KC_F5,      KC_F6,

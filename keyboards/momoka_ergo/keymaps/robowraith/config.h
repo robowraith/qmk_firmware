@@ -17,5 +17,5 @@ Additiional cnofigurations
 // #define TAPPING_FORCE_HOLD
 
 /* Enable lighting layers */
-// #define RGBLIGHT_LAYERS
-// #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+#define RGBLIGHT_LAYERS
+#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF

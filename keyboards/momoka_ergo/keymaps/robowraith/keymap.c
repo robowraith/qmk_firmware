@@ -29,7 +29,7 @@ enum layer_names {
     _GAMING,
 };
 
-// Home-Row-Mod-Keys for Bone
+// Home-Row-Mod- and Thumb-Keys
 enum custom_keycodes {
     RW_U = LGUI_T(DE_U),
     RW_A = LALT_T(DE_A),
@@ -81,6 +81,24 @@ combo_t key_combos[] = {
     [COMBO_Ö] = COMBO(OE_combo, S(DE_ODIA)),
     [COMBO_ß] = COMBO(sz_combo, DE_SS),
 };
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case RW_ESC:
+            return TAPPING_TERM + 50;
+        case RW_BSPC:
+            return TAPPING_TERM + 50;
+        case RW_DEL:
+            return TAPPING_TERM + 50;
+        case RW_TAB:
+            return TAPPING_TERM + 50;
+        case RW_ENT:
+            return TAPPING_TERM + 50;
+        case RW_SPC:
+            return TAPPING_TERM + 50;
+        default:
+            return TAPPING_TERM;
+    }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
@@ -125,9 +143,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAVIGATION] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  KC_PSCR,    KC_UP,     KC_UP,     KC_END,    KC_PGUP,         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
-        XXXXXXX,  SELWRD,     KC_CUT,    KC_PASTE,  KC_COPY,   CAPSWRD,         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
+        XXXXXXX,  KC_PSCR,    KC_CUT,    KC_PASTE,  KC_COPY,   KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
+        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_NO,           /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
+        XXXXXXX,  KC_HOME,    KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,

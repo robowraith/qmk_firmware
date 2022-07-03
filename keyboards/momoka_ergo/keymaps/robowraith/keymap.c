@@ -31,7 +31,7 @@ enum layer_names {
 
 // Home-Row-Mod-Keys for Bone
 enum custom_keycodes {
-    RW_H = LGUI_T(DE_H),
+    RW_U = LGUI_T(DE_U),
     RW_A = LALT_T(DE_A),
     RW_I = LCTL_T(DE_I),
     RW_E = LSFT_T(DE_E),
@@ -48,12 +48,46 @@ enum custom_keycodes {
     SELWRD  = SAFE_RANGE
 };
 
+// define combo names
+enum combos {
+    COMBO_ä,
+    COMBO_ü,
+    COMBO_ö,
+    COMBO_Ä,
+    COMBO_Ü,
+    COMBO_Ö,
+    COMBO_ß,
+    COMBO_LENGTH // nifty trick to avoid manually specifying how many combos you have
+};
+
+uint16_t COMBO_LEN = COMBO_LENGTH; // nifty trick continued
+
+// define keys that make up combos
+const uint16_t PROGMEM ae_combo[] = {RW_A, RW_E, COMBO_END};
+const uint16_t PROGMEM ue_combo[] = {DE_U, RW_E, COMBO_END};
+const uint16_t PROGMEM oe_combo[] = {DE_O, RW_E, COMBO_END};
+const uint16_t PROGMEM AE_combo[] = {RW_A, RW_E, RW_T, COMBO_END};
+const uint16_t PROGMEM UE_combo[] = {DE_U, RW_E, RW_T, COMBO_END};
+const uint16_t PROGMEM OE_combo[] = {DE_O, RW_E, RW_T, COMBO_END};
+const uint16_t PROGMEM sz_combo[] = {RW_S, DE_Z, COMBO_END};
+
+// map combo names to their keys and the key they trigger
+combo_t key_combos[] = {
+    [COMBO_ä] = COMBO(ae_combo, DE_ADIA),
+    [COMBO_ü] = COMBO(ue_combo, DE_UDIA),
+    [COMBO_ö] = COMBO(oe_combo, DE_ODIA),
+    [COMBO_Ä] = COMBO(AE_combo, S(DE_ADIA)),
+    [COMBO_Ü] = COMBO(UE_combo, S(DE_UDIA)),
+    [COMBO_Ö] = COMBO(OE_combo, S(DE_ODIA)),
+    [COMBO_ß] = COMBO(sz_combo, DE_SS),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  DE_K,       DE_ADIA,   DE_O,      DE_ODIA,   DE_UDIA,         /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_SS,      XXXXXXX,
-        XXXXXXX,  RW_H,       RW_A,      RW_I,      RW_E,      DE_U,            /**/         DE_D,      RW_T,      RW_R,      RW_N,       RW_S,       XXXXXXX,
-        XXXXXXX,  DE_X,       DE_Q,      DE_W,      DE_M,      DE_B,            /**/         DE_Y,      DE_P,      DE_Z,      DE_F,       DE_J,       RESET,
+        XXXXXXX,  DE_K,       DE_DOT,    DE_O,      DE_COMM,   DE_Y,            /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_Z ,      XXXXXXX,
+        XXXXXXX,  RW_U,       RW_A,      RW_I,      RW_E,      DE_H,            /**/         DE_D,      RW_T,      RW_R,      RW_N,       RW_S,       XXXXXXX,
+        XXXXXXX,  DE_X,       KC_NO,     DE_W,      DE_Q,      DE_F,            /**/         DE_B,      DE_P,      DE_M,      KC_NO,      DE_J,       RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   RW_ESC,                     /**/                    RW_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,

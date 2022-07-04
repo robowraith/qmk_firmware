@@ -70,9 +70,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  DE_K,       DE_ADIA,   DE_O,      DE_ODIA,   DE_UDIA,         /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_SS,      XXXXXXX,
-        XXXXXXX,  RW_H,       RW_A,      RW_I,      RW_E,      DE_U,            /**/         DE_D,      RW_T,      RW_R,      RW_N,       RW_S,       XXXXXXX,
-        XXXXXXX,  DE_X,       DE_Q,      DE_W,      DE_M,      DE_B,            /**/         DE_Y,      DE_P,      DE_Z,      DE_F,       DE_J,       RESET,
+        XXXXXXX,  DE_J,       DE_L,      DE_U,      DE_A,      DE_Q,            /**/         DE_W,      DE_B,      DE_D,      DE_G,       DE_Y,       XXXXXXX,
+        XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_G,            /**/         DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
+        XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   RW_ESC,                     /**/                    RW_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,

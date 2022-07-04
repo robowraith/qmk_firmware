@@ -31,20 +31,23 @@ enum layer_names {
 
 // Home-Row-Mod- and Thumb-Keys
 enum custom_keycodes {
-    RW_H = LGUI_T(DE_H),
-    RW_A = LALT_T(DE_A),
+    // Mod Taps on eft hand
+    RW_C = LGUI_T(DE_C),
+    RW_R = LALT_T(DE_R),
     RW_I = LCTL_T(DE_I),
     RW_E = LSFT_T(DE_E),
-    RW_T = RSFT_T(DE_T),
-    RW_R = RCTL_T(DE_R),
-    RW_N = RALT_T(DE_N),
-    RW_S = RGUI_T(DE_S),
     RW_ESC  = LT(_KEYPAD, KC_ESC),
     RW_BSPC = LT(_SYMBOLS, KC_BSPC),
     RW_DEL  = LT(_FUNCTIONS, KC_DEL),
+    // Mod taps on right hand
+    RW_N = RSFT_T(DE_N),
+    RW_T = RCTL_T(DE_T),
+    RW_S = RALT_T(DE_S),
+    RW_H = RGUI_T(DE_H),
     RW_TAB  = LT(_NAVIGATION, KC_TAB),
     RW_ENT  = LT(_I3, KC_ENT),
     RW_SPC  = LT(_SYMBOLS_2, KC_SPC),
+    // Other
     SELWRD  = SAFE_RANGE
 };
 
@@ -70,9 +73,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  DE_K,       DE_ADIA,   DE_O,      DE_ODIA,   DE_UDIA,         /**/         DE_V,      DE_G,      DE_C,      DE_L,       DE_SS,      XXXXXXX,
-        XXXXXXX,  RW_H,       RW_A,      RW_I,      RW_E,      DE_U,            /**/         DE_D,      RW_T,      RW_R,      RW_N,       RW_S,       XXXXXXX,
-        XXXXXXX,  DE_X,       DE_Q,      DE_W,      DE_M,      DE_B,            /**/         DE_Y,      DE_P,      DE_Z,      DE_F,       DE_J,       RESET,
+        XXXXXXX,  DE_J,       DE_L,      DE_U,      DE_A,      DE_Q,            /**/         DE_W,      DE_B,      DE_D,      DE_G,       DE_Y,       XXXXXXX,
+        XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_G,            /**/         DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
+        XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   RW_ESC,                     /**/                    RW_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,

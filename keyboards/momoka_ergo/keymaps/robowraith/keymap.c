@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  DE_J,       DE_L,      DE_U,      DE_A,      DE_Q,            /**/         DE_W,      DE_B,      DE_D,      DE_G,       DE_Y,       XXXXXXX,
-        XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_G,            /**/         DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
+        XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_O,            /**/         DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
         XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   RW_ESC,                     /**/                    RW_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,

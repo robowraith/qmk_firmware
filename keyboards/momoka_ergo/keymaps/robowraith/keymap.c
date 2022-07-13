@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     DE_7,      DE_8,      DE_9,       DE_PLUS,    XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_COLN,   DE_4,      DE_5,      DE_6,       DE_MINS,    XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_COMM,   DE_1,      DE_2,      DE_3,       DE_DOT,     RESET,
+        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_ENT,          /**/         DE_COMM,   DE_1,      DE_2,      DE_3,       DE_DOT,     RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_0,      XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,

@@ -11,7 +11,7 @@
         "mousekey": true,
         "nkro": true
     },
-    "processor": "STM32F401",
+    "processor": "STM32F411",
     "url": "https://github.com/diepala/cantor",
     "usb": {
         "device_version": "1.0.0",

@@ -22,7 +22,7 @@ enum layer_names {
     _BASE,
     _SYMBOLS,
     _SYMBOLS_2,
-    _KEYPAD,
+    _NUMBERS,
     _NAVIGATION,
     _FUNCTIONS,
     _I3,
@@ -36,7 +36,7 @@ enum custom_keycodes {
     RW_R = LALT_T(DE_R),
     RW_I = LCTL_T(DE_I),
     RW_E = LSFT_T(DE_E),
-    RW_ESC  = LT(_KEYPAD, KC_ESC),
+    RW_ESC  = LT(_NUMBERS, KC_ESC),
     RW_BSPC = LT(_SYMBOLS, KC_BSPC),
     RW_DEL  = LT(_FUNCTIONS, KC_DEL),
     // Mod taps on right hand
@@ -101,15 +101,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     CAPSWRD,   SELWRD,  XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     ),
-    [_KEYPAD] = LAYOUT(
+    [_NUMBERS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_COLN,   DE_7,      DE_8,      DE_9,       DE_PLUS,    XXXXXXX,
-        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_COMM,   DE_4,      DE_5,      DE_6,       DE_MINS,    XXXXXXX,
-        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_ENT,          /**/         DE_DOT,    DE_1,      DE_2,      DE_3,       DE_0,       RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_MINS,   DE_7,      DE_8,      DE_9,       DE_PLUS,    XXXXXXX,
+        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_SLSH,   DE_4,      DE_5,      DE_6,       DE_DOT,     XXXXXXX,
+        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_ENT,          /**/         DE_COLN,   DE_1,      DE_2,      DE_3,       DE_COMM,       RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_BSPC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_ENT,    KC_NO
+                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_ENT,    DE_0
     ),
     [_NAVIGATION] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
@@ -178,7 +178,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv_noeeprom(HSV_BLUE);
             rgblight_mode_noeeprom(1);
             break;
-       case _KEYPAD:
+       case _NUMBERS:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             rgblight_mode_noeeprom(1);
             break;

@@ -21,12 +21,8 @@ extern rgblight_config_t rgblight_config;
 enum layer_names {
     _BASE,
     _SYMBOLS,
-    _SYMBOLS_2,
     _NUMBERS,
     _NAVIGATION,
-    _FUNCTIONS,
-    _I3,
-    _GAMING,
 };
 
 // Home-Row-Mod- and Thumb-Keys
@@ -36,35 +32,50 @@ enum custom_keycodes {
     RW_R = LALT_T(DE_R),
     RW_I = LCTL_T(DE_I),
     RW_E = LSFT_T(DE_E),
-    RW_ESC  = LT(_FUNCTIONS, KC_ESC),
-    RW_BSPC = LT(_SYMBOLS, KC_BSPC),
-    RW_DEL  = LT(_NUMBERS, KC_DEL),
     // Mod taps on right hand
     RW_N = RSFT_T(DE_N),
     RW_T = RCTL_T(DE_T),
     RW_S = RALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
-    RW_TAB  = LT(_NAVIGATION, KC_TAB),
-    RW_ENT  = LT(_I3, KC_ENT),
-    RW_SPC  = LT(_SYMBOLS_2, KC_SPC),
     // Other
-    SELWRD  = SAFE_RANGE
+    SELWRD  = SAFE_RANGE,
+    LTOSLR,
+    LTOSLL
+};
+
+enum tap_dance_keys{
+    F1_1,
+    F2_2,
+    F3_3,
+    F4_4,
+    F5_5,
+    F6_6,
+    F7_7,
+    F8_8,
+    F9_9,
+    F10_PL,
+    F11_DO,
+    F12_CO,
+};
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1),
+    [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2),
+    [F3_3] = ACTION_TAP_DANCE_DOUBLE(DE_3, KC_F3),
+    [F4_4] = ACTION_TAP_DANCE_DOUBLE(DE_4, KC_F4),
+    [F5_5] = ACTION_TAP_DANCE_DOUBLE(DE_5, KC_F5),
+    [F6_6] = ACTION_TAP_DANCE_DOUBLE(DE_6, KC_F6),
+    [F7_7] = ACTION_TAP_DANCE_DOUBLE(DE_7, KC_F7),
+    [F8_8] = ACTION_TAP_DANCE_DOUBLE(DE_8, KC_F8),
+    [F9_9] = ACTION_TAP_DANCE_DOUBLE(DE_9, KC_F9),
+    [F10_PL] = ACTION_TAP_DANCE_DOUBLE(DE_PLUS, KC_F10),
+    [F11_DO] = ACTION_TAP_DANCE_DOUBLE(DE_DOT, KC_F11),
+    [F12_CO] = ACTION_TAP_DANCE_DOUBLE(DE_COMM, KC_F12),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case RW_ESC:
-            return TAPPING_TERM + 50;
-        case RW_BSPC:
-            return TAPPING_TERM + 50;
-        case RW_DEL:
-            return TAPPING_TERM + 50;
-        case RW_TAB:
-            return TAPPING_TERM + 50;
-        case RW_ENT:
-            return TAPPING_TERM + 50;
-        case RW_SPC:
-            return TAPPING_TERM + 50;
         default:
             return TAPPING_TERM;
     }
@@ -76,36 +87,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  DE_J,       DE_L,      DE_U,      DE_A,      DE_Q,            /**/         DE_W,      DE_B,      DE_D,      DE_G,       DE_Y,       XXXXXXX,
         XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_O,            /**/         DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
         XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   RW_ESC,                     /**/                    RW_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   LTOSLL,                     /**/                    LTOSLR,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    RW_BSPC,   RW_DEL,  XXXXXXX,/**/XXXXXXX, RW_ENT,    RW_SPC
+                                                    KC_BSPC,   KC_DEL,  XXXXXXX,/**/XXXXXXX, KC_ENT,    KC_SPC
     ),
     [_SYMBOLS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    XXXXXXX,
-        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    DE_AT,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    XXXXXXX,
+        XXXXXXX,  DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    XXXXXXX,
+        XXXXXXX,  DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EURO,                    /**/                    DE_AT,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, DE_DOT,    DE_COMM
-    ),
-    [_SYMBOLS_2] = LAYOUT(
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
-        XXXXXXX,  DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
-        XXXXXXX,  DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EURO,                    /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-                                                               XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
-                                                                        XXXXXXX,/**/XXXXXXX,
-                                                    CAPSWRD,   SELWRD,  XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
+                                                    CAPSWRD,   SELWRD,  XXXXXXX,/**/XXXXXXX, DE_DOT,    DE_COMM
     ),
     [_NUMBERS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_MINS,   DE_7,      DE_8,      DE_9,       DE_PLUS,    XXXXXXX,
-        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_SLSH,   DE_4,      DE_5,      DE_6,       DE_DOT,     XXXXXXX,
-        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_ENT,          /**/         DE_COLN,   DE_1,      DE_2,      DE_3,       DE_COMM,       RESET,
+        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
+        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
+        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_ENT,          /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_BSPC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
@@ -113,40 +114,70 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAVIGATION] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  KC_PSCR,    KC_CUT,    KC_COPY,   KC_PASTE,  KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
+        XXXXXXX,  KC_PSCR,    KC_CUT,    KC_COPY,   KC_PASTE,  KC_NO,           /**/         G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,
         XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_NO,           /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
-        XXXXXXX,  KC_HOME,    KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,           /**/         KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,      KC_RIGHT,   RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-                                                               XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
-                                                                        XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
-    ),
-    [_FUNCTIONS] = LAYOUT(
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_F7,     KC_F8,     KC_F9,      KC_F10,     XXXXXXX,
-        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_NO,     KC_F4,     KC_F5,     KC_F6,      KC_F11,     XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         KC_NO,     KC_F1,     KC_F2,     KC_F3,      KC_F12,     RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-                                                               XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
-                                                                        XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
-    ),
-    [_I3] = LAYOUT(
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  G(KC_1),    G(KC_2),   G(KC_3),   G(KC_4),   G(KC_5),         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
-        XXXXXXX,  G(KC_LEFT), G(KC_DOWN),G(KC_UP), G(KC_RIGHT),G(KC_X),         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
-        XXXXXXX,  G(KC_6),    G(KC_7),   G(KC_8),   G(KC_9),   G(KC_0),         /**/         KC_MUTE,   KC_VOLD,   KC_VOLU,   KC_NO,      KC_NO,      RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  KC_HOME,    KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,           /**/         G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_ESC,                     /**/                    KC_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     )
 };
 
+static uint8_t ltosl_state = 0;
+#define LTOSLR_MO_LAYER 3   // Layer to activate when holding.
+#define LTOSLR_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
+#define LTOSLL_MO_LAYER 2   // Layer to activate when holding.
+#define LTOSLL_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (keycode == LTOSLR) {
+    static uint32_t tap_deadline = 0;
+    if (record->event.pressed) {  // On pressed.
+      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
+      layer_on(LTOSLR_MO_LAYER);
+      ltosl_state = 1;  // Set undetermined state.
+    } else {  // On release.
+      layer_off(LTOSLR_MO_LAYER);
+      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+        // LTOSLR was released without pressing another key within 200 ms.
+        layer_on(LTOSLR_OSL_LAYER);
+        ltosl_state = 2;  // Acting like OSL.
+      }
+    }
+    return false;
+  }
+  if (keycode == LTOSLL) {
+    static uint32_t tap_deadline = 0;
+    if (record->event.pressed) {  // On pressed.
+      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
+      layer_on(LTOSLL_MO_LAYER);
+      ltosl_state = 1;  // Set undetermined state.
+    } else {  // On release.
+      layer_off(LTOSLL_MO_LAYER);
+      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+        // LTOSLL was released without pressing another key within 200 ms.
+        layer_on(LTOSLL_OSL_LAYER);
+        ltosl_state = 2;  // Acting like OSL.
+      }
+    }
+  return false;
+  }
+
   if (!process_select_word(keycode, record, SELWRD)) { return false; }
+
   return true;
-}
+};
+
+void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
+  // Turn off the layer if another key is pressed while acting like OSL. The
+  // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
+  if (keycode != LTOSLR && (ltosl_state >>= 1)) {
+    layer_off(LTOSLR_OSL_LAYER);
+  }
+  if (keycode != LTOSLL && (ltosl_state >>= 1)) {
+    layer_off(LTOSLL_OSL_LAYER);
+  }
+};
 
 void keyboard_post_init_user(void) {
     rgblight_mode(22);
@@ -164,29 +195,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv_noeeprom(HSV_BLUE);
             rgblight_mode_noeeprom(1);
             break;
-         case _SYMBOLS_2:
-            rgblight_sethsv_noeeprom(HSV_BLUE);
-            rgblight_mode_noeeprom(1);
-            break;
        case _NUMBERS:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             rgblight_mode_noeeprom(1);
             break;
         case _NAVIGATION:
-            rgblight_sethsv_noeeprom(HSV_GREEN);
-            rgblight_mode_noeeprom(1);
-            break;
-        case _FUNCTIONS:
             rgblight_sethsv_noeeprom(HSV_RED);
             rgblight_mode_noeeprom(1);
-            break;
-        case _I3:
-            rgblight_sethsv_noeeprom(HSV_RED);
-            rgblight_mode_noeeprom(1);
-            break;
-         case _GAMING:
-            rgblight_sethsv_noeeprom(HSV_CYAN);
-            rgblight_mode_noeeprom(14);
             break;
     }
     return state;

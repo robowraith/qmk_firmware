@@ -93,8 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SYMBOLS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  DE_AT,      DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK,         /**/         DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_EURO,    XXXXXXX,
-        XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_SCLN,   DE_COMM,   DE_EXLM,         /**/         DE_QUES,   DE_DOT,    DE_COLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
+        XXXXXXX,  DE_EURO,    DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK,         /**/         DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_AT,      XXXXXXX,
+        XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_COLN,   DE_COMM,   DE_EXLM,         /**/         DE_QUES,   DE_DOT,    DE_SCLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
         XXXXXXX,  DE_PERC,    DE_GRV,    DE_DLR,    DE_UNDS,   DE_HASH,         /**/         DE_ASTR,   DE_MINS,   DE_PIPE,   DE_TILD,    DE_AMPR,    XXXXXXX,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EQL,                     /**/                    DE_CIRC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,

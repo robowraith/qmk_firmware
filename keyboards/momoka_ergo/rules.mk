@@ -4,8 +4,6 @@ MCU = atmega32u4
 # Bootloader selection
 BOOTLOADER = atmel-dfu
 
-SRC += features/select_word.c
-
 # Build Options
 #   change yes to no to disable
 #
@@ -22,3 +20,4 @@ AUDIO_ENABLE = no           # Audio output
 SPLIT_KEYBOARD = yes
 CAPS_WORD_ENABLE = yes
 TAP_DANCE_ENABLE = yes
+

@@ -15,7 +15,6 @@
  */
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
-#include "features/select_word.h"
 extern rgblight_config_t rgblight_config;
 
 enum layer_names {
@@ -94,19 +93,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SYMBOLS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    XXXXXXX,
-        XXXXXXX,  DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    XXXXXXX,
-        XXXXXXX,  DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EURO,                    /**/                    DE_AT,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  DE_AT,      DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK,         /**/         DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_EURO,    XXXXXXX,
+        XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_SCLN,   DE_COMM,   DE_EXLM,         /**/         DE_QUES,   DE_DOT,    DE_COLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
+        XXXXXXX,  DE_PERC,    DE_GRV,    DE_DLR,    DE_UNDS,   DE_HASH,         /**/         DE_ASTR,   DE_MINS,   DE_PIPE,   DE_TILD,    DE_AMPR,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EQL,                     /**/                    DE_CIRC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    CAPSWRD,   SELWRD,  XXXXXXX,/**/XXXXXXX, DE_DOT,    DE_COMM
+                                                    CAPSWRD,   KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,     CAPSWRD
+
     ),
     [_NUMBERS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
-        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
-        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_ENT,          /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
+        XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_MUTE,   KC_VOLU,         /**/         DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
+        XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_VOLD,         /**/         DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
+        XXXXXXX,  KC_LEFT,    KC_MPRV,   KC_MNXT,   KC_MPLY,   KC_MUTE,         /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_BSPC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
@@ -114,10 +114,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAVIGATION] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,  KC_PSCR,    KC_CUT,    KC_COPY,   KC_PASTE,  KC_NO,           /**/         G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,
-        XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_NO,           /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
-        XXXXXXX,  KC_HOME,    KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,           /**/         G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_ESC,                     /**/                    KC_TAB,    XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  KC_PASTE,   KC_HOME,   KC_UP,     KC_END,    KC_PGUP,         /**/         G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,
+        XXXXXXX,  KC_COPY,    KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
+        XXXXXXX,  KC_CUT,     KC_NO,     KC_NO,     KC_PSCR,   KC_TAB,          /**/         G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_ESC,                     /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
@@ -162,10 +162,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
   return false;
   }
-
-  if (!process_select_word(keycode, record, SELWRD)) { return false; }
-
-  return true;
+return true;
 };
 
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {

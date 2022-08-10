@@ -125,10 +125,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 static uint8_t ltosl_state = 0;
-#define LTOSLR_MO_LAYER 3   // Layer to activate when holding.
-#define LTOSLR_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
-#define LTOSLL_MO_LAYER 2   // Layer to activate when holding.
-#define LTOSLL_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
+#define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
+#define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
+#define LTOSLL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
@@ -176,6 +176,27 @@ void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 };
 
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case KC_MINS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_UNDS:
+        case DE_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+};
+
 void keyboard_post_init_user(void) {
     rgblight_mode(22);
     rgblight_sethsv(HSV_RED);
@@ -211,26 +232,5 @@ void caps_word_set_user(bool active) {
     } else {
         rgblight_mode_noeeprom(1);
         rgblight_sethsv_noeeprom(HSV_WHITE);
-    }
-};
-
-bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        // Keycodes that continue Caps Word, with shift applied.
-        case KC_A ... KC_Z:
-        case KC_MINS:
-            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
-            return true;
-
-        // Keycodes that continue Caps Word, without shifting.
-        case KC_1 ... KC_0:
-        case KC_BSPC:
-        case KC_DEL:
-        case KC_UNDS:
-        case DE_UNDS:
-            return true;
-
-        default:
-            return false;  // Deactivate Caps Word.
     }
 };

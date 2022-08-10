@@ -124,7 +124,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-static uint8_t ltosl_state = 0;
+static uint8_t ltoslr_state = 0;
+static uint8_t ltosll_state = 0;
 #define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
 #define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 #define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
@@ -135,13 +136,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (record->event.pressed) {  // On pressed.
       tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
       layer_on(LTOSLR_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
+      ltoslr_state = 1;  // Set undetermined state.
     } else {  // On release.
       layer_off(LTOSLR_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+      if (ltoslr_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLR was released without pressing another key within 200 ms.
         layer_on(LTOSLR_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
+        ltoslr_state = 2;  // Acting like OSL.
       }
     }
     return false;
@@ -151,13 +152,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (record->event.pressed) {  // On pressed.
       tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
       layer_on(LTOSLL_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
+      ltosll_state = 1;  // Set undetermined state.
     } else {  // On release.
       layer_off(LTOSLL_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+      if (ltosll_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLL was released without pressing another key within 200 ms.
         layer_on(LTOSLL_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
+        ltosll_state = 2;  // Acting like OSL.
       }
     }
   return false;
@@ -168,10 +169,10 @@ return true;
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   // Turn off the layer if another key is pressed while acting like OSL. The
   // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
-  if (keycode != LTOSLR && (ltosl_state >>= 1)) {
+  if (keycode != LTOSLR && (ltoslr_state >>= 1)) {
     layer_off(LTOSLR_OSL_LAYER);
   }
-  if (keycode != LTOSLL && (ltosl_state >>= 1)) {
+  if (keycode != LTOSLL && (ltosll_state >>= 1)) {
     layer_off(LTOSLL_OSL_LAYER);
   }
 };

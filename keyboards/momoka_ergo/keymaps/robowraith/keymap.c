@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EQL,                     /**/                    DE_CIRC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    CAPSWRD,   KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,     CAPSWRD
+                                                    KC_NO,   KC_NO,     XXXXXXX,/**/XXXXXXX, KC_NO,     KC_NO
 
     ),
     [_NUMBERS] = LAYOUT(

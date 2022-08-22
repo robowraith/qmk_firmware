@@ -96,10 +96,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  DE_EURO,    DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK,         /**/         DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_AT,      XXXXXXX,
         XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_COLN,   DE_COMM,   DE_EXLM,         /**/         DE_QUES,   DE_DOT,    DE_SCLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
         XXXXXXX,  DE_PERC,    DE_GRV,    DE_DLR,    DE_UNDS,   DE_HASH,         /**/         DE_ASTR,   DE_MINS,   DE_PIPE,   DE_TILD,    DE_AMPR,    XXXXXXX,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EQL,                     /**/                    DE_CIRC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    KC_NO,   KC_NO,     XXXXXXX,/**/XXXXXXX, KC_NO,     KC_NO
+                                                    DE_EQL,    KC_ESC,  XXXXXXX,/**/XXXXXXX, KC_NO,     DE_CIRC
 
     ),
     [_NUMBERS] = LAYOUT(
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_MUTE,   KC_VOLU,         /**/         DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_VOLD,         /**/         DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_BSPC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_ENT,    DE_0
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  KC_PASTE,   KC_HOME,   KC_UP,     KC_END,    KC_PGUP,         /**/         G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,
         XXXXXXX,  KC_COPY,    KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
         XXXXXXX,  KC_CUT,     KC_NO,     KC_NO,     KC_PSCR,   KC_TAB,          /**/         G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_ESC,                     /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO

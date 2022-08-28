@@ -99,15 +99,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    DE_EQL,    KC_ESC,  XXXXXXX,/**/XXXXXXX, KC_NO,     DE_CIRC,
+                                                    DE_EQL,    KC_ESC,  XXXXXXX,/**/XXXXXXX, KC_NO,     DE_CIRC
 
     ),
     [_NUMBERS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_MUTE,   KC_VOLU,         /**/         DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_VOLD,         /**/         DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_MPRV,   KC_MNXT,   KC_MPLY,   KC_MUTE,         /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_BSPC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_ENT,    DE_0
@@ -117,31 +117,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  KC_PASTE,   KC_HOME,   KC_UP,     KC_END,    KC_PGUP,         /**/         G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,
         XXXXXXX,  KC_COPY,    KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
         XXXXXXX,  KC_CUT,     KC_NO,     KC_NO,     KC_PSCR,   KC_TAB,          /**/         G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    RESET,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_ESC,                     /**/                    XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
                                                     KC_NO,     KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,    KC_NO
     )
 };
 
-static uint8_t ltosl_state = 0;
-#define LTOSLR_MO_LAYER 3   // Layer to activate when holding.
-#define LTOSLR_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
-#define LTOSLL_MO_LAYER 2   // Layer to activate when holding.
-#define LTOSLL_OSL_LAYER 1  // Layer to activate as an OSL when tapped.
+static uint8_t ltoslr_state = 0;
+static uint8_t ltosll_state = 0;
+#define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
+#define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
+#define LTOSLL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
     if (record->event.pressed) {  // On pressed.
       tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
       layer_on(LTOSLR_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
+      ltoslr_state = 1;  // Set undetermined state.
     } else {  // On release.
       layer_off(LTOSLR_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+      if (ltoslr_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLR was released without pressing another key within 200 ms.
         layer_on(LTOSLR_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
+        ltoslr_state = 2;  // Acting like OSL.
       }
     }
     return false;
@@ -151,13 +152,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (record->event.pressed) {  // On pressed.
       tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
       layer_on(LTOSLL_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
+      ltosll_state = 1;  // Set undetermined state.
     } else {  // On release.
       layer_off(LTOSLL_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+      if (ltosll_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLL was released without pressing another key within 200 ms.
         layer_on(LTOSLL_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
+        ltosll_state = 2;  // Acting like OSL.
       }
     }
   return false;
@@ -168,12 +169,33 @@ return true;
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   // Turn off the layer if another key is pressed while acting like OSL. The
   // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
-  if (keycode != LTOSLR && (ltosl_state >>= 1)) {
+  if (keycode != LTOSLR && (ltoslr_state >>= 1)) {
     layer_off(LTOSLR_OSL_LAYER);
   }
-  if (keycode != LTOSLL && (ltosl_state >>= 1)) {
+  if (keycode != LTOSLL && (ltosll_state >>= 1)) {
     layer_off(LTOSLL_OSL_LAYER);
   }
+};
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case KC_MINS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_UNDS:
+        case DE_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
 };
 
 void keyboard_post_init_user(void) {
@@ -211,26 +233,5 @@ void caps_word_set_user(bool active) {
     } else {
         rgblight_mode_noeeprom(1);
         rgblight_sethsv_noeeprom(HSV_WHITE);
-    }
-};
-
-bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        // Keycodes that continue Caps Word, with shift applied.
-        case KC_A ... KC_Z:
-        case KC_MINS:
-            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
-            return true;
-
-        // Keycodes that continue Caps Word, without shifting.
-        case KC_1 ... KC_0:
-        case KC_BSPC:
-        case KC_DEL:
-        case KC_UNDS:
-        case DE_UNDS:
-            return true;
-
-        default:
-            return false;  // Deactivate Caps Word.
     }
 };

@@ -18,4 +18,6 @@ Additiional cnofigurations
 
 /* Enable lighting layers */
 // #define RGBLIGHT_LAYERS
-// #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+// #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OF
+
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD

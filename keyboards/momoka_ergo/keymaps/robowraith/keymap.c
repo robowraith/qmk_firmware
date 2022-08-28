@@ -94,19 +94,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYMBOLS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  DE_EURO,    DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK,         /**/         DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_AT,      XXXXXXX,
-        XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_COLN,   DE_COMM,   DE_EXLM,         /**/         DE_QUES,   DE_DOT,    DE_SCLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
+        XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_COLN,   DE_COMM,   DE_QUES,         /**/         DE_EXLM,   DE_DOT,    DE_SCLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
         XXXXXXX,  DE_PERC,    DE_GRV,    DE_DLR,    DE_UNDS,   DE_HASH,         /**/         DE_ASTR,   DE_MINS,   DE_PIPE,   DE_TILD,    DE_AMPR,    XXXXXXX,
-        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   DE_EQL,                     /**/                    DE_CIRC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_NO,     XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,
-                                                    CAPSWRD,   KC_NO,   XXXXXXX,/**/XXXXXXX, KC_NO,     CAPSWRD
+                                                    DE_EQL,    KC_ESC,  XXXXXXX,/**/XXXXXXX, KC_NO,     DE_CIRC,
 
     ),
     [_NUMBERS] = LAYOUT(
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,         /**/         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_MUTE,   KC_VOLU,         /**/         DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_VOLD,         /**/         DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
-        XXXXXXX,  KC_LEFT,    KC_MPRV,   KC_MNXT,   KC_MPLY,   KC_MUTE,         /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
+        XXXXXXX,  KC_NO,      KC_MPRV,   KC_MNXT,   KC_MPLY,   KC_MUTE,         /**/         DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
         XXXXXXX,  XXXXXXX,    XXXXXXX,   XXXXXXX,   KC_NO,                      /**/                    KC_BSPC,   XXXXXXX,   XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                                XXXXXXX, XXXXXXX,/**/XXXXXXX, XXXXXXX,
                                                                         XXXXXXX,/**/XXXXXXX,

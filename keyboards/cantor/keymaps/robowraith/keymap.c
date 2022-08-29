@@ -3,7 +3,6 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
-#include "features/select_word.h"
 
 enum layer_names {
     _BASE,
@@ -34,8 +33,6 @@ enum custom_keycodes {
     RW_TAB  = LT(_NAVIGATION, KC_TAB),
     RW_ENT  = LT(_I3, KC_ENT),
     RW_SPC  = LT(_SYMBOLS_2, KC_SPC),
-    // Other
-    SELWRD  = SAFE_RANGE
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -63,54 +60,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA,         /**/         DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       XXXXXXX,
                                          RW_ESC,    RW_BSPC,   RW_DEL,          /**/         RW_ENT,    RW_SPC,    RW_TAB
     ),
-    [_SYMBOLS] = LAYOUT(
+    [_SYMBOLS] = LAYOUT_split_3x6_3(
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_EXLM,   DE_LABK,   DE_RABK,   DE_EQL,     DE_AMPR,    XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_QUES,   DE_LPRN,   DE_RPRN,   DE_MINS,    DE_COLN,    XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_PLUS,   DE_PERC,   DE_DQUO,   DE_QUOT,    DE_SCLN,    RESET,
                                          KC_NO,     KC_NO,     KC_NO,           /**/         DE_DOT,    DE_COMM,   DE_AT
     ),
-    [_SYMBOLS_2] = LAYOUT(
+    [_SYMBOLS_2] = LAYOUT_split_3x6_3(
         XXXXXXX,  DE_DEG,     DE_UNDS,   DE_LBRC,   DE_RBRC,   DE_CIRC,         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
         XXXXXXX,  DE_BSLS,    DE_SLSH,   DE_LCBR,   DE_RCBR,   DE_ASTR,         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
         XXXXXXX,  DE_HASH,    DE_DLR,    DE_PIPE,   DE_TILD,   DE_GRV,          /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
-                                         DE_EURO,   CAPSWRD,   SELWRD,          /**/         KC_NO,    KC_NO,      KC_NO
+                                         DE_EURO,   CAPSWRD,   KC_NO,           /**/         KC_NO,    KC_NO,      KC_NO
     ),
-    [_KEYPAD] = LAYOUT(
+    [_KEYPAD] = LAYOUT_split_3x6_3(
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     DE_7,      DE_8,      DE_9,       DE_PLUS,    XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         DE_COLN,   DE_4,      DE_5,      DE_6,       DE_MINS,    XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         DE_COMM,   DE_1,      DE_2,      DE_3,       DE_DOT,     RESET,
                                          KC_NO,     KC_NO,     KC_NO,           /**/         KC_ENT,    KC_NO,     KC_0
     ),
-    [_NAVIGATION] = LAYOUT(
+    [_NAVIGATION] = LAYOUT_split_3x6_3(
         XXXXXXX,  KC_PSCR,    KC_CUT,    KC_COPY,   KC_PASTE,  KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
         XXXXXXX,  KC_LEFT,    KC_DOWN,   KC_UP,     KC_RIGHT,  KC_NO,           /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
         XXXXXXX,  KC_HOME,    KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,           /**/         KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,      KC_RIGHT,   RESET,
                                          KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,    KC_NO,      KC_NO
     ),
-    [_FUNCTIONS] = LAYOUT(
+    [_FUNCTIONS] = LAYOUT_split_3x6_3(
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_F7,     KC_F8,     KC_F9,      KC_F11,     XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,           /**/         KC_NO,     KC_F4,     KC_F5,     KC_F6,      KC_F12,     XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY,         /**/         KC_NO,     KC_F1,     KC_F2,     KC_F3,      KC_NO,      RESET,
                                          KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,    KC_NO,      KC_F10
     ),
-    [_I3] = LAYOUT(
+    [_I3] = LAYOUT_split_3x6_3(
         XXXXXXX,  G(KC_1),    G(KC_2),   G(KC_3),   G(KC_4),   G(KC_5),         /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      RESET,      XXXXXXX,
         XXXXXXX,  G(KC_LEFT), G(KC_DOWN),G(KC_UP), G(KC_RIGHT),G(KC_X),         /**/         KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
         XXXXXXX,  G(KC_6),    G(KC_7),   G(KC_8),   G(KC_9),   G(KC_0),         /**/         KC_MUTE,   KC_VOLD,   KC_VOLU,   KC_NO,      KC_NO,      RESET,
                                          KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,    KC_NO,      KC_NO
     ),
-    [_GAMING ] = LAYOUT(
+    [_GAMING ] = LAYOUT_split_3x6_3(
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO,     KC_NO,      KC_NO,      RESET,
                                          KC_NO,     KC_NO,     KC_NO,           /**/         KC_NO,     KC_NO,     KC_NO
     )
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (!process_select_word(keycode, record, SELWRD)) { return false; }
-  return true;
-}
 
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {

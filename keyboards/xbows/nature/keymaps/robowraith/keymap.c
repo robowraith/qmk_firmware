@@ -1,0 +1,193 @@
+/* Copyright 2020 Shulin Huang <mumu@x-bows.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#include QMK_KEYBOARD_H
+#include "keymap_german.h"
+
+// Home-Row-Mod-Keys for QWERTZ and Bone
+#define BO_C LGUI_T(DE_C)
+#define BO_T LALT_T(DE_T)
+#define BO_I LCTL_T(DE_I)
+#define BO_E LSFT_T(DE_E)
+#define BO_N RSFT_T(DE_N)
+#define BO_R RCTL_T(DE_R)
+#define BO_S RALT_T(DE_S)
+#define BO_G RGUI_T(DE_G)
+
+// Modifier-keys for QWERTZ and Bone
+#define BO_MO1L LT(1, DE_O)
+#define BO_MO1R LT(1, DE_B)
+#define BO_MO2L LT(2, DE_ADIA)
+#define BO_MO2R LT(2, DE_Z)
+
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /* Keymap VANILLA: (Base Layer) Default Layer
+   *
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   * | Esc |  F1  |  F2  |  F3  |  F4  |      F5  |  F6  |  F7  |  F8  |      F9  |  F10 |  F11 |  F12 |   Delete   |    Prtsc    |
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   * |  ~  |     1   |   2   |   3   |   4   |    5      |       6    |    7    |    8   |   9  |   0  |   -  |  =  |  Backspace  |
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   * | Tab |   Q    |    W   |   E  |   R  |   T  |            |    Y   |    U   |    I  |   O  |   P  |   [  |  ]  |   \  | PgUp |
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   * | Ctl |   A   |   S   |   D  |   F  |   G  |      Bksp      |    H  |    J   |   K  |   L  |   ;  |  '"  |    Enter   | PgDn |
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   * |Shift|   Z  |   X  |   C  |   V  |   B  |       Enter       |    N  |    M   |  ,  |   .  |  /?  | Shift|      |  Up |
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   * |Ctrl | GUI |     Alter   |    Space   |   Ctrl   |   Shift   |     Space     |    Alter   |  FN  | Ctrl | Lft  |  Dn |  Rig |
+   * |---------------------------------------------------------------------------------------------------------------------------------|
+   */
+  [0] = LAYOUT(
+      // Bone Linux
+      KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
+      KC_CUT,     DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
+      KC_COPY,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
+      KC_PASTE,   BO_C,       BO_T,       BO_I,       BO_E,       BO_MO1L,    KC_ESC,     BO_MO1R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
+      KC_CAPS,    DE_F,       DE_V,       DE_UDIA,    BO_MO2L,    DE_ODIA,    KC_TAB,     DE_Y,       BO_MO2R,    DE_COMM,    DE_DOT,     DE_K,        KC_RSFT,               KC_UP,
+      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_BSPC,                KC_DEL,                 KC_ENT,                 KC_SPC,     KC_RALT,    TG(3),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
+  [1] = LAYOUT(
+      // Shifted Layer Linux
+      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      KC_NO,      DE_SUP2,    DE_SUP3,    KC_NO,      KC_NO,                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      DE_DEG,     DE_UNDS,    DE_LBRC,    DE_RBRC,    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     DE_AMPR,    DE_EURO,    KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      DE_BSLS,    DE_SLSH,    DE_LCBR,    DE_RCBR,    DE_ASTR,    KC_NO,      DE_QUES,    DE_LPRN,    DE_RPRN,    DE_MINS,    DE_COLN,    DE_AT,      KC_NO,                  KC_NO,
+      KC_NO,      DE_HASH,    DE_DLR,     DE_PIPE,    DE_TILD,    DE_GRV,     KC_NO,      DE_PLUS,    DE_PERC,    DE_DQUO,    DE_QUOT,    DE_SCLN,    KC_NO,                  KC_NO,
+      KC_NO,      KC_NO,      C(DE_X),    C(DE_C),                S(KC_INS),              S(KC_INS),              C(DE_C),    C(DE_X),    MO(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO),
+  [2] = LAYOUT(
+      // Utillity
+      KC_ESC,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_TOG,    NK_TOGG,    EEP_RST,
+      KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      RESET,
+      DT_PRNT,    KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_PGUP,                KC_NLCK,    KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
+      DT_UP,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
+      DT_DOWN,    KC_LCTL,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_KP_1,    KC_KP_2,    KC_KP_3,    KC_NO,      KC_MUTE,                KC_VOLU,
+      KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_LSFT,                KC_KP_0,    DE_COMM,    TG(0),      KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
+  [3] = LAYOUT(
+      // Gaming (QWERTY)
+      KC_ESC,     KC_F1,      KC_F2,     KC_F3,       KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_DEL,     KC_PSCR,
+	  KC_GRV,     KC_1,       KC_2,      KC_3,        KC_4,       KC_5,                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_MINS,    KC_EQL,     KC_BSPC,
+	  KC_TAB,     KC_Q,       KC_W,      KC_E,        KC_R,       KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_LBRC,    KC_RBRC,    KC_BSLS,    KC_PGUP,
+	  KC_CAPS,    KC_A,       KC_S,      KC_D,        KC_F,       KC_G,       KC_BSPC,    KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_QUOT,    KC_ENT,     KC_PGDN,
+	  KC_LSFT,    KC_Z,       KC_X,      KC_C,        KC_V,       KC_B,       KC_ENT,     KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,    KC_UP,
+	  KC_LCTL,    KC_LGUI,    KC_LALT,                KC_SPC,     KC_LCTL,                KC_LSFT,    KC_SPC,                 KC_RALT,    TG(0),      KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
+      };
+
+const int FkeysSize = 12;
+int keysFkeys[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+const int NumkeysSize = 10;
+int keysNumkeys[] = { 16, 17, 18, 19, 20, 22, 23, 24, 25, 26 };
+const int AlphakeysSize = 24;
+int keysAlphakeys[] = { 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 50, 52, 57, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71 };
+const int HomekeysSize = 8;
+int keysHomekeys[] = { 46, 47, 48, 49, 53, 54, 55, 56 };
+int logoKey = 21;
+int ForwardkeysSize = 6;
+int keysForwardkeys[] = { 30, 58, 66, 77, 79, 80 };
+int BackkeysSize = 3;
+int keysBackkeys[] = { 13, 29, 78 };
+int ShiftkeysSize = 5;
+int keysShiftkeys[] = { 0, 14, 51, 60, 72 };
+int ArrowkeysSize = 4;
+int keysArrowkeys[] = { 73, 84, 85, 86};
+int NavkeysSize = 4;
+int keysNavkeys[] = { 33, 47, 48, 49 };
+int NumpadkeysSize = 11;
+int keysNumpadkeys[] = { 38, 39, 40, 53, 54, 55, 68, 69, 70, 80, 81 };
+int NumpadoperatorkeysSize = 4;
+int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
+int QMKkeysSize = 4;
+int keysQMKkeys[] = { 12, 13, 14, 29 };
+int CutkeysSize = 2;
+int keysCutkeys[] = { 76, 81 };
+int CopykeysSize = 2;
+int keysCopykeys[] = { 77, 80 };
+int PastekeysSize = 2;
+int keysPastekeys[] = { 78, 79 };
+int MMPluskeysSize = 6;
+int keysMMPluskeys[] = { 34, 35, 36, 73, 83, 86 };
+int MMMinuskeysSize = 6;
+int keysMMMinuskeys[] = { 32, 50, 59, 72, 84, 85 };
+
+void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
+    for( int i = 0; i < size; i++) {
+        rgb_matrix_set_color(keytype[i], r, g, b);
+    }
+};
+
+void default_color_scheme(void) {
+    set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
+    set_key_color(FkeysSize, keysFkeys, RGB_WHITE);
+    set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
+    set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
+    set_key_color(ForwardkeysSize, keysForwardkeys, RGB_GREEN);
+    set_key_color(BackkeysSize, keysBackkeys, RGB_RED);
+    set_key_color(ShiftkeysSize, keysShiftkeys, RGB_YELLOW);
+    set_key_color(ArrowkeysSize, keysArrowkeys, RGB_BLUE);
+};
+
+void rgb_matrix_indicators_user(void) {
+    uint8_t layer = biton32(layer_state);
+    switch (layer) {
+        case 0: // Bone (Linux)
+            rgb_matrix_set_color_all(RGB_WHITE);
+            default_color_scheme();
+            //rgb_matrix_set_color(logoKey, RGB_WHITE);
+            if (host_keyboard_led_state().caps_lock) {
+                rgb_matrix_set_color(logoKey, RGB_MAGENTA);
+            } else {
+                rgb_matrix_set_color(logoKey, RGB_WHITE);
+            }
+            break;
+        case 1: // Shifted (Linux)
+            rgb_matrix_set_color_all(RGB_BLACK);
+            set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
+            set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
+            set_key_color(CutkeysSize, keysCutkeys, RGB_RED);
+            set_key_color(CopykeysSize, keysCopykeys, RGB_GREEN);
+            set_key_color(PastekeysSize, keysPastekeys, RGB_YELLOW);
+            rgb_matrix_set_color(logoKey, RGB_GREEN );
+            break;
+        case 2: // Utility
+            rgb_matrix_set_color_all(RGB_BLACK);
+            rgb_matrix_set_color(0, RGB_YELLOW );
+            rgb_matrix_set_color(1, RGB_RED );
+            rgb_matrix_set_color(2, RGB_GREEN );
+            set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
+            set_key_color(NavkeysSize, keysNavkeys, RGB_BLUE);
+            set_key_color(QMKkeysSize, keysQMKkeys, RGB_MAGENTA);
+            rgb_matrix_set_color(30, RGB_YELLOW );
+            rgb_matrix_set_color(32, RGB_GREEN );
+            rgb_matrix_set_color(34, RGB_GREEN );
+            rgb_matrix_set_color(46, RGB_YELLOW );
+            rgb_matrix_set_color(51, RGB_WHITE );
+            set_key_color(NumpadkeysSize, keysNumpadkeys, RGB_BLUE);
+            set_key_color(NumpadoperatorkeysSize, keysNumpadoperatorkeys, RGB_YELLOW);
+            rgb_matrix_set_color(58, RGB_GREEN);
+            set_key_color(MMPluskeysSize, keysMMPluskeys, RGB_GREEN);
+            set_key_color(MMMinuskeysSize, keysMMMinuskeys, RGB_RED);
+            rgb_matrix_set_color(77, RGB_YELLOW );
+            rgb_matrix_set_color(78, RGB_YELLOW );
+            rgb_matrix_set_color(logoKey, RGB_RED );
+            break;
+        case 3: // Gaming
+            rgb_matrix_set_color_all(RGB_WHITE);
+            if (host_keyboard_led_state().caps_lock) {
+                rgb_matrix_set_color(logoKey, RGB_MAGENTA);
+            } else {
+                rgb_matrix_set_color(logoKey, RGB_BLUE);
+            }
+            break;
+    }
+};

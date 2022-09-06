@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x6_3(
         XXXXXXX,  DE_J,       DE_L,      DE_U,      DE_A,      DE_Q,    /**/ DE_W,      DE_B,      DE_D,      DE_G,       DE_Y,       XXXXXXX,
         XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_O,    /**/ DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
-        XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA, /**/ DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       RESET,
+        XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA, /**/ DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       XXXXXXX,
                                          LTOSLL,    KC_BSPC,   KC_DEL,  /**/ KC_ENT,    KC_SPC,    LTOSLR
     ),
     [_SYMBOLS] = LAYOUT_split_3x6_3(
@@ -84,14 +84,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUMBERS] = LAYOUT_split_3x6_3(
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_MUTE,   KC_VOLU, /**/ DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_VOLD, /**/ DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
-        XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY, /**/ DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), RESET,
+        XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY, /**/ DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), XXXXXXX,
                                          KC_NO,     KC_NO,     KC_NO,   /**/ KC_ENT,    DE_0,      KC_NO
     ),
     [_NAVIGATION] = LAYOUT_split_3x6_3(
         XXXXXXX,  KC_PASTE,   KC_HOME,   KC_UP,     KC_END,    KC_PGUP, /**/ G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,
         XXXXXXX,  KC_COPY,    KC_LEFT,   KC_DOWN,   KC_RIGHT,  KC_PGDN, /**/ KC_NO,     KC_RSFT,   KC_RCTL,   KC_RALT,    KC_RGUI,    XXXXXXX,
-        XXXXXXX,  KC_CUT,     KC_NO,     KC_NO,     KC_PSCR,   KC_TAB,  /**/ G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    RESET,
-                                         KC_NO,     KC_NO,     KC_NO,   /**/ KC_NO,    KC_NO,      KC_NO,
+        XXXXXXX,  KC_CUT,     KC_NO,     KC_NO,     KC_PSCR,   KC_TAB,  /**/ G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),    G(KC_0),    XXXXXXX,
+                                         KC_NO,     KC_NO,     KC_NO,   /**/ KC_NO,     KC_NO,      KC_NO
     )
 };
 

@@ -16,21 +16,69 @@
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 
-// Home-Row-Mod-Keys for QWERTZ and Bone
-#define BO_C LGUI_T(DE_C)
-#define BO_T LALT_T(DE_T)
-#define BO_I LCTL_T(DE_I)
-#define BO_E LSFT_T(DE_E)
-#define BO_N RSFT_T(DE_N)
-#define BO_R RCTL_T(DE_R)
-#define BO_S RALT_T(DE_S)
-#define BO_G RGUI_T(DE_G)
+enum layer_names {
+    _BASE,
+    _SYMBOLS,
+    _NUMBERS,
+    _NAVIGATION,
+};
 
-// Modifier-keys for QWERTZ and Bone
-#define BO_MO1L LT(1, DE_O)
-#define BO_MO1R LT(1, DE_B)
-#define BO_MO2L LT(2, DE_ADIA)
-#define BO_MO2R LT(2, DE_Z)
+// Home-Row-Mod- and Thumb-Keys
+enum custom_keycodes {
+    // Mod Taps on eft hand
+    RW_C = LGUI_T(DE_C),
+    RW_R = LALT_T(DE_R),
+    RW_I = LCTL_T(DE_I),
+    RW_E = LSFT_T(DE_E),
+    // Mod taps on right hand
+    RW_N = RSFT_T(DE_N),
+    RW_T = RCTL_T(DE_T),
+    RW_S = RALT_T(DE_S),
+    RW_H = RGUI_T(DE_H),
+    // Other
+    SELWRD  = SAFE_RANGE,
+    LTOSLR,
+    LTOSLL
+};
+
+enum tap_dance_keys{
+    F1_1,
+    F2_2,
+    F3_3,
+    F4_4,
+    F5_5,
+    F6_6,
+    F7_7,
+    F8_8,
+    F9_9,
+    F10_PL,
+    F11_DO,
+    F12_CO,
+};
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1),
+    [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2),
+    [F3_3] = ACTION_TAP_DANCE_DOUBLE(DE_3, KC_F3),
+    [F4_4] = ACTION_TAP_DANCE_DOUBLE(DE_4, KC_F4),
+    [F5_5] = ACTION_TAP_DANCE_DOUBLE(DE_5, KC_F5),
+    [F6_6] = ACTION_TAP_DANCE_DOUBLE(DE_6, KC_F6),
+    [F7_7] = ACTION_TAP_DANCE_DOUBLE(DE_7, KC_F7),
+    [F8_8] = ACTION_TAP_DANCE_DOUBLE(DE_8, KC_F8),
+    [F9_9] = ACTION_TAP_DANCE_DOUBLE(DE_9, KC_F9),
+    [F10_PL] = ACTION_TAP_DANCE_DOUBLE(DE_PLUS, KC_F10),
+    [F11_DO] = ACTION_TAP_DANCE_DOUBLE(DE_DOT, KC_F11),
+    [F12_CO] = ACTION_TAP_DANCE_DOUBLE(DE_COMM, KC_F12),
+};
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -50,39 +98,109 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |Ctrl | GUI |     Alter   |    Space   |   Ctrl   |   Shift   |     Space     |    Alter   |  FN  | Ctrl | Lft  |  Dn |  Rig |
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
-  [0] = LAYOUT(
-      // Bone Linux
+  [_BASE] = LAYOUT(
       KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
-      KC_CUT,     DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
-      KC_COPY,    DE_J,       DE_D,       DE_U,       DE_A,       DE_X,                   DE_P,       DE_H,       DE_L,       DE_M,       DE_W,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
-      KC_PASTE,   BO_C,       BO_T,       BO_I,       BO_E,       BO_MO1L,    KC_ESC,     BO_MO1R,    BO_N,       BO_R,       BO_S,       BO_G,        DE_Q,      KC_ENT,                 KC_PGDN,
-      KC_CAPS,    DE_F,       DE_V,       DE_UDIA,    BO_MO2L,    DE_ODIA,    KC_TAB,     DE_Y,       BO_MO2R,    DE_COMM,    DE_DOT,     DE_K,        KC_RSFT,               KC_UP,
-      KC_LCTL,    KC_LGUI,    KC_LALT,    KC_BSPC,                KC_DEL,                 KC_ENT,                 KC_SPC,     KC_RALT,    TG(3),       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
-  [1] = LAYOUT(
-      // Shifted Layer Linux
+      KC_PASTE,   DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
+      KC_PASTE,   DE_J,       DE_L,       DE_U,       DE_A,       DE_Q,                   DE_W,       DE_B,       DE_D,       DE_G,       DE_Y,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
+      KC_COPY,    RW_C,       RW_R,       RW_I,       RW_E,       DE_O,       KC_DEL,     DE_M,       RW_N,       RW_T,       RW_S,       RW_H,        DE_Q,      KC_ENT,                 KC_PGDN,
+      KC_PSCR,    DE_V,       DE_X,       DE_UDIA,    DE_ADIA,    DE_ODIA,    KC_ENT,     DE_P,       DE_F,       DE_Z,       DE_SS,      DE_K,        KC_RSFT,               KC_UP,
+      KC_LCTL,    KC_LGUI,    LTOSLL,     KC_BSPC,                KC_DEL,                 KC_ENT,                 KC_SPC,     LTOSLR,     KC_NO,       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
+  [_SYMBOLS] = LAYOUT(
       KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-      KC_NO,      KC_NO,      DE_SUP2,    DE_SUP3,    KC_NO,      KC_NO,                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-      KC_NO,      DE_DEG,     DE_UNDS,    DE_LBRC,    DE_RBRC,    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     DE_AMPR,    DE_EURO,    KC_NO,      KC_NO,      KC_NO,
-      KC_NO,      DE_BSLS,    DE_SLSH,    DE_LCBR,    DE_RCBR,    DE_ASTR,    KC_NO,      DE_QUES,    DE_LPRN,    DE_RPRN,    DE_MINS,    DE_COLN,    DE_AT,      KC_NO,                  KC_NO,
-      KC_NO,      DE_HASH,    DE_DLR,     DE_PIPE,    DE_TILD,    DE_GRV,     KC_NO,      DE_PLUS,    DE_PERC,    DE_DQUO,    DE_QUOT,    DE_SCLN,    KC_NO,                  KC_NO,
-      KC_NO,      KC_NO,      C(DE_X),    C(DE_C),                S(KC_INS),              S(KC_INS),              C(DE_C),    C(DE_X),    MO(2),      KC_NO,      KC_NO,      KC_NO,      KC_NO),
-  [2] = LAYOUT(
-      // Utillity
+      KC_NO,      DE_EURO,    DE_LBRC,    DE_LCBR,    DE_LPRN,    DE_LABK,                DE_RABK,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      DE_EURO,    DE_LBRC,    DE_LCBR,    DE_LPRN,    DE_LABK,                DE_RABK,    DE_RPRN,    DE_RCBR,    DE_RBRC,    DE_AT,      DE_EURO,    KC_NO,      KC_NO,      KC_NO,
+      KC_NO,      DE_QUOT,    DE_BSLS,    DE_COLN,    DE_COMM,    DE_QUES,    KC_NO,      DE_EXLM,    DE_DOT,     DE_SCLN,    DE_SLSH,    DE_DQUO,    DE_AT,      KC_NO,                  KC_NO,
+      KC_NO,      DE_PERC,    DE_GRV,     DE_DLR,     DE_UNDS,    DE_HASH,    KC_NO,      DE_ASTR,    DE_MINS,    DE_PIPE,    DE_TILD,    DE_AMPR,    KC_NO,                  KC_NO,
+      KC_NO,      KC_NO,      C(DE_X),    DE_EQL,                 KC_ESC,                 KC_NO,                  DE_CIRC,    C(DE_X),    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO),
+  [_NUMBERS] = LAYOUT(
       KC_ESC,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RGB_TOG,    NK_TOGG,    EEP_RST,
       KC_CIRC,    DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,       KC_NO,      KC_NO,      RESET,
-      DT_PRNT,    KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_PGUP,                KC_NLCK,    KC_KP_7,    KC_KP_8,    KC_KP_9,    KC_KP_PLUS, KC_PAST,    KC_NO,      KC_NO,      KC_HOME,
-      DT_UP,      KC_LSFT,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    KC_NO,      KC_NO,      KC_KP_4,    KC_KP_5,    KC_KP_6,    KC_KP_MINUS,KC_PSLS,    KC_ENTER,               KC_END,
-      DT_DOWN,    KC_LCTL,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_KP_1,    KC_KP_2,    KC_KP_3,    KC_NO,      KC_MUTE,                KC_VOLU,
-      KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_LSFT,                KC_KP_0,    DE_COMM,    TG(0),      KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
-  [3] = LAYOUT(
-      // Gaming (QWERTY)
+      DT_PRNT,    RESET,      KC_NO,      KC_NO,      KC_MUTE,    KC_VOLU,                DE_MINS,    TD(F7_7),   TD(F8_8),   TD(F9_9),   TD(F10_PL), KC_MUTE,    KC_NO,      KC_NO,      KC_HOME,
+      DT_UP,      KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_VOLD,    KC_NO,      DE_SLSH,    TD(F4_4),   TD(F5_5),   TD(F6_6),   TD(F11_DO), KC_MNXT,    KC_ENTER,               KC_END,
+      DT_DOWN,    KC_NO,      KC_NO,      KC_MPRV,    KC_MNXT,    KC_MPLY,    KC_NO,      DE_COLN,    TD(F1_1),   TD(F2_2),   TD(F3_3),   TD(F12_CO), KC_MPRV,                KC_VOLU,
+      KC_NO,      KC_NO,      KC_NO,      KC_LCTRL,               KC_LGUI,                KC_ENT,                 DE_0,       DE_COMM,    TG(0),      KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_MNXT),
+  [_NAVIGATION] = LAYOUT(
       KC_ESC,     KC_F1,      KC_F2,     KC_F3,       KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_DEL,     KC_PSCR,
 	  KC_GRV,     KC_1,       KC_2,      KC_3,        KC_4,       KC_5,                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_MINS,    KC_EQL,     KC_BSPC,
-	  KC_TAB,     KC_Q,       KC_W,      KC_E,        KC_R,       KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_LBRC,    KC_RBRC,    KC_BSLS,    KC_PGUP,
-	  KC_CAPS,    KC_A,       KC_S,      KC_D,        KC_F,       KC_G,       KC_BSPC,    KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_QUOT,    KC_ENT,     KC_PGDN,
-	  KC_LSFT,    KC_Z,       KC_X,      KC_C,        KC_V,       KC_B,       KC_ENT,     KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,    KC_UP,
+	  KC_TAB,     KC_PASTE,   KC_HOME,   KC_UP,       KC_END,     KC_PGUP,                G(KC_1),    G(KC_2),    G(KC_3),    G(KC_4),    G(KC_5),    KC_LBRC,    KC_RBRC,    KC_BSLS,    KC_PGUP,
+	  KC_CUT,     KC_COPY,    KC_LEFT,   KC_DOWN,     KC_RIGHT,   KC_PGDN,    KC_BSPC,    KC_NO,      KC_RSFT,    KC_RCTL,    KC_RALT,    KC_RGUI,    KC_SCLN,    KC_ENT,                 KC_PGDN,
+	  KC_LSFT,    KC_CUT,     KC_NO,     KC_NO,       KC_PSCR,    KC_TAB,     KC_ENT,     G(KC_6),    G(KC_7),    G(KC_8),    G(KC_9),    G(KC_0),    KC_RSFT,                KC_UP,
 	  KC_LCTL,    KC_LGUI,    KC_LALT,                KC_SPC,     KC_LCTL,                KC_LSFT,    KC_SPC,                 KC_RALT,    TG(0),      KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
-      };
+};
+
+static uint8_t ltoslr_state = 0;
+static uint8_t ltosll_state = 0;
+#define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
+#define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
+#define LTOSLL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (keycode == LTOSLR) {
+    static uint32_t tap_deadline = 0;
+    if (record->event.pressed) {  // On pressed.
+      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
+      layer_on(LTOSLR_MO_LAYER);
+      ltoslr_state = 1;  // Set undetermined state.
+    } else {  // On release.
+      layer_off(LTOSLR_MO_LAYER);
+      if (ltoslr_state && !timer_expired32(timer_read32(), tap_deadline)) {
+        // LTOSLR was released without pressing another key within 200 ms.
+        layer_on(LTOSLR_OSL_LAYER);
+        ltoslr_state = 2;  // Acting like OSL.
+      }
+    }
+    return false;
+  }
+  if (keycode == LTOSLL) {
+    static uint32_t tap_deadline = 0;
+    if (record->event.pressed) {  // On pressed.
+      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
+      layer_on(LTOSLL_MO_LAYER);
+      ltosll_state = 1;  // Set undetermined state.
+    } else {  // On release.
+      layer_off(LTOSLL_MO_LAYER);
+      if (ltosll_state && !timer_expired32(timer_read32(), tap_deadline)) {
+        // LTOSLL was released without pressing another key within 200 ms.
+        layer_on(LTOSLL_OSL_LAYER);
+        ltosll_state = 2;  // Acting like OSL.
+      }
+    }
+  return false;
+  }
+return true;
+};
+
+void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
+  // Turn off the layer if another key is pressed while acting like OSL. The
+  // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
+  if (keycode != LTOSLR && (ltoslr_state >>= 1)) {
+    layer_off(LTOSLR_OSL_LAYER);
+  }
+  if (keycode != LTOSLL && (ltosll_state >>= 1)) {
+    layer_off(LTOSLL_OSL_LAYER);
+  }
+};
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case KC_MINS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_UNDS:
+        case DE_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+};
 
 const int FkeysSize = 12;
 int keysFkeys[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
@@ -127,67 +245,42 @@ void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
 };
 
 void default_color_scheme(void) {
-    set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
-    set_key_color(FkeysSize, keysFkeys, RGB_WHITE);
-    set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
-    set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
-    set_key_color(ForwardkeysSize, keysForwardkeys, RGB_GREEN);
-    set_key_color(BackkeysSize, keysBackkeys, RGB_RED);
-    set_key_color(ShiftkeysSize, keysShiftkeys, RGB_YELLOW);
-    set_key_color(ArrowkeysSize, keysArrowkeys, RGB_BLUE);
+    set_key_color(AlphakeysSize, keysAlphakeys, RGB_WHITE);
+    set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
 };
 
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
-        case 0: // Bone (Linux)
-            rgb_matrix_set_color_all(RGB_WHITE);
-            default_color_scheme();
-            //rgb_matrix_set_color(logoKey, RGB_WHITE);
-            if (host_keyboard_led_state().caps_lock) {
-                rgb_matrix_set_color(logoKey, RGB_MAGENTA);
-            } else {
-                rgb_matrix_set_color(logoKey, RGB_WHITE);
-            }
-            break;
-        case 1: // Shifted (Linux)
+        case _BASE:
             rgb_matrix_set_color_all(RGB_BLACK);
-            set_key_color(AlphakeysSize, keysAlphakeys, RGB_BLUE);
-            set_key_color(HomekeysSize, keysHomekeys, RGB_GREEN);
-            set_key_color(CutkeysSize, keysCutkeys, RGB_RED);
-            set_key_color(CopykeysSize, keysCopykeys, RGB_GREEN);
-            set_key_color(PastekeysSize, keysPastekeys, RGB_YELLOW);
+            default_color_scheme();
+            rgb_matrix_set_color(logoKey, RGB_BLUE );
+            break;
+        case _SYMBOLS:
+            rgb_matrix_set_color_all(RGB_BLACK);
+            set_key_color(AlphakeysSize, keysAlphakeys, RGB_WHITE);
+            set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
             rgb_matrix_set_color(logoKey, RGB_GREEN );
             break;
-        case 2: // Utility
+        case _NUMBERS:
             rgb_matrix_set_color_all(RGB_BLACK);
-            rgb_matrix_set_color(0, RGB_YELLOW );
-            rgb_matrix_set_color(1, RGB_RED );
-            rgb_matrix_set_color(2, RGB_GREEN );
-            set_key_color(NumkeysSize, keysNumkeys, RGB_BLUE);
-            set_key_color(NavkeysSize, keysNavkeys, RGB_BLUE);
-            set_key_color(QMKkeysSize, keysQMKkeys, RGB_MAGENTA);
-            rgb_matrix_set_color(30, RGB_YELLOW );
-            rgb_matrix_set_color(32, RGB_GREEN );
-            rgb_matrix_set_color(34, RGB_GREEN );
-            rgb_matrix_set_color(46, RGB_YELLOW );
-            rgb_matrix_set_color(51, RGB_WHITE );
-            set_key_color(NumpadkeysSize, keysNumpadkeys, RGB_BLUE);
-            set_key_color(NumpadoperatorkeysSize, keysNumpadoperatorkeys, RGB_YELLOW);
-            rgb_matrix_set_color(58, RGB_GREEN);
-            set_key_color(MMPluskeysSize, keysMMPluskeys, RGB_GREEN);
-            set_key_color(MMMinuskeysSize, keysMMMinuskeys, RGB_RED);
-            rgb_matrix_set_color(77, RGB_YELLOW );
-            rgb_matrix_set_color(78, RGB_YELLOW );
+            set_key_color(AlphakeysSize, keysAlphakeys, RGB_WHITE);
+            set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
             rgb_matrix_set_color(logoKey, RGB_RED );
             break;
-        case 3: // Gaming
-            rgb_matrix_set_color_all(RGB_WHITE);
-            if (host_keyboard_led_state().caps_lock) {
-                rgb_matrix_set_color(logoKey, RGB_MAGENTA);
-            } else {
-                rgb_matrix_set_color(logoKey, RGB_BLUE);
-            }
+        case  _NAVIGATION:
+            rgb_matrix_set_color_all(RGB_BLACK);
+            set_key_color(AlphakeysSize, keysAlphakeys, RGB_WHITE);
+            set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
+            rgb_matrix_set_color(logoKey, RGB_YELLOW );
             break;
+    }
+};
+void caps_word_set_user(bool active) {
+    if (active) {
+        rgb_matrix_mode_noeeprom(5);
+    } else {
+        rgb_matrix_mode_noeeprom(1);
     }
 };

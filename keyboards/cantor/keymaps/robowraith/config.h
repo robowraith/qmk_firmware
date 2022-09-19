@@ -22,3 +22,6 @@ Additiional cnofigurations
 
 // CAPSWORD
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+// Possible fix for wakeup issue
+#define USB_SUSPEND_WAKEUP_DELAY 200

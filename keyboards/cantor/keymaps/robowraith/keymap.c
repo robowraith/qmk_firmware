@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  DE_J,       DE_L,      DE_U,      DE_A,      DE_Q,    /**/ DE_W,      DE_B,      DE_D,      DE_G,       DE_Y,       XXXXXXX,
         XXXXXXX,  RW_C,       RW_R,      RW_I,      RW_E,      DE_O,    /**/ DE_M,      RW_N,      RW_T,      RW_S,       RW_H,       XXXXXXX,
         XXXXXXX,  DE_V,       DE_X,      DE_UDIA,   DE_ADIA,   DE_ODIA, /**/ DE_P,      DE_F,      DE_Z,      DE_SS,      DE_K,       XXXXXXX,
-                                         LTOSLL,    KC_BSPC,   KC_DEL,  /**/ KC_ENT,    KC_SPC,    LTOSLR
+                                         KC_ESC,    KC_BSPC,   LTOSLL,  /**/ LTOSLR,    KC_SPC,    KC_TAB
     ),
     [_SYMBOLS] = LAYOUT_split_3x6_3(
         XXXXXXX,  DE_EURO,    DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK, /**/ DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_AT,      XXXXXXX,
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  RESET,      KC_NO,     KC_NO,     KC_MUTE,   KC_VOLU, /**/ DE_MINS,   TD(F7_7),  TD(F8_8),  TD(F9_9),   TD(F10_PL), XXXXXXX,
         XXXXXXX,  KC_LGUI,    KC_LALT,   KC_LCTL,   KC_LSFT,   KC_VOLD, /**/ DE_SLSH,   TD(F4_4),  TD(F5_5),  TD(F6_6),   TD(F11_DO), XXXXXXX,
         XXXXXXX,  KC_NO,      KC_NO,     KC_MPRV,   KC_MNXT,   KC_MPLY, /**/ DE_COLN,   TD(F1_1),  TD(F2_2),  TD(F3_3),   TD(F12_CO), XXXXXXX,
-                                         KC_NO,     KC_NO,     KC_NO,   /**/ KC_ENT,    DE_0,      KC_NO
+                                         KC_NO,     KC_DEL,    KC_NO,   /**/ KC_NO,     KC_ENT,    DE_0
     ),
     [_NAVIGATION] = LAYOUT_split_3x6_3(
         XXXXXXX,  KC_PASTE,   KC_HOME,   KC_UP,     KC_END,    KC_PGUP, /**/ G(KC_1),   G(KC_2),   G(KC_3),   G(KC_4),    G(KC_5),    XXXXXXX,

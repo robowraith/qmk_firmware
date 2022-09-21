@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  DE_EURO,    DE_LBRC,   DE_LCBR,   DE_LPRN,   DE_LABK, /**/ DE_RABK,   DE_RPRN,   DE_RCBR,   DE_RBRC,    DE_AT,      XXXXXXX,
         XXXXXXX,  DE_QUOT,    DE_BSLS,   DE_COLN,   DE_COMM,   DE_QUES, /**/ DE_EXLM,   DE_DOT,    DE_SCLN,   DE_SLSH,    DE_DQUO,    XXXXXXX,
         XXXXXXX,  DE_PERC,    DE_GRV,    DE_DLR,    DE_UNDS,   DE_HASH, /**/ DE_ASTR,   DE_MINS,   DE_PIPE,   DE_TILD,    DE_AMPR,    XXXXXXX,
-                                         KC_NO,     DE_EQL,    KC_ESC,  /**/ KC_NO,     DE_CIRC,   KC_NO
+                                         KC_NO,     DE_EQL,    KC_NO,   /**/ KC_NO,     DE_CIRC,   KC_NO
 
     ),
     [_NUMBERS] = LAYOUT_split_3x6_3(

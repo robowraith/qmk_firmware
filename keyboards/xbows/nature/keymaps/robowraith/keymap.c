@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,      KC_F12,    KC_DEL,     KC_PSCR,
       KC_PASTE,   DE_1,       DE_2,       DE_3,       DE_4,       DE_5,                   DE_6,       DE_7,       DE_8,       DE_9,       DE_0,        DE_MINS,   DE_PLUS,    KC_BSPC,
       KC_PASTE,   DE_J,       DE_L,       DE_U,       DE_A,       DE_Q,                   DE_W,       DE_B,       DE_D,       DE_G,       DE_Y,        DE_SS,     DE_PLUS,    DE_HASH,    KC_PGUP,
-      KC_COPY,    RW_C,       RW_R,       RW_I,       RW_E,       DE_O,       KC_DEL,     DE_M,       RW_N,       RW_T,       RW_S,       RW_H,        DE_Q,      KC_ENT,                 KC_PGDN,
+      KC_J,       RW_C,       RW_R,       RW_I,       RW_E,       DE_O,       KC_DEL,     DE_M,       RW_N,       RW_T,       RW_S,       RW_H,        DE_Y,      KC_ENT,                 KC_PGDN,
       KC_PSCR,    DE_V,       DE_X,       DE_UDIA,    DE_ADIA,    DE_ODIA,    KC_ENT,     DE_P,       DE_F,       DE_Z,       DE_SS,      DE_K,        KC_RSFT,               KC_UP,
       KC_LCTL,    KC_LGUI,    KC_ESC,     KC_BSPC,                LTOSLL,                 LTOSLR,                 KC_SPC,     KC_TAB,     KC_NO,       KC_RCTL,   KC_LEFT,    KC_DOWN,    KC_RGHT),
   [_SYMBOLS] = LAYOUT(

@@ -111,14 +111,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     DE_EURO,   KC_NO,    KC_NO,    KC_NO,
       DE_EURO,   KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_NO,     KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     KC_NO,              KC_NO,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   KC_NO,               KC_NO,
-      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             TG(_BASE),           OSL(_SYMBOLS_R),    DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
+      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             TG(_BASE),           TG(_SYMBOLS_R),    DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
   [_SYMBOLS_L] = LAYOUT(
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
       KC_NO,     DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
       KC_NO,     DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO,
       DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   KC_NO,     KC_NO,              KC_NO,
       KC_NO,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,               KC_NO,
-      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             OSL(_SYMBOLS_L),     TG(_BASE),          DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
+      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             TG(_SYMBOLS_L),     TG(_BASE),          DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
   [_NUMBERS] = LAYOUT(
       KC_ESC,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RGB_TOG,   NK_TOGG,  EEP_RST,
       KC_CIRC,   DE_1,     DE_2,     DE_3,     DE_4,     DE_5,                DE_6,     DE_7,     DE_8,      DE_9,      DE_0,      KC_NO,     KC_NO,    RESET,

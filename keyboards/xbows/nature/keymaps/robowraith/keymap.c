@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_NO,     DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     DE_EURO,   KC_NO,    KC_NO,    KC_NO,
       DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     KC_NO,              KC_NO,
       KC_NO,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   KC_NO,               KC_NO,
-      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             KC_NO,               KC_NO,              DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
+      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             TG(1),               TG(1),              DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
   [_NUMBERS] = LAYOUT(
       KC_ESC,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RGB_TOG,   NK_TOGG,  EEP_RST,
       KC_CIRC,   DE_1,     DE_2,     DE_3,     DE_4,     DE_5,                DE_6,     DE_7,     DE_8,      DE_9,      DE_0,      KC_NO,     KC_NO,    RESET,
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    KC_TAB,    KC_PASTE, KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             G(KC_1),  G(KC_2),  G(KC_3),   G(KC_4),   G(KC_5),   KC_LBRC,   KC_RBRC,  KC_BSLS,  KC_PGUP,
 	    KC_PASTE,  KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,   KC_BSPC,  KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   G(KC_5),   KC_ENT,             KC_PGDN,
 	    KC_LSFT,   KC_CUT,   KC_NO,    KC_NO,    KC_PSCR,  KC_TAB,    KC_TAB,   G(KC_6),  G(KC_7),  G(KC_8),   G(KC_9),   G(KC_0),   KC_RSFT,             KC_UP,
-	    KC_LCTL,   KC_LGUI,  KC_LALT,  KC_DEL,             KC_ESC,              KC_LSFT,            KC_ENT,    KC_RALT,   TG(0),     KC_RCTL,   KC_LEFT,  KC_DOWN,  KC_RGHT),
+	    KC_LCTL,   KC_LGUI,  KC_LALT,  KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_RALT,   TG(0),     KC_RCTL,   KC_LEFT,  KC_DOWN,  KC_RGHT),
 };
 
 static uint8_t ltoslr_state = 0;
@@ -137,7 +137,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
     if (record->event.pressed) {  // On pressed.
-      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
+      tap_deadline = timer_read32() + 200;  // Set 200 ms tap d weadline.
       layer_on(LTOSLR_MO_LAYER);
       ltoslr_state = 1;  // Set undetermined state.
     } else {  // On release.
@@ -146,7 +146,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         // LTOSLR was released without pressing another key within 200 ms.
         layer_on(LTOSLR_OSL_LAYER);
         ltoslr_state = 2;  // Acting like OSL.
-      }
+      } 
     }
     return false;
   }

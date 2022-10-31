@@ -16,7 +16,7 @@
 #define LTO_ENABLE   TRUE
 
 #define TAPPING_TOGGLE 2
-#define TAPPING_TERM 200
+#define TAPPING_TERM 175
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT

@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                            DE_EQL,    KC_NO,       KC_NO,      /**/    XXXXXXX,    KC_NO,      DE_CIRC
+                                            DE_EQL,     KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      DE_CIRC
     ),
     [_NUMBERS] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                DE_0,       XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                            KC_NO,      KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
+                                            KC_NO,      KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_ENT
   ),
     [_NAVIGATION] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                            KC_NO,      KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
+                                              KC_DEL,    KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
     )
 };
 

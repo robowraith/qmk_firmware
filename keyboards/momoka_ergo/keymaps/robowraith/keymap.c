@@ -59,6 +59,7 @@ enum tap_dance_keys{
     VOLD,
     NEXT,
     PREV,
+    DISM,
 };
 
 // Tap Dance definitions
@@ -79,6 +80,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [VOLD] = ACTION_TAP_DANCE_DOUBLE(KC_VOLD, KC_MUTE),
     [NEXT] = ACTION_TAP_DANCE_DOUBLE(KC_MNXT, KC_MPLY),
     [PREV] = ACTION_TAP_DANCE_DOUBLE(KC_MPRV, KC_MPLY),
+    [DISM] = ACTION_TAP_DANCE_DOUBLE(G(C(DE_D)), LSG(C(DE_D))),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -90,7 +92,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-        KC_NO,      KC_NO,      TD(PREV),   TD(NEXT),   TD(VOLD),   TD(VOLU),   /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+        KC_NO,      KC_NO,      TD(PREV),   TD(NEXT),   TD(VOLD),   TD(VOLU),   /**/    TD(DISM),   KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
         KC_NO,      KC_NO,      DE_L,       DE_U,       DE_A,       DE_Q,       /**/    DE_W,       DE_B,       DE_D,       DE_G,       KC_NO,      KC_NO,
         DE_J,       RW_C,       RW_R,       RW_I,       RW_E,       DE_O,       /**/    DE_M,       RW_N,       RW_T,       RW_S,       RW_H,       DE_Y,
         KC_NO,      DE_V,       DE_X,       DE_UDIA,    DE_ADIA,    DE_ODIA,    /**/    DE_P,       DE_F,       DE_Z,       DE_SS,      DE_K,       KC_NO,

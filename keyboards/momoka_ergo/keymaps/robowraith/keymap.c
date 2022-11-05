@@ -216,19 +216,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = biton32(state);
     switch (layer) {
         case _BASE:
-            rgblight_sethsv_noeeprom(HSV_WHITE);
-            rgblight_mode_noeeprom(1);
-            break;
-        case _SYMBOLS:
             rgblight_sethsv_noeeprom(HSV_BLUE);
             rgblight_mode_noeeprom(1);
             break;
-       case _NUMBERS:
+        case _SYMBOLS:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             rgblight_mode_noeeprom(1);
             break;
-        case _NAVIGATION:
+       case _NUMBERS:
             rgblight_sethsv_noeeprom(HSV_RED);
+            rgblight_mode_noeeprom(1);
+            break;
+        case _NAVIGATION:
+            rgblight_sethsv_noeeprom(HSV_YELLOW);
             rgblight_mode_noeeprom(1);
             break;
     }
@@ -237,10 +237,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 void caps_word_set_user(bool active) {
     if (active) {
-        rgblight_sethsv_noeeprom(HSV_RED);
+        rgblight_sethsv_noeeprom(HSV_WHITE);
         rgblight_mode_noeeprom(5);
     } else {
         rgblight_mode_noeeprom(1);
-        rgblight_sethsv_noeeprom(HSV_WHITE);
+        rgblight_sethsv_noeeprom(HSV_BLUE);
     }
 };

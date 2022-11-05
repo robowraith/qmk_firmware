@@ -98,8 +98,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,      DE_V,       DE_X,       DE_UDIA,    DE_ADIA,    DE_ODIA,    /**/    DE_P,       DE_F,       DE_Z,       DE_SS,      DE_K,       KC_NO,
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_ESC,                 /**/                KC_TAB,     XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
-                                                                    KC_NO,      /**/    KC_NO,
-                                            KC_BSPC,    LTOSLL,     KC_NO,      /**/    KC_NO,      LTOSLR,     KC_SPC
+                                                                    KC_NO,      /**/    XXXXXXX,
+                                            KC_BSPC,    LTOSLL,     KC_NO,      /**/    XXXXXXX,    LTOSLR,     KC_SPC
     ),
     [_SYMBOLS] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                              KC_DEL,    KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
+                                              KC_DEL,    KC_NO,     KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
     )
 };
 

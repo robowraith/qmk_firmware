@@ -86,9 +86,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
          case RW_I:
-            return TAPPING_TERM - 50;
+            return TAPPING_TERM - 20;
          case RW_N:
-            return TAPPING_TERM - 50;
+            return TAPPING_TERM - 20;
         default:
             return TAPPING_TERM;
     }
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                              KC_DEL,    KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
+                                              KC_DEL,    KC_NO,     KC_NO,      /**/    XXXXXXX,    KC_NO,      KC_NO
     )
 };
 

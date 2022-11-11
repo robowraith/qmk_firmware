@@ -19,7 +19,8 @@ extern rgblight_config_t rgblight_config;
 
 enum layer_names {
     _BASE,
-    _SYMBOLS,
+    _SYMBOLS_LEFT,
+    _SYMBOLS_RIGHT,
     _NUMBERS,
     _NAVIGATION,
 };
@@ -105,15 +106,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                     KC_NO,      /**/    XXXXXXX,
                                             KC_BSPC,    LTOSLL,     KC_NO,      /**/    XXXXXXX,    LTOSLR,     KC_SPC
     ),
-    [_SYMBOLS] = LAYOUT(
+    [_SYMBOLS_LEFT] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-        KC_NO,      KC_NO,      DE_LBRC,    DE_LCBR,    DE_LPRN,    DE_LABK,    /**/    DE_RABK,    DE_RPRN,    DE_RCBR,    DE_RBRC,    KC_NO,      KC_NO,
-        DE_EURO,    DE_QUOT,    DE_BSLS,    DE_COLN,    DE_COMM,    DE_QUES,    /**/    DE_EXLM,    DE_DOT,     DE_SCLN,    DE_SLSH,    DE_DQUO,    DE_AT,
-        RESET,      DE_PERC,    DE_GRV,     DE_DLR,     DE_UNDS,    DE_HASH,    /**/    DE_ASTR,    DE_MINS,    DE_PIPE,    DE_TILD,    DE_AMPR,    RESET,
+        KC_NO,      KC_NO,      DE_LBRC,    DE_LCBR,    DE_LPRN,    DE_LABK,    /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+        DE_EURO,    DE_QUOT,    DE_BSLS,    DE_COLN,    DE_COMM,    DE_QUES,    /**/    KC_NO,      KC_RSFT,    KC_RCTL,    KC_RALT,    KC_RGUI,    KC_NO,
+        RESET,      DE_PERC,    DE_GRV,     DE_DLR,     DE_UNDS,    DE_HASH,    /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      RESET,
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                            DE_EQL,     KC_NO,      KC_NO,      /**/    XXXXXXX,    KC_NO,      DE_CIRC
+                                            DE_EQL,     KC_NO,      KC_NO,      /**/    XXXXXXX,TG(_SYMBOLS_LEFT),KC_NO
+    ),
+    [_SYMBOLS_RIGHT] = LAYOUT(
+        KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+        KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    DE_RABK,    DE_RPRN,    DE_RCBR,    DE_RBRC,    KC_NO,      KC_NO,
+        KC_NO,      KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_NO,      /**/    DE_EXLM,    DE_DOT,     DE_SCLN,    DE_SLSH,    DE_DQUO,    DE_AT,
+        RESET,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    DE_ASTR,    DE_MINS,    DE_PIPE,    DE_TILD,    DE_AMPR,    RESET,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+                                                        XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
+                                                                    KC_NO,      /**/    XXXXXXX,
+                                            KC_NO,TG(_SYMBOLS_RIGHT),KC_NO,     /**/    XXXXXXX,    KC_NO,      DE_CIRC
     ),
     [_NUMBERS] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -140,9 +151,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 static uint8_t ltoslr_state = 0;
 static uint8_t ltosll_state = 0;
 #define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
-#define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSLR_OSL_LAYER _SYMBOLS_LEFT    // Layer to activate as an OSL when tapped.
 #define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
-#define LTOSLL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSLL_OSL_LAYER _SYMBOLS_RIGHT    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
@@ -223,7 +234,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv_noeeprom(HSV_BLUE);
             rgblight_mode_noeeprom(1);
             break;
-        case _SYMBOLS:
+        case _SYMBOLS_LEFT:
+            rgblight_sethsv_noeeprom(HSV_GREEN);
+            rgblight_mode_noeeprom(1);
+            break;
+        case _SYMBOLS_RIGHT:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             rgblight_mode_noeeprom(1);
             break;

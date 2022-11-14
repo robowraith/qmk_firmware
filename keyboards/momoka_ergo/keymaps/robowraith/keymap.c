@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                            DE_EQL,     KC_NO,      KC_NO,      /**/    XXXXXXX,TG(_SYMBOLS_LEFT),KC_NO
+                                            DE_EQL,TG(_SYMBOLS_LEFT),KC_NO,     /**/    XXXXXXX,TG(_SYMBOLS_LEFT),KC_NO
     ),
     [_SYMBOLS_RIGHT] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_NO,                  /**/                KC_NO,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         XXXXXXX,    XXXXXXX,    /**/    XXXXXXX,    XXXXXXX,
                                                                     KC_NO,      /**/    XXXXXXX,
-                                            KC_NO,TG(_SYMBOLS_RIGHT),KC_NO,     /**/    XXXXXXX,    KC_NO,      DE_CIRC
+                                            KC_NO,TG(_SYMBOLS_RIGHT),KC_NO,     /**/    XXXXXXX,TG(_SYMBOLS_RIGHT),DE_CIRC
     ),
     [_NUMBERS] = LAYOUT(
         KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      /**/    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,

@@ -7,7 +7,7 @@ Additiional cnofigurations
 
 // default but used in macros
 #undef TAPPING_TERM
-#define TAPPING_TERM 150
+ #define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
 
 // Prevent normal rollover on alphas from accidentally triggering mods.

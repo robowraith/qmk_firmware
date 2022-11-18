@@ -38,7 +38,7 @@ enum custom_keycodes {
     RW_H = RGUI_T(DE_H),
     // Other
     LTOSLR,
-    LTOSLL
+    LTOSLL,
 };
 
 enum tap_dance_keys{
@@ -54,6 +54,11 @@ enum tap_dance_keys{
     F10_PL,
     F11_DO,
     F12_CO,
+    VOLU,
+    VOLD,
+    PREV,
+    NEXT,
+    DISM,
 };
 
 // Tap Dance definitions
@@ -70,6 +75,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [F10_PL] = ACTION_TAP_DANCE_DOUBLE(DE_PLUS, KC_F10),
     [F11_DO] = ACTION_TAP_DANCE_DOUBLE(DE_DOT, KC_F11),
     [F12_CO] = ACTION_TAP_DANCE_DOUBLE(DE_COMM, KC_F12),
+    [VOLU] = ACTION_TAP_DANCE_DOUBLE(KC_VOLU, KC_MUTE),
+    [VOLD] = ACTION_TAP_DANCE_DOUBLE(KC_VOLD, KC_MUTE),
+    [NEXT] = ACTION_TAP_DANCE_DOUBLE(KC_MNXT, KC_MPLY),
+    [PREV] = ACTION_TAP_DANCE_DOUBLE(KC_MPRV, KC_MPLY),
+    [DISM] = ACTION_TAP_DANCE_DOUBLE(G(C(DE_D)), LSG(C(DE_D))),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -99,40 +109,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
   [_BASE] = LAYOUT(
-      KC_ESC,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,     KC_F10,    KC_F11,    KC_F12,    KC_DEL,   KC_PSCR,
-      KC_PASTE,  DE_1,     DE_2,     DE_3,     DE_4,     DE_5,                DE_6,     DE_7,     DE_8,      DE_9,      DE_0,      DE_MINS,   DE_PLUS,  KC_BSPC,
-      KC_PASTE,  DE_J,     DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      DE_Y,      DE_SS,     DE_PLUS,  DE_HASH,  KC_PGUP,
-      KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENT,             KC_PGDN,
-      KC_PSCR,   DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_ESC,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_RSFT,             KC_UP,
-      KC_LCTL,   KC_LGUI,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     KC_RCTL,   KC_LEFT,  KC_DOWN,  KC_RGHT),
-  [_SYMBOLS_R] = LAYOUT(
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     DE_EURO,   KC_NO,    KC_NO,    KC_NO,
-      DE_EURO,   KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_NO,     KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     KC_NO,              KC_NO,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   KC_NO,               KC_NO,
-      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             TG(_BASE),           TG(_SYMBOLS_R),     DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      TD(VOLD),  TD(VOLU), KC_NO,    KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
+      TD(PREV),  TD(NEXT), DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
+      KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,
+      XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
   [_SYMBOLS_L] = LAYOUT(
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO,
-      DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   KC_NO,     KC_NO,              KC_NO,
-      KC_NO,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    KC_NO,    RALT(DE_1),RALT(DE_2),RALT(DE_3),KC_NO,     KC_NO,               KC_NO,
-      KC_NO,     KC_NO,    KC_ESC,   DE_EQL,             TG(_SYMBOLS_L),     TG(_BASE),          DE_CIRC,   C(DE_X),   KC_NO,     KC_NO,     KC_NO,    KC_NO,    KC_NO),
-  [_NUMBERS] = LAYOUT(
-      KC_ESC,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RGB_TOG,   NK_TOGG,  EEP_RST,
-      KC_CIRC,   DE_1,     DE_2,     DE_3,     DE_4,     DE_5,                DE_6,     DE_7,     DE_8,      DE_9,      DE_0,      KC_NO,     KC_NO,    RESET,
-      KC_NO,     RESET,    KC_NO,    KC_NO,    KC_MUTE,  KC_VOLU,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  TD(F10_PL),KC_MUTE,   KC_NO,    KC_NO,    KC_HOME,
-      RESET,     KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,   KC_NO,    DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),TD(F10_PL),KC_ENTER,           KC_END,
-      KC_NO,     KC_NO,    KC_NO,    KC_MPRV,  KC_MNXT,  KC_MPLY,   KC_TAB,   DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),KC_MPRV,             KC_VOLU,
-      KC_NO,     KC_NO,    KC_NO,    KC_DEL,             KC_NO,               DE_0,               KC_ENTER,  KC_NO,     TG(_BASE), KC_MPLY,   KC_MPRV,  KC_VOLD,  KC_MNXT),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
+      KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   KC_NO,     XXXXXXX,            XXXXXXX,
+      RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RESET,               XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS_L),     TG(_SYMBOLS_L),      DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+   [_SYMBOLS_R] = LAYOUT(
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
+      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      KC_NO,     KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_NO,     KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     XXXXXXX,            XXXXXXX,
+      RESET,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              TG(_SYMBOLS_R),      TG(_SYMBOLS_R),     DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+ [_NUMBERS] = LAYOUT(
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
+      KC_NO,     KC_NO,    RALT(DE_1),RALT(DE_3),KC_MUTE,KC_VOLU,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      RALT(DE_2),KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,   KC_NO,    DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),TD(F10_PL),XXXXXXX,            XXXXXXX,
+      KC_NO,     KC_NO,    KC_NO,    KC_MPRV,  KC_MNXT,  KC_MPLY,   KC_NO,    DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),KC_NO,               XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              KC_NO,               DE_0,               KC_ENTER,  KC_NO,     TG(_BASE), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
   [_NAVIGATION] = LAYOUT(
-      KC_ESC,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,     KC_F10,    KC_F11,    KC_F12,    KC_DEL,   KC_PSCR,
-      KC_GRV,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                KC_6,     KC_7,     KC_8,      KC_9,      KC_0,      KC_MINS,   KC_EQL,   KC_BSPC,
-	    KC_TAB,    KC_PASTE, KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             G(KC_1),  G(KC_2),  G(KC_3),   G(KC_4),   G(KC_5),   KC_LBRC,   KC_RBRC,  KC_BSLS,  KC_PGUP,
-	    KC_PASTE,  KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,   KC_BSPC,  KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   G(KC_5),   KC_ENT,             KC_PGDN,
-	    KC_LSFT,   KC_CUT,   KC_NO,    KC_NO,    KC_PSCR,  KC_TAB,    KC_TAB,   G(KC_6),  G(KC_7),  G(KC_8),   G(KC_9),   G(KC_0),   KC_RSFT,             KC_UP,
-	    KC_LCTL,   KC_LGUI,  KC_LALT,  KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_RALT,   TG(_BASE), KC_RCTL,   KC_LEFT,  KC_DOWN,  KC_RGHT),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
+	    KC_NO,     KC_PASTE, KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             G(KC_1),  G(KC_2),  G(KC_3),   G(KC_4),   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+	    KC_PASTE,  KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,   KC_NO,    KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   G(KC_5),   XXXXXXX,            XXXXXXX,
+	    KC_NO,     KC_CUT,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    G(KC_6),  G(KC_7),  G(KC_8),   G(KC_9),   G(KC_0),   KC_NO,               XXXXXXX,
+	    XXXXXXX,   XXXXXXX,  KC_NO,    KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_NO,     TG(_BASE), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
 static uint8_t ltoslr_state = 0;

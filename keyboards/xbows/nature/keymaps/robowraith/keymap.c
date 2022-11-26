@@ -18,24 +18,33 @@
 
 enum layer_names {
     _BASE,
-    _SYMBOLS_R,
-    _SYMBOLS_L,
+    _SYMBOLS,
     _NUMBERS,
     _NAVIGATION,
 };
 
 // Home-Row-Mod- and Thumb-Keys
 enum custom_keycodes {
-    // Mod Taps on eft hand
+    // Mod Taps on left hand on _BASE layer
     RW_C = LGUI_T(DE_C),
     RW_R = LALT_T(DE_R),
     RW_I = LCTL_T(DE_I),
     RW_E = LSFT_T(DE_E),
-    // Mod taps on right hand
+    // Mod Taps on eft hand on _SYMBOLS layer
+    RW_QUOT = LGUI_T(DE_QUOT),
+    RW_BSLS = LALT_T(DE_BSLS),
+    RW_COLN = LCTL_T(DE_COLN),
+    RW_COMM = LSFT_T(DE_COMM),
+    // Mod taps on right hand on _BASE layer
     RW_N = RSFT_T(DE_N),
     RW_T = RCTL_T(DE_T),
     RW_S = RALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
+    // Mod taps on right hand on _SYMBOLS layer
+    RW_DOT = RSFT_T(DE_DOT),
+    RW_SCLN = RCTL_T(DE_SCLN),
+    RW_SLSH = RALT_T(DE_SLSH),
+    RW_DQUO = RGUI_T(DE_DQUO),
     // Other
     LTOSLR,
     LTOSLL,
@@ -115,20 +124,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
       KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,
       XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
-  [_SYMBOLS_L] = LAYOUT(
+  [_SYMBOLS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   KC_NO,     XXXXXXX,            XXXXXXX,
+      DE_EURO,   RW_QUOT,  RW_BSLS,  RW_COLN,  RW_COMM,  DE_QUES,   KC_NO,    KC_NO,    RW_DOT,   RW_SCLN,   RW_SLSH,   RW_DQUO,   KC_NO,     XXXXXXX,            XXXXXXX,
       RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RESET,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS_L),     TG(_SYMBOLS_L),      DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
-   [_SYMBOLS_R] = LAYOUT(
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_NO,     KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     XXXXXXX,            XXXXXXX,
-      RESET,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              TG(_SYMBOLS_R),      TG(_SYMBOLS_R),     DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS),        TG(_SYMBOLS),       DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
  [_NUMBERS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
@@ -148,9 +150,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 static uint8_t ltoslr_state = 0;
 static uint8_t ltosll_state = 0;
 #define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
-#define LTOSLR_OSL_LAYER _SYMBOLS_L  // Layer to activate as an OSL when tapped.
+#define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 #define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
-#define LTOSLL_OSL_LAYER _SYMBOLS_R  // Layer to activate as an OSL when tapped.
+#define LTOSLL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
@@ -273,11 +275,7 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(RGB_BLUE);
             rgb_matrix_set_color(logoKey, RGB_BLUE );
             break;
-        case _SYMBOLS_R:
-            rgb_matrix_set_color_all(RGB_GREEN);
-            rgb_matrix_set_color(logoKey, RGB_GREEN );
-            break;
-        case _SYMBOLS_L:
+        case _SYMBOLS:
             rgb_matrix_set_color_all(RGB_GREEN);
             rgb_matrix_set_color(logoKey, RGB_GREEN );
             break;

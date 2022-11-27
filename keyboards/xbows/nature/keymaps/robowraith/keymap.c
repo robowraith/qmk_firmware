@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "action_layer.h"
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 
@@ -127,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SYMBOLS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      DE_EURO,   RW_QUOT,  RW_BSLS,  RW_COLN,  RW_COMM,  DE_QUES,   KC_NO,    KC_NO,    RW_DOT,   RW_SCLN,   RW_SLSH,   RW_DQUO,   KC_NO,     XXXXXXX,            XXXXXXX,
-      RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RESET,               XXXXXXX,
+      KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      DE_EURO,   RW_QUOT,  RW_BSLS,  RW_COLN,  RW_COMM,  DE_QUES,   KC_NO,    DE_EXLM,  RW_DOT,   RW_SCLN,   RW_SLSH,   RW_DQUO,   KC_NO,     XXXXXXX,            XXXXXXX,
+      RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
       XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS),        TG(_SYMBOLS),       DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
  [_NUMBERS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
@@ -147,25 +148,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    XXXXXXX,   XXXXXXX,  KC_NO,    KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_NO,     TG(_BASE), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
-static uint8_t ltoslr_state = 0;
-static uint8_t ltosll_state = 0;
+static uint8_t ltosl_state = 0;
 #define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
-#define LTOSLR_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 #define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
-#define LTOSLL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
     if (record->event.pressed) {  // On pressed.
       tap_deadline = timer_read32() + 200;  // Set 200 ms tap d weadline.
       layer_on(LTOSLR_MO_LAYER);
-      ltoslr_state = 1;  // Set undetermined state.
+      ltosl_state = 1;  // Set undetermined state.
     } else {  // On release.
       layer_off(LTOSLR_MO_LAYER);
-      if (ltoslr_state && !timer_expired32(timer_read32(), tap_deadline)) {
+      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLR was released without pressing another key within 200 ms.
-        layer_on(LTOSLR_OSL_LAYER);
-        ltoslr_state = 2;  // Acting like OSL.
+        layer_on(LTOSL_OSL_LAYER);
+        ltosl_state = 2;  // Acting like OSL.
       }
     }
     return false;
@@ -175,13 +174,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (record->event.pressed) {  // On pressed.
       tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
       layer_on(LTOSLL_MO_LAYER);
-      ltosll_state = 1;  // Set undetermined state.
+      ltosl_state = 1;  // Set undetermined state.
     } else {  // On release.
       layer_off(LTOSLL_MO_LAYER);
-      if (ltosll_state && !timer_expired32(timer_read32(), tap_deadline)) {
+      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLL was released without pressing another key within 200 ms.
-        layer_on(LTOSLL_OSL_LAYER);
-        ltosll_state = 2;  // Acting like OSL.
+        layer_on(LTOSL_OSL_LAYER);
+        ltosl_state = 2;  // Acting like OSL.
       }
     }
   return false;
@@ -192,11 +191,20 @@ return true;
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   // Turn off the layer if another key is pressed while acting like OSL. The
   // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
-  if (keycode != LTOSLR && (ltoslr_state >>= 1)) {
-    layer_off(LTOSLR_OSL_LAYER);
-  }
-  if (keycode != LTOSLL && (ltosll_state >>= 1)) {
-    layer_off(LTOSLL_OSL_LAYER);
+  if (ltosl_state > 1) {
+    switch (keycode) {
+      case RW_BSLS:
+      case RW_COLN:
+      case RW_COMM:
+      case RW_DOT:
+      case RW_DQUO:
+      case RW_QUOT:
+      case RW_SCLN:
+      case RW_SLSH:
+      default:
+        ltosl_state = 0;
+        layer_off(LTOSL_OSL_LAYER);
+    }
   }
 };
 

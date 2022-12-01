@@ -13,13 +13,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "keycode.h"
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 
 enum layer_names {
     _BASE,
-    _SYMBOLS_R,
-    _SYMBOLS_L,
+    _SYMBOLS,
     _NUMBERS,
     _NAVIGATION,
 };
@@ -115,25 +115,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
       KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,
       XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
-  [_SYMBOLS_L] = LAYOUT(
+  [_SYMBOLS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   KC_NO,     XXXXXXX,            XXXXXXX,
-      RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     RESET,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS_L),     TG(_SYMBOLS_L),      DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
-   [_SYMBOLS_R] = LAYOUT(
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_NO,     KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     XXXXXXX,            XXXXXXX,
-      RESET,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              TG(_SYMBOLS_R),      TG(_SYMBOLS_R),     DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
+      KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     XXXXXXX,            XXXXXXX,
+      RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS),        TG(_SYMBOLS),       DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
  [_NUMBERS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    RALT(DE_1),RALT(DE_3),KC_MUTE,KC_VOLU,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      RALT(DE_2),KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,   KC_NO,    DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),TD(F10_PL),XXXXXXX,            XXXXXXX,
+      KC_NO,     KC_NO,    RALT(DE_2),RALT(DE_3),KC_MUTE,KC_VOLU,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      RALT(DE_1),KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,   KC_NO,    DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),TD(F10_PL),XXXXXXX,            XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_MPRV,  KC_MNXT,  KC_MPLY,   KC_NO,    DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),KC_NO,               XXXXXXX,
       XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              KC_NO,               DE_0,               KC_ENTER,  KC_NO,     TG(_BASE), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
   [_NAVIGATION] = LAYOUT(
@@ -148,9 +141,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 static uint8_t ltoslr_state = 0;
 static uint8_t ltosll_state = 0;
 #define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
-#define LTOSLR_OSL_LAYER _SYMBOLS_L  // Layer to activate as an OSL when tapped.
 #define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
-#define LTOSLL_OSL_LAYER _SYMBOLS_R  // Layer to activate as an OSL when tapped.
+#define LTOSL_OSL_LAYER _SYMBOLS  // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (keycode == LTOSLR) {
     static uint32_t tap_deadline = 0;
@@ -162,7 +154,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       layer_off(LTOSLR_MO_LAYER);
       if (ltoslr_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLR was released without pressing another key within 200 ms.
-        layer_on(LTOSLR_OSL_LAYER);
+        layer_on(LTOSL_OSL_LAYER);
         ltoslr_state = 2;  // Acting like OSL.
       }
     }
@@ -178,7 +170,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       layer_off(LTOSLL_MO_LAYER);
       if (ltosll_state && !timer_expired32(timer_read32(), tap_deadline)) {
         // LTOSLL was released without pressing another key within 200 ms.
-        layer_on(LTOSLL_OSL_LAYER);
+        layer_on(LTOSL_OSL_LAYER);
         ltosll_state = 2;  // Acting like OSL.
       }
     }
@@ -191,10 +183,10 @@ void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   // Turn off the layer if another key is pressed while acting like OSL. The
   // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
   if (keycode != LTOSLR && (ltoslr_state >>= 1)) {
-    layer_off(LTOSLR_OSL_LAYER);
+    layer_off(LTOSL_OSL_LAYER);
   }
   if (keycode != LTOSLL && (ltosll_state >>= 1)) {
-    layer_off(LTOSLL_OSL_LAYER);
+    layer_off(LTOSL_OSL_LAYER);
   }
 };
 

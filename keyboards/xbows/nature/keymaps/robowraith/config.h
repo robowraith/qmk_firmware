@@ -21,6 +21,7 @@
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
+#define PERMISSIVE_HOLD
 
 // CAPSWORD
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD

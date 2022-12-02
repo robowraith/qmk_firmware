@@ -37,8 +37,6 @@ enum custom_keycodes {
     RW_S = RALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
     // Other
-    LTOSLR,
-    LTOSLL,
 };
 
 enum tap_dance_keys{
@@ -59,7 +57,34 @@ enum tap_dance_keys{
     PREV,
     NEXT,
     DISM,
+    LTOSLR,
+    LTOSLL,
 };
+
+// Define a type for as many tap dance states as you need
+typedef enum {
+    TD_NONE,
+    TD_UNKNOWN,
+    TD_SINGLE_TAP,
+    TD_SINGLE_HOLD,
+    TD_DOUBLE_TAP
+} td_state_t;
+
+typedef struct {
+    bool is_press_action;
+    td_state_t state;
+} td_tap_t;
+
+// Declare the functions to be used with your tap dance key(s)
+
+// Function associated with all tap dances
+td_state_t cur_dance(qk_tap_dance_state_t *state);
+
+// Functions associated with individual tap dances
+void ltosll_finished(qk_tap_dance_state_t *state, void *user_data);
+void ltosll_reset(qk_tap_dance_state_t *state, void *user_data);
+void ltoslr_finished(qk_tap_dance_state_t *state, void *user_data);
+void ltoslr_reset(qk_tap_dance_state_t *state, void *user_data);
 
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -80,6 +105,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [NEXT] = ACTION_TAP_DANCE_DOUBLE(KC_MNXT, KC_MPLY),
     [PREV] = ACTION_TAP_DANCE_DOUBLE(KC_MPRV, KC_MPLY),
     [DISM] = ACTION_TAP_DANCE_DOUBLE(G(C(DE_D)), LSG(C(DE_D))),
+    [LTOSLL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ltosll_finished, ltosll_reset),
+    [LTOSLR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ltoslr_finished, ltoslr_reset),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -109,19 +136,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
   [_BASE] = LAYOUT(
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  RESET,
       TD(VOLD),  TD(VOLU), KC_NO,    KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
       TD(PREV),  TD(NEXT), DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
       KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
       KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,
-      XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
+      XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            TD(LTOSLL),          TD(LTOSLR),         KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
   [_SYMBOLS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
       KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
       DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   KC_NO,    DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     XXXXXXX,            XXXXXXX,
       RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS),        TG(_SYMBOLS),       DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             TG(_SYMBOLS),        TG(_SYMBOLS),       DE_CIRC,   KC_NO,     TG(_BASE), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
  [_NUMBERS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
       KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
@@ -138,54 +165,99 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    XXXXXXX,   XXXXXXX,  KC_NO,    KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_NO,     TG(_BASE), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
-static uint8_t ltosl_state = 0;
-#define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
-#define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
-#define LTOSL_OSL_LAYER  _SYMBOLS  // Layer to activate as an OSL when tapped.
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (keycode == LTOSLR) {
-    static uint32_t tap_deadline = 0;
-    if (record->event.pressed) {  // On pressed.
-      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
-      layer_on(LTOSLR_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
-    } else {  // On release.
-      layer_off(LTOSLR_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
-        // LTOSLR was released without pressing another key within 200 ms.
-        layer_on(LTOSL_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
-      }
-    }
-    return false;
-  }
-  if (keycode == LTOSLL) {
-    static uint32_t tap_deadline = 0;
-    if (record->event.pressed) {  // On pressed.
-      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
-      layer_on(LTOSLL_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
-    } else {  // On release.
-      layer_off(LTOSLL_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
-        // LTOSLL was released without pressing another key within 200 ms.
-        layer_on(LTOSL_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
-      }
-    }
-  return false;
-  }
-return true;
+// Determine the current tap dance state
+td_state_t cur_dance(qk_tap_dance_state_t *state) {
+    if (state->count == 1) {
+        if (!state->pressed) return TD_SINGLE_TAP;
+        else return TD_SINGLE_HOLD;
+    } else if (state->count == 2) return TD_DOUBLE_TAP;
+    else return TD_UNKNOWN;
+}
+
+// Initialize tap structure associated with example tap dance key
+static td_tap_t ltosll_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
 };
+static td_tap_t ltoslr_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+static uint8_t osl_state = 0;
+// Functions that control what our tap dance key does
+void ltosll_finished(qk_tap_dance_state_t *state, void *user_data) {
+    ltosll_tap_state.state = cur_dance(state);
+    switch (ltosll_tap_state.state) {
+        case TD_SINGLE_TAP:
+            layer_on(_SYMBOLS);
+            osl_state = 2;
+            break;
+        case TD_SINGLE_HOLD:
+            layer_on(_NUMBERS);
+            break;
+        case TD_DOUBLE_TAP:
+            // Check to see if the layer is already set
+            if (layer_state_is(_SYMBOLS)) {
+                // If already set, then switch it off
+                layer_off(_SYMBOLS);
+            } else {
+                // If not already set, then switch the layer on
+                layer_on(_SYMBOLS);
+            }
+            break;
+        default:
+            break;
+    }
+}
+void ltoslr_finished(qk_tap_dance_state_t *state, void *user_data) {
+    ltoslr_tap_state.state = cur_dance(state);
+    switch (ltoslr_tap_state.state) {
+        case TD_SINGLE_TAP:
+            layer_on(_SYMBOLS);
+            osl_state = 2;
+            break;
+        case TD_SINGLE_HOLD:
+            layer_on(_NAVIGATION);
+            break;
+        case TD_DOUBLE_TAP:
+            // Check to see if the layer is already set
+            if (layer_state_is(_SYMBOLS)) {
+                // If already set, then switch it off
+                layer_off(_SYMBOLS);
+            } else {
+                // If not already set, then switch the layer on
+                layer_on(_SYMBOLS);
+            }
+            break;
+        default:
+            break;
+    }
+}
+void ltosll_reset(qk_tap_dance_state_t *state, void *user_data) {
+    // If the key was held down and now is released then switch off the layer
+    if (ltosll_tap_state.state == TD_SINGLE_HOLD) {
+        layer_off(_NUMBERS);
+    }
+    ltosll_tap_state.state = TD_NONE;
+}
+
+void ltoslr_reset(qk_tap_dance_state_t *state, void *user_data) {
+    // If the key was held down and now is released then switch off the layer
+    if (ltoslr_tap_state.state == TD_SINGLE_HOLD) {
+        layer_off(_NAVIGATION);
+    }
+    ltoslr_tap_state.state = TD_NONE;
+}
 
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
   // Turn off the layer if another key is pressed while acting like OSL. The
   // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
-  if (keycode != LTOSLR && (ltosl_state >>= 1)) {
-    layer_off(LTOSL_OSL_LAYER);
+  if (layer_state_is(_SYMBOLS) && (osl_state >>= 1)) {
+    layer_off(_SYMBOLS);
   }
-  if (keycode != LTOSLL && (ltosl_state >>= 1)) {
-    layer_off(LTOSL_OSL_LAYER);
+  if (layer_state_is(_SYMBOLS) && (osl_state >>= 1)) {
+    layer_off(_SYMBOLS);
   }
 };
 

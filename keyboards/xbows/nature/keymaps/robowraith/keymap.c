@@ -56,8 +56,6 @@ enum tap_dance_keys{
     F12_CO,
     VOLU,
     VOLD,
-    PREV,
-    NEXT,
     DISM,
 };
 
@@ -77,8 +75,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [F12_CO] = ACTION_TAP_DANCE_DOUBLE(DE_COMM, KC_F12),
     [VOLU] = ACTION_TAP_DANCE_DOUBLE(KC_VOLU, KC_MUTE),
     [VOLD] = ACTION_TAP_DANCE_DOUBLE(KC_VOLD, KC_MUTE),
-    [NEXT] = ACTION_TAP_DANCE_DOUBLE(KC_MNXT, KC_MPLY),
-    [PREV] = ACTION_TAP_DANCE_DOUBLE(KC_MPRV, KC_MPLY),
     [DISM] = ACTION_TAP_DANCE_DOUBLE(G(C(DE_D)), LSG(C(DE_D))),
 };
 
@@ -110,8 +106,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_BASE] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      TD(VOLD),  TD(VOLU), KC_NO,    KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
-      TD(PREV),  TD(NEXT), DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
+      KC_MPRV,   KC_MNXT,  KC_MPLY,  KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
+      TD(VOLD),  TD(VOLU), DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
       KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
       KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,
       XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
@@ -214,7 +210,7 @@ bool caps_word_press_user(uint16_t keycode) {
 };
 
 const int FkeysSize = 12;
-int keysFkeys[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+int keysFkeys[] = { 1, 2, 3, 4, 5,  6, 7, 8, 9, 10, 11, 12 };
 const int NumkeysSize = 10;
 int keysNumkeys[] = { 16, 17, 18, 19, 20, 22, 23, 24, 25, 26 };
 const int AlphakeysSize = 24;

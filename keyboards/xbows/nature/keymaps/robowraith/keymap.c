@@ -209,52 +209,52 @@ bool caps_word_press_user(uint16_t keycode) {
     }
 };
 
-const int FkeysSize = 12;
-int keysFkeys[] = { 1, 2, 3, 4, 5,  6, 7, 8, 9, 10, 11, 12 };
-const int NumkeysSize = 10;
-int keysNumkeys[] = { 16, 17, 18, 19, 20, 22, 23, 24, 25, 26 };
-const int AlphakeysSize = 24;
-int keysAlphakeys[] = { 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 50, 52, 57, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71 };
-const int HomekeysSize = 8;
-int keysHomekeys[] = { 46, 47, 48, 49, 53, 54, 55, 56 };
+// const int FkeysSize = 12;
+// int keysFkeys[] = { 1, 2, 3, 4, 5,  6, 7, 8, 9, 10, 11, 12 };
+// const int NumkeysSize = 10;
+// int keysNumkeys[] = { 16, 17, 18, 19, 20, 22, 23, 24, 25, 26 };
+// const int AlphakeysSize = 24;
+// int keysAlphakeys[] = { 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 50, 52, 57, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71 };
+// const int HomekeysSize = 8;
+// int keysHomekeys[] = { 46, 47, 48, 49, 53, 54, 55, 56 };
 int logoKey = 21;
-int ForwardkeysSize = 6;
-int keysForwardkeys[] = { 30, 58, 66, 77, 79, 80 };
-int BackkeysSize = 3;
-int keysBackkeys[] = { 13, 29, 78 };
-int ShiftkeysSize = 5;
-int keysShiftkeys[] = { 0, 14, 51, 60, 72 };
-int ArrowkeysSize = 4;
-int keysArrowkeys[] = { 73, 84, 85, 86};
-int NavkeysSize = 4;
-int keysNavkeys[] = { 33, 47, 48, 49 };
-int NumpadkeysSize = 11;
-int keysNumpadkeys[] = { 38, 39, 40, 53, 54, 55, 68, 69, 70, 80, 81 };
-int NumpadoperatorkeysSize = 4;
-int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
-int QMKkeysSize = 4;
-int keysQMKkeys[] = { 12, 13, 14, 29 };
-int CutkeysSize = 2;
-int keysCutkeys[] = { 76, 81 };
-int CopykeysSize = 2;
-int keysCopykeys[] = { 77, 80 };
-int PastekeysSize = 2;
-int keysPastekeys[] = { 78, 79 };
-int MMPluskeysSize = 6;
-int keysMMPluskeys[] = { 34, 35, 36, 73, 83, 86 };
-int MMMinuskeysSize = 6;
-int keysMMMinuskeys[] = { 32, 50, 59, 72, 84, 85 };
+// int ForwardkeysSize = 6;
+// int keysForwardkeys[] = { 30, 58, 66, 77, 79, 80 };
+// int BackkeysSize = 3;
+// int keysBackkeys[] = { 13, 29, 78 };
+// int ShiftkeysSize = 5;
+// int keysShiftkeys[] = { 0, 14, 51, 60, 72 };
+// int ArrowkeysSize = 4;
+// int keysArrowkeys[] = { 73, 84, 85, 86};
+// int NavkeysSize = 4;
+// int keysNavkeys[] = { 33, 47, 48, 49 };
+// int NumpadkeysSize = 11;
+// int keysNumpadkeys[] = { 38, 39, 40, 53, 54, 55, 68, 69, 70, 80, 81 };
+// int NumpadoperatorkeysSize = 4;
+// int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
+// int QMKkeysSize = 4;
+// int keysQMKkeys[] = { 12, 13, 14, 29 };
+// int CutkeysSize = 2;
+// int keysCutkeys[] = { 76, 81 };
+// int CopykeysSize = 2;
+// int keysCopykeys[] = { 77, 80 };
+// int PastekeysSize = 2;
+// int keysPastekeys[] = { 78, 79 };
+// int MMPluskeysSize = 6;
+// int keysMMPluskeys[] = { 34, 35, 36, 73, 83, 86 };
+// int MMMinuskeysSize = 6;
+// int keysMMMinuskeys[] = { 32, 50, 59, 72, 84, 85 };
 
-void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
-    for( int i = 0; i < size; i++) {
-        rgb_matrix_set_color(keytype[i], r, g, b);
-    }
-};
+// void set_key_color(int size, int keytype[], uint8_t r, uint8_t g, uint8_t b) {
+//     for( int i = 0; i < size; i++) {
+//         rgb_matrix_set_color(keytype[i], r, g, b);
+//     }
+// };
 
-void default_color_scheme(void) {
-    set_key_color(AlphakeysSize, keysAlphakeys, RGB_WHITE);
-    set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
-};
+// void default_color_scheme(void) {
+//     set_key_color(AlphakeysSize, keysAlphakeys, RGB_WHITE);
+//     set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
+// };
 
 void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);

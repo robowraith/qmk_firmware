@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "keycode.h"
+#include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 
@@ -37,6 +38,8 @@ enum custom_keycodes {
     RW_S = RALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
     // Other
+    LCON = LSG(DE_L),
+    LCOFF = LGUI(LCTL(DE_L)),
     LTOSLR,
     LTOSLL,
 };
@@ -106,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_BASE] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  RESET,
-      KC_MPRV,   KC_MNXT,  KC_MPLY,  KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,
+      KC_MPRV,   KC_MNXT,  KC_MPLY,  KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    LCON,      LCOFF,     XXXXXXX,  XXXXXXX,
       TD(VOLD),  TD(VOLU), DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
       KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
       KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,

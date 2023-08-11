@@ -38,13 +38,13 @@ enum custom_keycodes {
     RW_S = RALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
     // Other
-    LCON = LSG(DE_L),
-    LCOFF = LGUI(LCTL(DE_L)),
+    LCON  = LSG(DE_SS),
+    LCOFF = LGUI(LCTL(DE_SS)),
     LTOSLR,
     LTOSLL,
 };
 
-enum tap_dance_keys{
+enum tap_dance_keys {
     F1_1,
     F2_2,
     F3_3,
@@ -135,57 +135,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_PASTE,  KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,KC_PGDN,TG(_NAVIGATION),KC_ESC,  KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   G(KC_5),   XXXXXXX,            XXXXXXX,
       KC_NO,     KC_CUT,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    G(KC_6),  G(KC_7),  G(KC_8),   G(KC_9),   G(KC_0),   KC_NO,               XXXXXXX,
       XXXXXXX,   XXXXXXX,  KC_NO,    KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_NO,TG(_NAVIGATION),XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+    [_NAVIGATION] = LAYOUT(XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PASTE, KC_HOME, KC_UP, KC_END, KC_PGUP, G(KC_1), G(KC_2), G(KC_3), G(KC_4), KC_NO, KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, KC_PASTE, KC_COPY, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, TG(_NAVIGATION), KC_ESC, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, G(KC_5), XXXXXXX, XXXXXXX, KC_NO, KC_CUT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0), KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, KC_NO, KC_DEL, KC_NO, KC_NO, KC_ENT, KC_NO, TG(_NAVIGATION), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
 };
 
 static uint8_t ltosl_state = 0;
-#define LTOSLR_MO_LAYER  _NAVIGATION // Layer to activate when holding.
-#define LTOSLL_MO_LAYER  _NUMBERS    // Layer to activate when holding.
-#define LTOSL_OSL_LAYER  _SYMBOLS  // Layer to activate as an OSL when tapped.
+#define LTOSLR_MO_LAYER _NAVIGATION // Layer to activate when holding.
+#define LTOSLL_MO_LAYER _NUMBERS    // Layer to activate when holding.
+#define LTOSL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (keycode == LTOSLR) {
-    static uint32_t tap_deadline = 0;
-    if (record->event.pressed) {  // On pressed.
-      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
-      layer_on(LTOSLR_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
-    } else {  // On release.
-      layer_off(LTOSLR_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
-        // LTOSLR was released without pressing another key within 200 ms.
-        layer_on(LTOSL_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
-      }
+    if (keycode == LTOSLR) {
+        static uint32_t tap_deadline = 0;
+        if (record->event.pressed) {             // On pressed.
+            tap_deadline = timer_read32() + 200; // Set 200 ms tap deadline.
+            layer_on(LTOSLR_MO_LAYER);
+            ltosl_state = 1; // Set undetermined state.
+        } else {             // On release.
+            layer_off(LTOSLR_MO_LAYER);
+            if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+                // LTOSLR was released without pressing another key within 200 ms.
+                layer_on(LTOSL_OSL_LAYER);
+                ltosl_state = 2; // Acting like OSL.
+            }
+        }
+        return false;
     }
-    return false;
-  }
-  if (keycode == LTOSLL) {
-    static uint32_t tap_deadline = 0;
-    if (record->event.pressed) {  // On pressed.
-      tap_deadline = timer_read32() + 200;  // Set 200 ms tap deadline.
-      layer_on(LTOSLL_MO_LAYER);
-      ltosl_state = 1;  // Set undetermined state.
-    } else {  // On release.
-      layer_off(LTOSLL_MO_LAYER);
-      if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
-        // LTOSLL was released without pressing another key within 200 ms.
-        layer_on(LTOSL_OSL_LAYER);
-        ltosl_state = 2;  // Acting like OSL.
-      }
+    if (keycode == LTOSLL) {
+        static uint32_t tap_deadline = 0;
+        if (record->event.pressed) {             // On pressed.
+            tap_deadline = timer_read32() + 200; // Set 200 ms tap deadline.
+            layer_on(LTOSLL_MO_LAYER);
+            ltosl_state = 1; // Set undetermined state.
+        } else {             // On release.
+            layer_off(LTOSLL_MO_LAYER);
+            if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
+                // LTOSLL was released without pressing another key within 200 ms.
+                layer_on(LTOSL_OSL_LAYER);
+                ltosl_state = 2; // Acting like OSL.
+            }
+        }
+        return false;
     }
-  return false;
-  }
-return true;
+    return true;
 };
 
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
-  // Turn off the layer if another key is pressed while acting like OSL. The
-  // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
-  if (keycode != LTOSLR && (ltosl_state >>= 1)) {
-    layer_off(LTOSL_OSL_LAYER);
-  }
-  if (keycode != LTOSLL && (ltosl_state >>= 1)) {
-    layer_off(LTOSL_OSL_LAYER);
-  }
+    // Turn off the layer if another key is pressed while acting like OSL. The
+    // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
+    if (keycode != LTOSLR && (ltosl_state >>= 1)) {
+        layer_off(LTOSL_OSL_LAYER);
+    }
+    if (keycode != LTOSLL && (ltosl_state >>= 1)) {
+        layer_off(LTOSL_OSL_LAYER);
+    }
 };
 
 bool caps_word_press_user(uint16_t keycode) {
@@ -196,7 +197,7 @@ bool caps_word_press_user(uint16_t keycode) {
         case DE_ODIA:
         case DE_UDIA:
         case KC_MINS:
-            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            add_weak_mods(MOD_BIT(KC_LSFT)); // Apply shift to next key.
             return true;
 
         // Keycodes that continue Caps Word, without shifting.
@@ -208,7 +209,7 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
 
         default:
-            return false;  // Deactivate Caps Word.
+            return false; // Deactivate Caps Word.
     }
 };
 
@@ -264,19 +265,19 @@ void rgb_matrix_indicators_user(void) {
     switch (layer) {
         case _BASE:
             rgb_matrix_set_color_all(RGB_BLUE);
-            rgb_matrix_set_color(logoKey, RGB_BLUE );
+            rgb_matrix_set_color(logoKey, RGB_BLUE);
             break;
         case _SYMBOLS:
             rgb_matrix_set_color_all(RGB_GREEN);
-            rgb_matrix_set_color(logoKey, RGB_GREEN );
+            rgb_matrix_set_color(logoKey, RGB_GREEN);
             break;
         case _NUMBERS:
             rgb_matrix_set_color_all(RGB_RED);
-            rgb_matrix_set_color(logoKey, RGB_RED );
+            rgb_matrix_set_color(logoKey, RGB_RED);
             break;
-        case  _NAVIGATION:
+        case _NAVIGATION:
             rgb_matrix_set_color_all(RGB_YELLOW);
-            rgb_matrix_set_color(logoKey, RGB_YELLOW );
+            rgb_matrix_set_color(logoKey, RGB_YELLOW);
             break;
     }
 };

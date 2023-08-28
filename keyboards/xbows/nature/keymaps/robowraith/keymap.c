@@ -66,6 +66,7 @@ enum tap_dance_keys {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1),
     [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2),
+
     [F3_3] = ACTION_TAP_DANCE_DOUBLE(DE_3, KC_F3),
     [F4_4] = ACTION_TAP_DANCE_DOUBLE(DE_4, KC_F4),
     [F5_5] = ACTION_TAP_DANCE_DOUBLE(DE_5, KC_F5),
@@ -109,33 +110,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_BASE] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  RESET,
-      KC_MPRV,   KC_MNXT,  KC_MPLY,  KC_NO,    KC_NO,    KC_PSCR,             TD(DISM), KC_COPY,  KC_PASTE,  KC_CUT,    LCON,      LCOFF,     XXXXXXX,  XXXXXXX,
-      TD(VOLD),  TD(VOLU), DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      KC_J,      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      KC_ESC,   DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      DE_Y,      KC_ENTER,           KC_BSPC,
-      KC_NO,     DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   KC_TAB,   DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      KC_NO,               KC_UP,
-      XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    KC_NO,     XXXXXXX,   KC_LEFT,  KC_DOWN,  KC_RGHT),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,             XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_J,     DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      DE_Y,      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   RW_C,     RW_R,     RW_I,     RW_E,     DE_O,      XXXXXXX,  DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   XXXXXXX,  DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_ESC,   KC_BSPC,            LTOSLL,              LTOSLR,             KC_SPC,    KC_TAB,    XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
   [_SYMBOLS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      DE_EURO,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,TG(_SYMBOLS),DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   DE_AT,     XXXXXXX,            XXXXXXX,
-      RESET,     DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   KC_NO,    DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   RESET,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             KC_NO,               KC_NO,              DE_CIRC,   KC_NO,  TG(_SYMBOLS), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,             XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,   XXXXXXX,  DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   XXXXXXX,  DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    DE_EQL,             KC_NO,               KC_NO,              DE_CIRC,   KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
  [_NUMBERS] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_NO,    RALT(DE_2),RALT(DE_3),KC_MUTE,KC_NO,               DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      RALT(DE_1),KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_TAB,TG(_NUMBERS), DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),TD(F10_PL),XXXXXXX,            XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_MPRV,  KC_MNXT,  KC_MPLY,   KC_NO,    DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),KC_NO,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              KC_NO,               DE_0,               KC_ENTER,  KC_NO,  TG(_NUMBERS), XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,             XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,  RALT(DE_1),RALT(DE_2),RALT(DE_3),KC_NO,  KC_MUTE,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  TD(F10_PL),XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_ESC,    XXXXXXX,  DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   KC_MPRV,  KC_MNXT,  KC_MPLY,  KC_VOLD,  KC_VOLU,   XXXXXXX,  DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    KC_NO,              KC_NO,               DE_0,               KC_ENTER,  KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
   [_NAVIGATION] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,
-      KC_NO,     KC_PASTE, KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             G(KC_1),  G(KC_2),  G(KC_3),   G(KC_4),   KC_NO,     KC_NO,     XXXXXXX,  XXXXXXX,  XXXXXXX,
-      KC_PASTE,  KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,KC_PGDN,TG(_NAVIGATION),KC_ESC,  KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   G(KC_5),   XXXXXXX,            XXXXXXX,
-      KC_NO,     KC_CUT,   KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    G(KC_6),  G(KC_7),  G(KC_8),   G(KC_9),   G(KC_0),   KC_NO,               XXXXXXX,
-      XXXXXXX,   XXXXXXX,  KC_NO,    KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_NO,TG(_NAVIGATION),XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
-    [_NAVIGATION] = LAYOUT(XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PASTE, KC_HOME, KC_UP, KC_END, KC_PGUP, G(KC_1), G(KC_2), G(KC_3), G(KC_4), KC_NO, KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, KC_PASTE, KC_COPY, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, TG(_NAVIGATION), KC_ESC, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, G(KC_5), XXXXXXX, XXXXXXX, KC_NO, KC_CUT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0), KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, KC_NO, KC_DEL, KC_NO, KC_NO, KC_ENT, KC_NO, TG(_NAVIGATION), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,             XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   TD(DISM), KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             KC_NO,    KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,   XXXXXXX,  KC_TAB,   KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   KC_PASTE, KC_CUT,   LCOFF,    LCON,     KC_PSCR,   XXXXXXX,  KC_VOLD,  KC_VOLU,    KC_NO,     KC_NO,     KC_NO,     XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  KC_NO,    KC_DEL,             KC_NO,               KC_NO,              KC_ENT,    KC_NO,     XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
 static uint8_t ltosl_state = 0;
@@ -238,6 +238,7 @@ int logoKey = 21;
 // int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
 // int QMKkeysSize = 4;
 // int keysQMKkeys[] = { 12, 13, 14, 29 };
+int resetkey = 14;
 // int CutkeysSize = 2;
 // int keysCutkeys[] = { 76, 81 };
 // int CopykeysSize = 2;
@@ -264,19 +265,20 @@ void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
         case _BASE:
-            rgb_matrix_set_color_all(RGB_BLUE);
+            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(logoKey, RGB_BLUE);
+            rgb_matrix_set_color(resetkey, RGB_RED);
             break;
         case _SYMBOLS:
-            rgb_matrix_set_color_all(RGB_GREEN);
+            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(logoKey, RGB_GREEN);
             break;
         case _NUMBERS:
-            rgb_matrix_set_color_all(RGB_RED);
+            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(logoKey, RGB_RED);
             break;
         case _NAVIGATION:
-            rgb_matrix_set_color_all(RGB_YELLOW);
+            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(logoKey, RGB_YELLOW);
             break;
     }

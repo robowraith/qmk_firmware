@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "color.h"
 #include "keycode.h"
 #include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
@@ -237,7 +238,7 @@ int logoKey = 21;
 // int keysNumpadoperatorkeys[] = { 41, 42, 56, 57 };
 // int QMKkeysSize = 4;
 // int keysQMKkeys[] = { 12, 13, 14, 29 };
-int resetkey = 14;
+int resetKey = 14;
 // int CutkeysSize = 2;
 // int keysCutkeys[] = { 76, 81 };
 // int CopykeysSize = 2;
@@ -264,21 +265,20 @@ void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
         case _BASE:
-            rgb_matrix_set_color_all(RGB_BLACK);
-            rgb_matrix_set_color(logoKey, RGB_BLUE);
-            rgb_matrix_set_color(resetkey, RGB_RED);
+            rgb_matrix_set_color_all(RGB_BLUE);
+            rgb_matrix_set_color(resetKey, RGB_RED);
             break;
         case _SYMBOLS:
-            rgb_matrix_set_color_all(RGB_BLACK);
-            rgb_matrix_set_color(logoKey, RGB_GREEN);
+            rgb_matrix_set_color_all(RGB_GREEN);
+            rgb_matrix_set_color(resetKey, RGB_BLACK);
             break;
         case _NUMBERS:
-            rgb_matrix_set_color_all(RGB_BLACK);
-            rgb_matrix_set_color(logoKey, RGB_RED);
+            rgb_matrix_set_color_all(RGB_RED);
+            rgb_matrix_set_color(resetKey, RGB_BLACK);
             break;
         case _NAVIGATION:
-            rgb_matrix_set_color_all(RGB_BLACK);
-            rgb_matrix_set_color(logoKey, RGB_YELLOW);
+            rgb_matrix_set_color_all(RGB_YELLOW);
+            rgb_matrix_set_color(resetKey, RGB_YELLOW);
             break;
     }
 };
@@ -289,3 +289,5 @@ void caps_word_set_user(bool active) {
         rgb_matrix_mode_noeeprom(1);
     }
 };
+# Function to count from 1 to 2
+

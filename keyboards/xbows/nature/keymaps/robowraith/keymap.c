@@ -24,6 +24,7 @@ enum layer_names {
     _SYMBOLS,
     _NUMBERS,
     _NAVIGATION,
+    _GAMING,
 };
 
 // Home-Row-Mod- and Thumb-Keys
@@ -118,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX,   DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     XXXXXXX,   XXXXXXX,  XXXXXXX,
       XXXXXXX,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,             DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   XXXXXXX,  DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   XXXXXXX,   XXXXXXX,            XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    DE_EQL,    XXXXXXX,  DE_CIRC,   KC_NO,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    DE_EQL,    XXXXXXX,  DE_CIRC,  KC_NO,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               KC_NO,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 
 [_NUMBERS] = LAYOUT(
@@ -126,16 +127,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX,  RALT(DE_1),RALT(DE_2),RALT(DE_3),KC_MUTE,KC_VOLU,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  TD(F10_PL),XXXXXXX,   XXXXXXX,  XXXXXXX,
       XXXXXXX,   KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,             DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   LCOFF,    LCON,     KC_MPRV,  KC_MNXT,  KC_MPLY,   XXXXXXX,  DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),XXXXXXX,   XXXXXXX,            XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,    KC_NO,     XXXXXXX,  KC_ENTER, DE_0,     XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,  KC_NO,     XXXXXXX,  KC_ENTER, DE_0,     XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               DE_EQL,             XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 
 [_NAVIGATION] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      XXXXXXX,   TD(DISM), KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             KC_NO,    KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   TD(DISM), KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             KC_NO,    KC_COPY,  KC_PASTE,  KC_CUT,   TG(_GAMING),XXXXXXX,   XXXXXXX,  XXXXXXX,
       XXXXXXX,   KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,             KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   KC_PASTE, KC_CUT,   KC_NO,    KC_NO,    KC_PSCR,   XXXXXXX,  KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     XXXXXXX,   XXXXXXX,            XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    KC_DEL,    XXXXXXX,  KC_ENT,   QK_BOOT,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    KC_DEL,    XXXXXXX,  KC_ENT,   QK_BOOT,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               KC_NO,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+
+[_GAMING] = LAYOUT(
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  QK_BOOT,
+      XXXXXXX,   DE_J,     DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      DE_Y,      XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_C,     DE_R,     DE_I,     DE_E,     DE_O,                DE_M,     DE_N,     DE_T,      DE_S,      DE_H,      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   XXXXXXX,  DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_ESC,   KC_BSPC,   XXXXXXX,  KC_SPC,   KC_TAB,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_SPC,              KC_ENT,             XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
 static uint8_t ltosl_state = 0;
@@ -279,6 +288,10 @@ bool rgb_matrix_indicators_user(void) {
         case _NAVIGATION:
             rgb_matrix_set_color_all(RGB_YELLOW);
             rgb_matrix_set_color(resetKey, RGB_YELLOW);
+            break;
+        case _GAMING:
+            rgb_matrix_set_color_all(RGB_PURPLE);
+            rgb_matrix_set_color(resetKey, RGB_PURPLE);
             break;
     }
     return false;

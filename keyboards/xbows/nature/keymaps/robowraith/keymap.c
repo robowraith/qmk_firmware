@@ -62,7 +62,7 @@ enum tap_dance_keys {
 };
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1),
     [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2),
 
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
  [_BASE] = LAYOUT(
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  RESET,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  QK_BOOT,
       XXXXXXX,   DE_J,     DE_L,     DE_U,     DE_A,     DE_Q,                DE_W,     DE_B,     DE_D,      DE_G,      DE_Y,      XXXXXXX,   XXXXXXX,  XXXXXXX,
       XXXXXXX,   RW_C,     RW_R,     RW_I,     RW_E,     DE_O,                DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   XXXXXXX,  DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      XXXXXXX,   XXXXXXX,            XXXXXXX,
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX,  RALT(DE_1),RALT(DE_2),RALT(DE_3),KC_MUTE,KC_VOLU,             DE_MINS,  TD(F7_7), TD(F8_8),  TD(F9_9),  TD(F10_PL),XXXXXXX,   XXXXXXX,  XXXXXXX,
       XXXXXXX,   KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,             DE_SLSH,  TD(F4_4), TD(F5_5),  TD(F6_6),  TD(F11_DO),XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   LCOFF,    LCON,     KC_MPRV,  KC_MNXT,  KC_MPLY,   XXXXXXX,  DE_COLN,  TD(F1_1), TD(F2_2),  TD(F3_3),  TD(F12_CO),XXXXXXX,   XXXXXXX,            XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  RESET,    KC_NO,     XXXXXXX,  KC_ENTER, DE_0,     XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  QK_BOOT,    KC_NO,     XXXXXXX,  KC_ENTER, DE_0,     XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               DE_EQL,             XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 
 [_NAVIGATION] = LAYOUT(
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX,   TD(DISM), KC_HOME,  KC_UP,    KC_END,   KC_PGUP,             KC_NO,    KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,     XXXXXXX,   XXXXXXX,  XXXXXXX,
       XXXXXXX,   KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,             KC_NO,    KC_RSFT,  KC_RCTL,   KC_RALT,   KC_RGUI,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   KC_PASTE, KC_CUT,   KC_NO,    KC_NO,    KC_PSCR,   XXXXXXX,  KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     XXXXXXX,   XXXXXXX,            XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    KC_DEL,    XXXXXXX,  KC_ENT,   RESET,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    KC_DEL,    XXXXXXX,  KC_ENT,   QK_BOOT,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               KC_NO,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
@@ -261,7 +261,7 @@ int resetKey = 14;
 //     set_key_color(HomekeysSize, keysHomekeys, RGB_BLUE);
 // };
 
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
         case _BASE:
@@ -281,6 +281,7 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(resetKey, RGB_YELLOW);
             break;
     }
+    return false;
 };
 void caps_word_set_user(bool active) {
     if (active) {
@@ -289,5 +290,3 @@ void caps_word_set_user(bool active) {
         rgb_matrix_mode_noeeprom(1);
     }
 };
-# Function to count from 1 to 2
-

@@ -18,6 +18,7 @@
 #include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
+#include "features/achordion.h"
 
 enum layer_names {
     _BASE,
@@ -65,7 +66,6 @@ enum tap_dance_keys {
 tap_dance_action_t tap_dance_actions[] = {
     [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1),
     [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2),
-
     [F3_3] = ACTION_TAP_DANCE_DOUBLE(DE_3, KC_F3),
     [F4_4] = ACTION_TAP_DANCE_DOUBLE(DE_4, KC_F4),
     [F5_5] = ACTION_TAP_DANCE_DOUBLE(DE_5, KC_F5),
@@ -136,11 +136,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               KC_NO,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 };
 
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
+
 static uint8_t ltosl_state = 0;
 #define LTOSLR_MO_LAYER _NAVIGATION // Layer to activate when holding.
 #define LTOSLL_MO_LAYER _NUMBERS    // Layer to activate when holding.
 #define LTOSL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+
+  if (!process_achordion(keycode, record)) { return false; }
+
     if (keycode == LTOSLR) {
         static uint32_t tap_deadline = 0;
         if (record->event.pressed) {             // On pressed.

@@ -37,7 +37,7 @@ enum custom_keycodes {
     // Mod taps on right hand
     RW_N = RSFT_T(DE_N),
     RW_T = RCTL_T(DE_T),
-    RW_S = RALT_T(DE_S),
+    RW_S = LALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
     // Other
     LCON  = LSG(DE_SS),

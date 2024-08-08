@@ -40,8 +40,8 @@ enum custom_keycodes {
     RW_S = LALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
     // Other
-    LCON  = LSG(DE_SS),
-    LCOFF = LGUI(LCTL(DE_SS)),
+    LCON  = LSG(DE_L),
+    LCOFF = LGUI(LCTL(DE_L)),
     LTOSLR,
     LTOSLL,
 };

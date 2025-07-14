@@ -22,7 +22,8 @@
 
 enum layer_names {
     _BASE,
-    _SYMBOLS,
+    _SYMBOLS_LEFT,
+    _SYMBOLS_RIGHT,
     _NUMBERS,
     _NAVIGATION,
 };
@@ -109,14 +110,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX,   RW_C,     RW_R,     RW_I,     RW_E,     DE_O,                DE_M,     RW_N,     RW_T,      RW_S,      RW_H,      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
       XXXXXXX,   DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,   XXXXXXX,  DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,      XXXXXXX,   XXXXXXX,            XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_ESC,   KC_BSPC,   XXXXXXX,  KC_SPC,   KC_TAB,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            LTOSLL,              LTOSLR,             XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            LTOSLR,              LTOSLL,             XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 
-[_SYMBOLS] = LAYOUT(
+[_SYMBOLS_LEFT] = LAYOUT(
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
-      XXXXXXX,   DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     XXXXXXX,   XXXXXXX,  XXXXXXX,
-      XXXXXXX,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,             DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
-      XXXXXXX,   DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   XXXXXXX,  DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   XXXXXXX,   XXXXXXX,            XXXXXXX,
-      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    DE_EQL,    XXXXXXX,  DE_CIRC,   KC_NO,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   DE_EURO,  DE_LBRC,  DE_LCBR,  DE_LPRN,  DE_LABK,             KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_QUOT,  DE_BSLS,  DE_COLN,  DE_COMM,  DE_QUES,             KC_NO,    KC_LSFT,  KC_LCTL,   KC_LALT,   KC_LGUI,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   DE_PERC,  DE_GRV,   DE_DLR,   DE_UNDS,  DE_HASH,   XXXXXXX,  KC_NO,    KC_NO,    KC_NO,     KC_NO,     KC_NO,     XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    DE_EQL,    XXXXXXX,  KC_NO,    KC_NO,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               KC_NO,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
+
+[_SYMBOLS_RIGHT] = LAYOUT(
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,               DE_RABK,  DE_RPRN,  DE_RCBR,   DE_RBRC,   DE_AT,     XXXXXXX,   XXXXXXX,  XXXXXXX,
+      XXXXXXX,   KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_NO,               DE_EXLM,  DE_DOT,   DE_SCLN,   DE_SLSH,   DE_DQUO,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+      XXXXXXX,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     XXXXXXX,  DE_ASTR,  DE_MINS,  DE_PIPE,   DE_TILD,   DE_AMPR,   XXXXXXX,   XXXXXXX,            XXXXXXX,
+      XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_NO,    KC_NO,     XXXXXXX,  DE_CIRC,  KC_NO,    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,             XXXXXXX,
       XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,            KC_NO,               KC_NO,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX),
 
 [_NUMBERS] = LAYOUT(
@@ -142,9 +151,10 @@ void matrix_scan_user(void) {
 
 
 static uint8_t ltosl_state = 0;
-#define LTOSLR_MO_LAYER _NAVIGATION // Layer to activate when holding.
-#define LTOSLL_MO_LAYER _NUMBERS    // Layer to activate when holding.
-#define LTOSL_OSL_LAYER _SYMBOLS    // Layer to activate as an OSL when tapped.
+#define LTOSLR_MO_LAYER _NUMBERS    // Layer to activate when holding.
+#define LTOSLL_MO_LAYER _NAVIGATION // Layer to activate when holding.
+#define LTOSLR_OSL_LAYER _SYMBOLS_RIGHT  // Layer to activate as an OSL when LTOSLR is tapped.
+#define LTOSLL_OSL_LAYER _SYMBOLS_LEFT   // Layer to activate as an OSL when LTOSLL is tapped.
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
   if (!process_achordion(keycode, record)) { return false; }
@@ -159,7 +169,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             layer_off(LTOSLR_MO_LAYER);
             if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
                 // LTOSLR was released without pressing another key within 200 ms.
-                layer_on(LTOSL_OSL_LAYER);
+                layer_on(LTOSLR_OSL_LAYER);
                 ltosl_state = 2; // Acting like OSL.
             }
         }
@@ -175,7 +185,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             layer_off(LTOSLL_MO_LAYER);
             if (ltosl_state && !timer_expired32(timer_read32(), tap_deadline)) {
                 // LTOSLL was released without pressing another key within 200 ms.
-                layer_on(LTOSL_OSL_LAYER);
+                layer_on(LTOSLL_OSL_LAYER);
                 ltosl_state = 2; // Acting like OSL.
             }
         }
@@ -187,11 +197,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 void post_process_record_user(uint16_t keycode, keyrecord_t* record) {
     // Turn off the layer if another key is pressed while acting like OSL. The
     // `(ltosl_state >>= 1)` both tests that state = 2 and shifts it toward zero.
-    if (keycode != LTOSLR && (ltosl_state >>= 1)) {
-        layer_off(LTOSL_OSL_LAYER);
-    }
-    if (keycode != LTOSLL && (ltosl_state >>= 1)) {
-        layer_off(LTOSL_OSL_LAYER);
+    // Don't turn off layers when home-row modifiers from symbol layers are pressed
+    if (keycode != LTOSLR && keycode != LTOSLL && 
+        keycode != KC_LSFT && keycode != KC_LCTL && keycode != KC_LALT && keycode != KC_LGUI &&
+        (ltosl_state >>= 1)) {
+        layer_off(LTOSLR_OSL_LAYER);
+        layer_off(LTOSLL_OSL_LAYER);
     }
 };
 
@@ -276,7 +287,8 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(resetKey, RGB_RED);
             rgb_matrix_set_color(logoKey, RGB_WHITE);
             break;
-        case _SYMBOLS:
+        case _SYMBOLS_LEFT:
+        case _SYMBOLS_RIGHT:
             // rgb_matrix_set_color_all(RGB_GREEN);
             rgb_matrix_set_color_all(RGB_BLACK);
             // rgb_matrix_set_color(resetKey, RGB_BLACK);

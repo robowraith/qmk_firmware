@@ -271,20 +271,28 @@ bool rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
         case _BASE:
-            rgb_matrix_set_color_all(RGB_BLUE);
+            // rgb_matrix_set_color_all(RGB_BLUE);
+            rgb_matrix_set_color_all(RGB_BLACK);
             rgb_matrix_set_color(resetKey, RGB_RED);
+            rgb_matrix_set_color(logoKey, RGB_WHITE);
             break;
         case _SYMBOLS:
-            rgb_matrix_set_color_all(RGB_GREEN);
-            rgb_matrix_set_color(resetKey, RGB_BLACK);
+            // rgb_matrix_set_color_all(RGB_GREEN);
+            rgb_matrix_set_color_all(RGB_BLACK);
+            // rgb_matrix_set_color(resetKey, RGB_BLACK);
+            rgb_matrix_set_color(logoKey, RGB_GREEN);
             break;
         case _NUMBERS:
-            rgb_matrix_set_color_all(RGB_RED);
-            rgb_matrix_set_color(resetKey, RGB_BLACK);
+            // rgb_matrix_set_color_all(RGB_RED);
+            rgb_matrix_set_color_all(RGB_BLACK);
+            // rgb_matrix_set_color(resetKey, RGB_BLACK);
+            rgb_matrix_set_color(logoKey, RGB_RED);
             break;
         case _NAVIGATION:
-            rgb_matrix_set_color_all(RGB_YELLOW);
-            rgb_matrix_set_color(resetKey, RGB_YELLOW);
+            // rgb_matrix_set_color_all(RGB_YELLOW);
+            rgb_matrix_set_color_all(RGB_BLACK);
+            // rgb_matrix_set_color(resetKey, RGB_YELLOW);
+            rgb_matrix_set_color(logoKey, RGB_BLUE);
             break;
     }
     return false;

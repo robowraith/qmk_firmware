@@ -15,7 +15,9 @@
  */
 #include "color.h"
 #include "keycode.h"
+#include "keycodes.h"
 #include "quantum_keycodes.h"
+#include "usb_device_state.h"
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 #include "features/achordion.h"
@@ -39,6 +41,9 @@ enum custom_keycodes {
     RW_T = RCTL_T(DE_T),
     RW_S = LALT_T(DE_S),
     RW_H = RGUI_T(DE_H),
+    // Home Row Super Mods
+    RW_O = HYPR_T(DE_O),
+    RW_M = HYPR_T(DE_M),
     // Other
     LCON  = LSG(DE_L),
     LCOFF = LGUI(LCTL(DE_L)),
@@ -65,7 +70,19 @@ enum tap_dance_keys {
 
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
-    [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1), [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2), [F3_3] = ACTION_TAP_DANCE_DOUBLE(DE_3, KC_F3), [F4_4] = ACTION_TAP_DANCE_DOUBLE(DE_4, KC_F4), [F5_5] = ACTION_TAP_DANCE_DOUBLE(DE_5, KC_F5), [F6_6] = ACTION_TAP_DANCE_DOUBLE(DE_6, KC_F6), [F7_7] = ACTION_TAP_DANCE_DOUBLE(DE_7, KC_F7), [F8_8] = ACTION_TAP_DANCE_DOUBLE(DE_8, KC_F8), [F9_9] = ACTION_TAP_DANCE_DOUBLE(DE_9, KC_F9), [F10_PL] = ACTION_TAP_DANCE_DOUBLE(DE_PLUS, KC_F10), [F11_DO] = ACTION_TAP_DANCE_DOUBLE(DE_DOT, KC_F11), [F12_CO] = ACTION_TAP_DANCE_DOUBLE(DE_COMM, KC_F12), [DISM] = ACTION_TAP_DANCE_DOUBLE(G(C(DE_D)), LSG(C(DE_D))),
+    [F1_1] = ACTION_TAP_DANCE_DOUBLE(DE_1, KC_F1),
+    [F2_2] = ACTION_TAP_DANCE_DOUBLE(DE_2, KC_F2),
+    [F3_3] = ACTION_TAP_DANCE_DOUBLE(DE_3, KC_F3),
+    [F4_4] = ACTION_TAP_DANCE_DOUBLE(DE_4, KC_F4),
+    [F5_5] = ACTION_TAP_DANCE_DOUBLE(DE_5, KC_F5),
+    [F6_6] = ACTION_TAP_DANCE_DOUBLE(DE_6, KC_F6),
+    [F7_7] = ACTION_TAP_DANCE_DOUBLE(DE_7, KC_F7),
+    [F8_8] = ACTION_TAP_DANCE_DOUBLE(DE_8, KC_F8),
+    [F9_9] = ACTION_TAP_DANCE_DOUBLE(DE_9, KC_F9),
+    [F10_PL] = ACTION_TAP_DANCE_DOUBLE(DE_PLUS, KC_F10),
+    [F11_DO] = ACTION_TAP_DANCE_DOUBLE(DE_DOT, KC_F11),
+    [F12_CO] = ACTION_TAP_DANCE_DOUBLE(DE_COMM, KC_F12),
+    [DISM] = ACTION_TAP_DANCE_DOUBLE(G(C(DE_D)), LSG(C(DE_D))),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
@@ -85,14 +102,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │ V │ X │ Ü │ Ä │ Ö │            │ P │ F │ Z │ ß │ K │
  * └───┴───┴───┴───┴───┘            └───┴───┴───┴───┴───┘
  *           ┌───┐                        ┌───┐
- *           │ESC├───┐                ┌───┤Alt│
- *           └───┤Bsp├──────┐  ┌──────┤Ent├───┘
+ *           │ESC├───┐                ┌───┤Tab│
+ *           └───┤Bsp├──────┐  ┌──────┤Spa├───┘
  *               └───┤LTOSLL│  │LTOSLR├───┘
  *                   └──────┘  └──────┘
  */
 [_BASE] = LAYOUT_split_3x5_3(
       DE_J,     DE_L,     DE_U,     DE_A,     DE_Q,                       DE_W,     DE_B,     DE_D,      DE_G,      DE_Y,
-      RW_C,     RW_R,     RW_I,     RW_E,     DE_O,                       DE_M,     RW_N,     RW_T,      RW_S,      RW_H,
+      RW_C,     RW_R,     RW_I,     RW_E,     RW_O,                       RW_M,     RW_N,     RW_T,      RW_S,      RW_H,
       DE_V,     DE_X,     DE_UDIA,  DE_ADIA,  DE_ODIA,                    DE_P,     DE_F,     DE_Z,      DE_SS,     DE_K,
                                     KC_ESC,   KC_BSPC,  LTOSLL, LTOSLR,   KC_SPC,   KC_TAB),
 
@@ -110,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAVIGATION] = LAYOUT_split_3x5_3(
       TD(DISM), KC_HOME,  KC_UP,    KC_END,   KC_PGUP,                    KC_NO,    KC_COPY,  KC_PASTE,  KC_CUT,    KC_NO,
-      KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,                    KC_NO,    KC_LSFT,  KC_LCTL,   KC_LALT,   KC_LGUI,
+      KC_COPY,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_PGDN,                    KC_HYPR,  KC_LSFT,  KC_LCTL,   KC_LALT,   KC_LGUI,
       KC_PASTE, KC_CUT,   KC_NO,    KC_NO,    KC_PSCR,                    KC_NO,    KC_NO,    KC_NO,     KC_RALT,   KC_NO,
                                     KC_NO,    KC_DEL,   KC_NO,   KC_NO,   KC_ENT,   QK_BOOT),
 };
